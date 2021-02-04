@@ -13,16 +13,21 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/addItem', async (req, res, next) => {
   try {
-    let cart = await Cart.create(req.body);
-
-    res.send(cart);
+    // let cart = await Cart.create(req.body);
+    // res.send(cart);
   } catch (ex) {
     next(err);
   }
 });
 
-router.put('/:id');
+router.put('/:id', async (req, res, next) => {
+  try {
+    // let id = req.params.id;
+  } catch (ex) {
+    next(ex);
+  }
+});
 
-router.delete();
+// router.delete();
