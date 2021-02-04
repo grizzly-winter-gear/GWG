@@ -20,8 +20,8 @@ const syncAndSeed = async () => {
 
   //create some items here
   const items = await Promise.all([
-    Item.create({ name: 'helmet' }),
-    Item.create({ name: 'boot' }),
+    Item.create({ name: 'helmet a ', category: 'helmets' }),
+    Item.create({ name: 'cool boots', category: 'footwear' }),
   ]);
   const [helmet, boot] = items;
   //place some items in user's carts

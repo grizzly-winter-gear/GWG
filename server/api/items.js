@@ -12,3 +12,16 @@ router.get('/', async (req, res, next) => {
     next(err);
   }
 });
+
+router.get('/:category', async (req, res, next) => {
+  try {
+    const items = await Item.findAll({
+      where: {
+        category: req.params.category,
+      },
+    });
+    res.json(items);
+  } catch (err) {
+    next(err);
+  }
+});
