@@ -1,7 +1,9 @@
 body {
   font-family: sans-serif;
 }
-
+.header {
+  background-color: green;
+}
 a {
   text-decoration: none;
 }
@@ -11,7 +13,10 @@ label {
 }
 
 nav a {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  color: snow;
   margin: 1em;
 }
 
