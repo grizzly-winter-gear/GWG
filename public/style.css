@@ -11,7 +11,9 @@ a {
 label {
   display: block;
 }
-
+h1 {
+  color: snow;
+}
 nav a {
   display: flex;
   flex-direction: row;
