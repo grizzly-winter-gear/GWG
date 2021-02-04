@@ -3,10 +3,12 @@
 const db = require('./db');
 
 const User = require('./models/user');
+const Item = require('./models/item');
+const Cart = require('./models/cart');
 
 // //associations could go here!
-// Items.belongsToMany(Users, { through: ManyToManyTable });
-// Users.belongsToMany(Items, { through: ManyToManyTable });
+Item.belongsToMany(User, { through: Cart });
+User.belongsToMany(Item, { through: Cart });
 
 const syncAndSeed = async () => {
   await db.sync({ force: true });
@@ -17,12 +19,23 @@ const syncAndSeed = async () => {
   const [cody, murphy] = users;
 
   //create some items here
+  const items = await Promise.all([
+    Item.create({ name: 'helmet' }),
+    Item.create({ name: 'boot' }),
+  ]);
+  const [helmet, boot] = items;
   //place some items in user's carts
+  //how....?
+  Cart.create({
+    userId: cody.id,
+    itemId: boot.id,
+  });
   return {
     users: {
       cody,
       murphy,
     },
+    items,
   };
 };
 
@@ -31,5 +44,7 @@ module.exports = {
   syncAndSeed,
   models: {
     User,
+    Item,
+    Cart,
   },
 };
