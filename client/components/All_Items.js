@@ -4,7 +4,6 @@ import {setItems, fetchItems} from "../store/allItems"
 
 class All_Items extends React.Component {
   componentDidMount(){
-    // console.log("mounting now test!!!");
     this.props.getItems();
   }
 
