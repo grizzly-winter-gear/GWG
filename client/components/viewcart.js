@@ -4,16 +4,22 @@ import { connect } from 'react-redux';
 /**
  * COMPONENT
  */
-export const ViewCart = (props) => {
-  const { state } = props;
-  console.log(state);
-  return (
-    <div>
-      <h3>Cart View below</h3>
-      <p>Test to see that branch works</p>
-    </div>
-  );
-};
+class ViewCart extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  componentDidMount() {}
+  render() {
+    const { state } = this.props;
+    console.log(state);
+    return (
+      <div>
+        <h3>Cart View below</h3>
+        <p>Test to see that branch works</p>
+      </div>
+    );
+  }
+}
 
 /**
  * CONTAINER
