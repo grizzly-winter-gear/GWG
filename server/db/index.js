@@ -25,11 +25,16 @@ const syncAndSeed = async () => {
   ]);
   const [helmet, boot] = items;
   //place some items in user's carts
-  //how....?
-  Cart.create({
-    userId: cody.id,
-    itemId: boot.id,
-  });
+  // await Cart.create({
+  //   userId: cody.id,
+  //   itemId: boot.id,
+  //   status: 'unpurchased',
+  // });
+  // await Cart.create({
+  //   userId: murphy.id,
+  //   itemId: helmet.id,
+  //   status: 'unpurchased',
+  // });
   return {
     users: {
       cody,

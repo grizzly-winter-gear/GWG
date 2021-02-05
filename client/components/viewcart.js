@@ -6,15 +6,22 @@ import { fetchCart } from '../store/cart';
  */
 class ViewCart extends React.Component {
   componentDidMount() {
-    this.props.fetchCart();
+    this.props.fetchCart(this.props.userId);
   }
   render() {
-    const { state } = this.props;
-    console.log(state);
+    console.log(this.props.cart);
     return (
       <div>
         <h3>Cart View below</h3>
         <p>Test to see that branch works</p>
+        <ul>
+          {this.props.cart.map((item) => (
+            <li key={item.id}>
+              name: {item.name}, description: {item.description}
+              quantity:{item.quantity}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
@@ -25,12 +32,13 @@ class ViewCart extends React.Component {
  */
 const mapState = (state) => {
   return {
-    state,
+    userId: state.auth.id,
+    cart: state.cart,
   };
 };
 const mapDispatch = (dispatch) => {
   return {
-    fetchCart: () => dispatch(fetchCart()),
+    fetchCart: (id) => dispatch(fetchCart(id)),
   };
 };
 
