@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import { fetchCart } from '../store/cart';
 /**
  * COMPONENT
  */
 class ViewCart extends React.Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
+    this.props.fetchCart();
   }
-  componentDidMount() {}
   render() {
     const { state } = this.props;
     console.log(state);
@@ -29,5 +28,10 @@ const mapState = (state) => {
     state,
   };
 };
+const mapDispatch = (dispatch) => {
+  return {
+    fetchCart: () => dispatch(fetchCart()),
+  };
+};
 
-export default connect(mapState)(ViewCart);
+export default connect(mapState, mapDispatch)(ViewCart);
