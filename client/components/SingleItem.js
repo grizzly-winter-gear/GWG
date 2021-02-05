@@ -14,6 +14,7 @@ class SingleItem extends Component {
   }
 
   render() {
+    //conosle.log(this.props.state)
     const singleItem = this.props.state.singleItem;
     return (
       <ul id="single_component" className="single_commponet_class">
