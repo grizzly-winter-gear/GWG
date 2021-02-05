@@ -14,6 +14,7 @@ class All_Items extends React.Component {
       <div>
         <center>
           <p>Insert all items data here, testing , tbd</p>
+          <p>testing props here</p>
           {this.props.items}
         </center>
       </div>
