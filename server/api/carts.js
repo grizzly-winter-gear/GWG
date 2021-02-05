@@ -12,23 +12,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.get('/:id', async (req, res, next) => {
-  try {
-    const userId = req.params.id;
-    console.log('seeking to find carts of userId: ', userId);
-    const carts = await Cart.findAll({
-      where: {
-        userId,
-        // status: 'unpurchased',
-      },
-    });
-    console.log(carts);
-    res.send(carts);
-  } catch (err) {
-    next(err);
-  }
-});
-
 router.post('/addItem', async (req, res, next) => {
   try {
     // let cart = await Cart.create(req.body);

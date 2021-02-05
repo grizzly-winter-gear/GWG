@@ -12,13 +12,11 @@ class ViewCart extends React.Component {
     console.log(this.props.cart);
     return (
       <div>
-        <h3>Cart View below</h3>
-        <p>Test to see that branch works</p>
-        <ul>
+        <h3>Cart View</h3>
+        <ul className="cart">
           {this.props.cart.map((item) => (
             <li key={item.id}>
-              name: {item.name}, description: {item.description}
-              quantity:{item.quantity}
+              {item.name}, <p> description: {item.description}</p>
             </li>
           ))}
         </ul>
