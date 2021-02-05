@@ -8,3 +8,4 @@ export { default as Home } from './home';
 export { default as Account } from './account';
 export { default as ViewCart } from './viewcart';
 export { Login, Signup } from './auth-form';
+export { default as SingleItem } from './SingleItem';
