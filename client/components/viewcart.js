@@ -10,6 +10,7 @@ export const ViewCart = (props) => {
   return (
     <div>
       <h3>Cart View below</h3>
+      <p>Test to see that branch works</p>
     </div>
   );
 };
