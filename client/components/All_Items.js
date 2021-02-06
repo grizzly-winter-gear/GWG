@@ -19,11 +19,11 @@ class All_Items extends React.Component {
               return (
                 <div key = {idx}>
                   {item.name}
-
+                  <button>Add to Cart</button>
                 </div>
               )//close return
            })//close map
-           : <p>No Items</p>
+           : <p>No Items To Display</p>
           }
         </center>
       </div>
