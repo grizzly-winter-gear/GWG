@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {
-  models: { User, Item },
+  models: { User, Item, Cart },
 } = require('../db');
 module.exports = router;
 
@@ -27,6 +27,57 @@ router.get('/:id', async (req, res, next) => {
       include: { model: Item, through: { status: 'unpurchased' } },
     });
     res.send(items);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/addItem', async (req, res, next) => {
+  try {
+    await Cart.create({
+      userId: req.body.userId,
+      itemId: req.body.itemId,
+      status: 'unpurchased',
+    });
+
+    res.send(201);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/deleteItem', async (req, res, next) => {
+  try {
+    await Cart.destroy({
+      where: {
+        userId: req.body.userId,
+        itemId: req.body.itemId,
+        status: 'unpurchased',
+      },
+    });
+
+    res.send(201);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/editQuantity', async (req, res, next) => {
+  try {
+    await Cart.update(
+      {
+        quantity: req.body.quantity,
+      },
+      {
+        where: {
+          userId: req.body.userId,
+          itemId: req.body.itemId,
+          status: 'unpurchased',
+        },
+      }
+    );
+
+    res.send(201);
   } catch (err) {
     next(err);
   }
