@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchItem } from '../store/singleItem';
+import { fetchAddItem } from '../store/cart';
 
 class SingleItem extends Component {
   componentDidMount() {
-    const id = parseInt(
-      this.props.location.pathname.slice(
-        this.props.location.pathname.lastIndexOf('/') + 1
-      )
-    );
-
+    const id = this.props.match.params.id;
     this.props.fetchItem(id);
   }
 
   render() {
-    //conosle.log(this.props.state)
     const singleItem = this.props.state.singleItem;
     return (
-      <ul id="single_component" className="single_commponet_class">
-        {Object.keys(singleItem).map((key, idx) => {
-          return (
-            <li key={idx}>
-              {key}: {singleItem[key]}
-            </li>
-          );
-        })}
-      </ul>
+      <div>
+        <ul id="single_component" className="single_commponet_class">
+          {Object.keys(singleItem).map((key, idx) => {
+            return (
+              <li key={idx}>
+                {key}: {singleItem[key]}
+              </li>
+            );
+          })}
+        </ul>
+        <button
+          onClick={() =>
+            this.props.fetchAddItem(this.props.state.auth.id, singleItem.id, 1)
+          }
+        >
+          Add to Cart
+        </button>
+      </div>
     );
   }
 }
@@ -36,8 +40,12 @@ const mapState = (state) => {
   };
 };
 
-export default connect(mapState, (dispatch) => {
+const mapDispatch = (dispatch) => {
   return {
     fetchItem: (id) => dispatch(fetchItem(id)),
+    fetchAddItem: (userId, itemId, quantity) =>
+      dispatch(fetchAddItem(userId, itemId, quantity)),
   };
-})(SingleItem);
+};
+
+export default connect(mapState, mapDispatch)(SingleItem);

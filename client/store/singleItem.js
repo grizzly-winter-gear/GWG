@@ -5,17 +5,7 @@ const SET_ITEM = 'SET_ITEM';
 const setItem = (item) => ({ type: SET_ITEM, item });
 
 export const fetchItem = (id) => async (dispatch) => {
-  // const item = (await axios.get(`/api/items/${id}`)).data;
-  const item = {
-    id: 'new',
-    name: 'different text',
-    description: 'some text',
-    imageURL: '/images/skifree.jpg',
-    price: '99.99',
-    stock: '5',
-    rating: '3',
-    category: '4',
-  };
+  const item = (await axios.get(`/api/items/${id}`)).data;
   return dispatch(setItem(item));
 };
 

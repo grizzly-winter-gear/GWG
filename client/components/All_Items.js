@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setItems, fetchItems } from '../store/allItems';
 import { fetchAddItem } from '../store/cart';
+import { withRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
 
 class All_Items extends React.Component {
   componentDidMount() {
@@ -19,7 +20,8 @@ class All_Items extends React.Component {
             this.props.state.allItems.map((item, idx) => {
               return (
                 <div key={idx}>
-                  {item.name}
+                  {console.log(item.id)}
+                  <Link to={`/singleItem/${item.id}`}>{item.name}</Link>
                   <button
                     onClick={() =>
                       this.props.fetchAddItem(

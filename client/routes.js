@@ -10,7 +10,7 @@ import {
   SingleItem,
 } from './components';
 
-import All_Items from "./components/All_Items";
+// import All_Items from "./components/All_Items";
 
 import { me } from './store';
 
@@ -32,8 +32,8 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/account" component={Account} />
             <Route path="/viewcart" component={ViewCart} />
-            <Route path= "/allitems" exact component={All_Items} />
-            <Route path={`/singleItem/1`} component={SingleItem} />
+            {/* <Route path= "/allitems" exact component={All_Items} /> */}
+            <Route path={`/singleItem/:id`} component={SingleItem} />
             <Redirect to="/home" />
           </Switch>
         ) : (
