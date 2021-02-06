@@ -9,6 +9,8 @@ const Cart = require('./models/cart');
 // //associations could go here!
 Item.belongsToMany(User, { through: Cart });
 User.belongsToMany(Item, { through: Cart });
+Item.hasMany(Cart);
+Cart.belongsTo(Item);
 //might also need to add User.hasMany(Cart) && Cart.belongsToUser // we'll see
 
 const syncAndSeed = async () => {

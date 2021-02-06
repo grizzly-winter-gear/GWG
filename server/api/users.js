@@ -32,8 +32,9 @@ router.get('/:id', async (req, res, next) => {
         userId: req.params.id,
         status: 'unpurchased',
       },
+      include: { model: Item },
     });
-    console.log(items);
+    // console.log(items);
     res.send(items);
   } catch (err) {
     next(err);

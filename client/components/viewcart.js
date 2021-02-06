@@ -17,7 +17,7 @@ class ViewCart extends React.Component {
         <ul className="cart">
           {this.props.cart.map((item) => (
             <li key={item.itemId}>
-              {item.name}, <p> description: {item.description}</p>,
+              {item.item.name} <p> description: {item.item.description}</p>
               {/* {console.log(item.cart)} */}
               <p> quantity: {item.quantity}</p>
               <img
