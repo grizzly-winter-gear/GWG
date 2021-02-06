@@ -1,13 +1,12 @@
 const router = require('express').Router();
 const {
-  models: { Cart },
+  models: { Cart, Item },
 } = require('../db');
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
-    const carts = await Cart.findAll();
-    res.json(carts);
+    res.send(await Cart.findAll());
   } catch (err) {
     next(err);
   }

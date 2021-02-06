@@ -7,14 +7,6 @@ const Cart = db.define('cart', {
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
   },
-  // userId: {
-  //   type: Sequelize.STRING,
-  //   unique: true,
-  //   allowNull: false,
-  // },
-  // itemId: {
-  //   type: Sequelize.TEXT,
-  // },
   quantity: {
     type: Sequelize.INTEGER,
   },

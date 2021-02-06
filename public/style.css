@@ -26,3 +26,14 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.cart {
+  display: flex;
+  list-style-type: none;
+}
+.cart li {
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding: 1rem;
+}

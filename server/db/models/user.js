@@ -3,6 +3,8 @@ const db = require('../db');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const axios = require('axios');
+const Item = require('./item');
+const Cart = require('./cart');
 
 const SALT_ROUNDS = 5;
 
@@ -99,6 +101,10 @@ User.authenticateGithub = async function (code) {
   let user = await User.findOne({ where: { githubId: id, email } });
   if (!user) {
     user = await User.create({ email, githubId: id });
+
+    //add a fake item to newly generated users
+    const widget = await Item.create({ name: 'Widget Ski!' });
+    await user.addItem(widget, { through: { status: 'unpurchased' } });
   }
   //step 4: return jwt token
   return user.generateToken();
