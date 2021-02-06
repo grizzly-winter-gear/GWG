@@ -25,8 +25,10 @@ const syncAndSeed = async () => {
     Item.create({ name: 'cool boots', category: 'footwear' }),
   ]);
   const [helmet, boot] = items;
-  await cody.addItem(boot, { through: { status: 'unpurchased' } });
-  await murphy.addItem(helmet, { through: { status: 'unpurchased' } });
+  await cody.addItem(boot, { through: { status: 'unpurchased', quantity: 1 } });
+  await murphy.addItem(helmet, {
+    through: { status: 'unpurchased', quantity: 1 },
+  });
   return {
     users: {
       cody,

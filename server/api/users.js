@@ -20,12 +20,20 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const items = await User.findOne({
+    // const items = await User.findOne({
+    //   where: {
+    //     id: req.params.id,
+    //   },
+    //   include: { model: Item, through: { status: 'unpurchased' } },
+    // });
+
+    const items = await Cart.findAll({
       where: {
-        id: req.params.id,
+        userId: req.params.id,
+        status: 'unpurchased',
       },
-      include: { model: Item, through: { status: 'unpurchased' } },
     });
+    console.log(items);
     res.send(items);
   } catch (err) {
     next(err);
@@ -34,17 +42,29 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/addItem', async (req, res, next) => {
   try {
+    const cartItem = await Cart.findOne({
+      where: {
+        userId: req.body.userId,
+        itemId: req.body.itemId,
+        status: 'unpurchased',
+      },
+    });
+    if (!cartItem) {
+      await Cart.create({
+        userId: req.body.userId,
+        itemId: req.body.itemId,
+        quantity: req.body.quantity,
+        status: 'unpurchased',
+      });
+    } else {
+      cartItem.quantity++;
+      await cartItem.save();
+    }
+
     const item = await Item.findOne({
       where: {
         id: req.body.itemId,
       },
-    });
-
-    await Cart.create({
-      userId: req.body.userId,
-      itemId: req.body.itemId,
-      quantity: req.body.quantity,
-      status: 'unpurchased',
     });
 
     res.send(item);

@@ -16,14 +16,16 @@ class ViewCart extends React.Component {
         <h3>Cart View</h3>
         <ul className="cart">
           {this.props.cart.map((item) => (
-            <li key={item.id}>
-              {item.name}, <p> description: {item.description}</p>
+            <li key={item.itemId}>
+              {item.name}, <p> description: {item.description}</p>,
+              {/* {console.log(item.cart)} */}
+              <p> quantity: {item.quantity}</p>
               <img
                 src="/images/delete.png"
                 className="delete_btn"
                 title="Delete"
                 onClick={() =>
-                  this.props.fetchDeleteItem(this.props.userId, item.id)
+                  this.props.fetchDeleteItem(this.props.userId, item.itemId)
                 }
               />
             </li>
