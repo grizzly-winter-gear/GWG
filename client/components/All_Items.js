@@ -8,25 +8,34 @@ class All_Items extends React.Component {
   }
 
   render(){
-    console.log("testing, render", this.props.items)
+    console.log("testing, render", this.props.state.allItems)
     return (
       <div>
         <center>
-          <p>Insert all items data here, testing , tbd</p>
-          <p>testing props here</p>
-          {this.props.items}
+          {
+           Array.isArray(this.props.state.allItems) && this.props.state.allItems.length !== 0 ?
+
+           this.props.state.allItems.map((item, idx) => {
+              return (
+                <div key = {idx}>
+                  {item.name}
+
+                </div>
+              )//close return
+           })//close map
+           : <p>No Items</p>
+          }
         </center>
       </div>
-    )
-  }
-
+      )
+    }
 }//end class
 
 
 const mapState = (state) => {
-  console.log("current state parameter", state)
+  // console.log("current state parameter", state)
   return {
-    items: state.items
+    state,
   }
 }
 
