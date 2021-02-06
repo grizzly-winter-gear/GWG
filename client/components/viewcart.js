@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCart } from '../store/cart';
+import { fetchCart, fetchDeleteItem, fetchEditItem } from '../store/cart';
+
 /**
  * COMPONENT
  */
@@ -17,6 +18,14 @@ class ViewCart extends React.Component {
           {this.props.cart.map((item) => (
             <li key={item.id}>
               {item.name}, <p> description: {item.description}</p>
+              <img
+                src="/images/delete.png"
+                className="delete_btn"
+                title="Delete"
+                onClick={() =>
+                  this.props.fetchDeleteItem(this.props.userId, item.id)
+                }
+              />
             </li>
           ))}
         </ul>
@@ -37,6 +46,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchCart: (id) => dispatch(fetchCart(id)),
+    fetchDeleteItem: (userId, itemId) =>
+      dispatch(fetchDeleteItem(userId, itemId)),
   };
 };
 

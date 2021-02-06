@@ -34,19 +34,26 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/addItem', async (req, res, next) => {
   try {
+    const item = await Item.findOne({
+      where: {
+        id: req.body.itemId,
+      },
+    });
+
     await Cart.create({
       userId: req.body.userId,
       itemId: req.body.itemId,
+      quantity: req.body.quantity,
       status: 'unpurchased',
     });
 
-    res.send(201);
+    res.send(item);
   } catch (err) {
     next(err);
   }
 });
 
-router.delete('/deleteItem', async (req, res, next) => {
+router.post('/deleteItem', async (req, res, next) => {
   try {
     await Cart.destroy({
       where: {
