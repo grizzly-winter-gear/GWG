@@ -9,6 +9,9 @@ import {
   ViewCart,
   SingleItem,
 } from './components';
+
+import All_Items from "./components/All_Items";
+
 import { me } from './store';
 
 /**
@@ -29,6 +32,7 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/account" component={Account} />
             <Route path="/viewcart" component={ViewCart} />
+            <Route path= "/allitems" exact component={All_Items} />
             <Route path={`/singleItem/1`} component={SingleItem} />
             <Redirect to="/home" />
           </Switch>
@@ -36,8 +40,8 @@ class Routes extends Component {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path={`/singleItem/1`} component={SingleItem} />
-            <Redirect to="/login" />
+            {/*deleted the Route path for Single Item here, not needed here. This Switch Statement indicates that lines 37 - 40 are for a user who is NOT logged in yet. They should only see Login and Signup.*/}
+            {/* <Redirect to="/login" /> */}
           </Switch>
         )}
       </div>
