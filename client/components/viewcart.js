@@ -6,6 +6,16 @@ import { fetchCart, fetchDeleteItem, fetchEditItem } from '../store/cart';
  * COMPONENT
  */
 class ViewCart extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(userId, itemId, e) {
+    console.log(userId, itemId, e.target);
+    this.props.fetchEditItem(userId, itemId, parseInt(e.target.value));
+  }
+
   componentDidMount() {
     this.props.fetchCart(this.props.userId);
   }
@@ -18,8 +28,21 @@ class ViewCart extends React.Component {
           {this.props.cart.map((item) => (
             <li key={item.itemId}>
               {item.item.name} <p> description: {item.item.description}</p>
-              {/* {console.log(item.cart)} */}
-              <p> quantity: {item.quantity}</p>
+              <p>
+                <span>quantity: {item.quantity}</span>
+                <label htmlFor="item_quantity"></label>
+                <input
+                  type="number"
+                  id="item_quantity"
+                  name="item_quantity"
+                  min="0"
+                  max="100"
+                  onChange={(e) =>
+                    this.onChange(this.props.userId, item.itemId, e)
+                  }
+                  value={item.quantity}
+                ></input>
+              </p>
               <img
                 src="/images/delete.png"
                 className="delete_btn"
@@ -50,6 +73,8 @@ const mapDispatch = (dispatch) => {
     fetchCart: (id) => dispatch(fetchCart(id)),
     fetchDeleteItem: (userId, itemId) =>
       dispatch(fetchDeleteItem(userId, itemId)),
+    fetchEditItem: (userId, itemId, quantity) =>
+      dispatch(fetchEditItem(userId, itemId, quantity)),
   };
 };
 

@@ -60,7 +60,7 @@ export const fetchEditItem = (userId, itemId, quantity) => async (dispatch) => {
         itemId: itemId,
         quantity: quantity,
       });
-      return dispatch(setEditItem({ itemId: itemId, quantity: quanity }));
+      return dispatch(setEditItem({ itemId: itemId, quantity: quantity }));
     }
   } catch (ex) {
     console.log(ex);
