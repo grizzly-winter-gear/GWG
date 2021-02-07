@@ -110,3 +110,15 @@ router.put('/editQuantity', async (req, res, next) => {
     next(err);
   }
 });
+
+router.put('/editPrivilege', async (req, res, next) => {
+  try {
+    console.log(req.body);
+    const user = await User.findByPk(req.body.userId);
+    user.privilege = req.body.privilege;
+    await user.save();
+    res.sendStatus(200);
+  } catch (err) {
+    next(err);
+  }
+});
