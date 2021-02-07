@@ -10,20 +10,19 @@ class All_Items extends React.Component {
   }
 
   render() {
-    console.log('testing, render', this.props.state.allItems);
     //UPDADTE QUANTITY AMOUNT LATER (OPTION FOR QUANTITYS), FIXED TO 1//)
     const { privilege } = this.props.state.auth;
 
     return (
       <div>
         {privilege === 'administrator' && <h4>You have admin control</h4>}
-        <center>
+        <ul className="catalog">
           {Array.isArray(this.props.state.allItems) &&
           this.props.state.allItems.length !== 0 ? (
             this.props.state.allItems.map((item, idx) => {
               return (
-                <div key={idx}>
-                  {console.log(item.id)}
+                <li key={idx}>
+                  <img src={item.imageURL} />
                   <Link to={`/singleItem/${item.id}`}>{item.name}</Link>
                   <button
                     onClick={() =>
@@ -38,17 +37,19 @@ class All_Items extends React.Component {
                   </button>
                   {/* TODO: IMPLEMENT STOCK CONTROLS AND DELETION CONTROLS FOR ADMINISTRATOR PRIV */}
                   {privilege === 'administrator' && (
-                    <button onClick={() => this.props.fetchDeleteItem(item.id)}>
+                    <button
+                      onClick={() => this.props.fetchAdminDeleteItem(item.id)}
+                    >
                       Delete
                     </button>
                   )}
-                </div>
+                </li>
               ); //close return
             }) //close map
           ) : (
             <p>No Items To Display</p>
           )}
-        </center>
+        </ul>
       </div>
     );
   }
