@@ -53,6 +53,11 @@ class Account extends React.Component {
               );
             })}
         </ul>
+
+        {/* TODO: LIST OF USERS AND THEIR INFORMATION FOR ADMIN CRUD */}
+        {account.privilege === 'administrator' && (
+          <p>You are admin. list of users</p>
+        )}
       </div>
     );
   }

@@ -12,8 +12,11 @@ class All_Items extends React.Component {
   render() {
     console.log('testing, render', this.props.state.allItems);
     //UPDADTE QUANTITY AMOUNT LATER (OPTION FOR QUANTITYS), FIXED TO 1//)
+    const { privilege } = this.props.state.auth;
+
     return (
       <div>
+        {privilege === 'administrator' && <h4>You have admin control</h4>}
         <center>
           {Array.isArray(this.props.state.allItems) &&
           this.props.state.allItems.length !== 0 ? (
@@ -33,6 +36,12 @@ class All_Items extends React.Component {
                   >
                     Add to Cart
                   </button>
+                  {/* TODO: IMPLEMENT STOCK CONTROLS AND DELETION CONTROLS FOR ADMINISTRATOR PRIV */}
+                  {privilege === 'administrator' && (
+                    <button onClick={() => this.props.fetchDeleteItem(item.id)}>
+                      Delete
+                    </button>
+                  )}
                 </div>
               ); //close return
             }) //close map
