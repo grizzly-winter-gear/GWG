@@ -109,9 +109,9 @@ User.authenticateGithub = async function (code) {
   if (!user) {
     user = await User.create({ email, githubId: id });
 
-    //add a fake item to newly generated users
-    const widget = await Item.create({ name: 'Widget Ski!' });
-    await user.addItem(widget, { through: { status: 'unpurchased' } });
+    // //add a fake item to newly generated users
+    // const widget = await Item.create({ name: 'Widget Ski!' });
+    // await user.addItem(widget, { through: { status: 'unpurchased' } });
   }
   //step 4: return jwt token
   return user.generateToken();

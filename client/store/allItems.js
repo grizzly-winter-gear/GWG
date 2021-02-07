@@ -1,37 +1,34 @@
-import axios from "axios";
-import thunk from "redux-thunk";
+import axios from 'axios';
+import thunk from 'redux-thunk';
 
 //ACTION CREATOR
-const SET_ITEMS = "SET_ITEMS";
+const SET_ITEMS = 'SET_ITEMS';
 
 export const setItems = (items) => {
   return {
     type: SET_ITEMS,
-    items
-  }
+    items,
+  };
 };
 
 //AXIOS CALL
 export const pullItems = async () => {
-  let result = await axios.get("/api/items");
-  console.log("axios call result", result.data)
+  let result = await axios.get('/api/items');
   return result;
-}
+};
 
 //THUNKS
 //this function should work.. not sure why it's not...
 export const fetchItems = () => {
-  return function (dispatch){
-    return pullItems().then(result => dispatch(setItems(result.data)));
-  }
-}
+  return function (dispatch) {
+    return pullItems().then((result) => dispatch(setItems(result.data)));
+  };
+};
 
-
-export default function itemsReducer(state = [], action){
-  if (action.type === SET_ITEMS){
-    console.log("action.items log here",action)
+export default function itemsReducer(state = [], action) {
+  if (action.type === SET_ITEMS) {
     return action.items;
-  }else{
+  } else {
     return state;
   }
 }

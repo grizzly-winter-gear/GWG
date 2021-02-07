@@ -35,7 +35,7 @@ const syncAndSeed = async () => {
       description: faker.commerce.productDescription(),
       price: faker.commerce.price(),
       rating: Math.random() * 5,
-      imageURL: faker.image.sports(),
+      imageURL: faker.image.imageUrl(null, null, 'sports', true),
     });
   }
   const [helmet, boot] = items;

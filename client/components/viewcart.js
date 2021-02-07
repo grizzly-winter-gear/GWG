@@ -26,8 +26,18 @@ class ViewCart extends React.Component {
         <h3>Cart View</h3>
         <ul className="cart">
           {this.props.cart.map((item) => (
-            <li key={item.itemId}>
-              {item.item.name} <p> description: {item.item.description}</p>
+            <li className="cartItem" key={item.itemId}>
+              <img
+                className="itemImage"
+                title={item.item.name}
+                src={item.item.imageURL}
+              />
+
+              <h4> {item.item.name}</h4>
+              <p>
+                <br />
+                {item.item.description}
+              </p>
               <p>
                 <span>quantity: {item.quantity}</span>
                 <label htmlFor="item_quantity"></label>
@@ -46,7 +56,7 @@ class ViewCart extends React.Component {
               <img
                 src="/images/delete.png"
                 className="delete_btn"
-                title="Delete"
+                title={'Delete ' + item.item.name}
                 onClick={() =>
                   this.props.fetchDeleteItem(this.props.userId, item.itemId)
                 }
