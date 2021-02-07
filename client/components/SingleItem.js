@@ -12,7 +12,7 @@ class SingleItem extends Component {
   render() {
     const item = this.props.state.singleItem;
     return (
-      <div className="cartItem">
+      <div className="catalogItem">
         <img className="itemImage" title={item.name} src={item.imageURL} />
         <h4> {item.name}</h4>
         <p>${item.price}</p>

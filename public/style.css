@@ -86,3 +86,16 @@ form div {
   width: 1rem;
   height: 1rem;
 }
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+  .navBar {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart li {
+    flex-direction: column;
+  }
+}
