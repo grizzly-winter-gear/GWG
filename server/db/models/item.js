@@ -9,7 +9,7 @@ const Item = db.define('item', {
   },
   name: {
     type: Sequelize.STRING,
-    unique: true,
+    // unique: true,
     allowNull: false,
   },
   description: {
@@ -30,7 +30,7 @@ const Item = db.define('item', {
     type: Sequelize.DECIMAL(10, 1),
   },
   category: {
-    type: Sequelize.TEXT, //should this be ENUM or STRING?
+    type: Sequelize.TEXT,
   },
 });
 
