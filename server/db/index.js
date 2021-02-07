@@ -6,6 +6,8 @@ const User = require('./models/user');
 const Item = require('./models/item');
 const Cart = require('./models/cart');
 
+const faker = require('faker');
+
 // //associations could go here!
 Item.belongsToMany(User, { through: Cart });
 User.belongsToMany(Item, { through: Cart });
@@ -26,6 +28,16 @@ const syncAndSeed = async () => {
     Item.create({ name: 'helmet a ', category: 'helmets' }),
     Item.create({ name: 'cool boots', category: 'footwear' }),
   ]);
+  for (let i = 0; i < 50; i++) {
+    await Item.create({
+      name: faker.commerce.productName(),
+      category: faker.commerce.productAdjective(),
+      description: faker.commerce.productDescription(),
+      price: faker.commerce.price(),
+      rating: Math.random() * 5,
+      imageURL: faker.image.sports(),
+    });
+  }
   const [helmet, boot] = items;
   await cody.addItem(boot, { through: { status: 'unpurchased', quantity: 1 } });
   await murphy.addItem(helmet, {

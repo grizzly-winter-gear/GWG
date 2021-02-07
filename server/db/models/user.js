@@ -25,6 +25,10 @@ const User = db.define('user', {
   githubId: {
     type: Sequelize.INTEGER,
   },
+  privilege: {
+    type: Sequelize.ENUM('customer', 'administrator', 'engineer'),
+    defaultValue: 'customer',
+  },
 });
 
 module.exports = User;
