@@ -10,18 +10,15 @@ class SingleItem extends Component {
   }
 
   render() {
-    const singleItem = this.props.state.singleItem;
+    const item = this.props.state.singleItem;
     return (
-      <div>
-        <ul id="single_component" className="single_commponet_class">
-          {Object.keys(singleItem).map((key, idx) => {
-            return (
-              <li key={idx}>
-                {key}: {singleItem[key]}
-              </li>
-            );
-          })}
-        </ul>
+      <div className="cartItem">
+        <img className="itemImage" title={item.name} src={item.imageURL} />
+        <h4> {item.name}</h4>
+        <p>${item.price}</p>
+        <p>Rating: {item.rating}</p>
+        <p>{item.description}</p>
+
         <button
           onClick={() =>
             this.props.fetchAddItem(this.props.state.auth.id, singleItem.id, 1)

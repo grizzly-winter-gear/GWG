@@ -22,9 +22,10 @@ class All_Items extends React.Component {
             this.props.state.allItems.map((item, idx) => {
               return (
                 <li key={idx}>
-                  <img src={item.imageURL} />
+                  <img src={item.imageURL} title={item.name} />
                   <Link to={`/singleItem/${item.id}`}>{item.name}</Link>
                   <button
+                    title={'Add ' + item.name + ' to cart'}
                     onClick={() =>
                       this.props.fetchAddItem(
                         this.props.state.auth.id,
