@@ -95,6 +95,9 @@ User.authenticateGithub = async function (code) {
       authorization: `token ${data.access_token}`,
     },
   });
+
+  console.log(response.data);
+
   const { email, id } = response.data;
 
   //step 3: either find user or create user
