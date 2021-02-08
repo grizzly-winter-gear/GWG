@@ -3,6 +3,9 @@
 }
 body {
   font-family: sans-serif;
+  background-image: url('./images/stockBG.jpeg');
+  background-repeat: repeat-y;
+  background-position: top;
 }
 .header {
   background-color: green;
@@ -46,6 +49,7 @@ form div {
 }
 .cart li {
   border: 1px solid black;
+  background-color: darkgray;
   border-radius: 1rem;
   margin: 1rem;
   padding: 1rem;
@@ -64,6 +68,7 @@ form div {
 .catalog li {
   list-style: none;
   border: 1px solid black;
+  background-color: darkgray;
   border-radius: 1rem;
   margin: 1rem;
   padding: 1rem;

@@ -26,6 +26,20 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+router.post('/destroy', async (req, res, next) => {
+  try {
+    const item = await Item.findOne({
+      where: {
+        id: req.body.id,
+      },
+    });
+    await item.destroy();
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/:category', async (req, res, next) => {
   try {
     const items = await Item.findAll({

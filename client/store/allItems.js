@@ -1,13 +1,22 @@
 import axios from 'axios';
 import thunk from 'redux-thunk';
 
-//ACTION CREATOR
+//ACTION CONSTANTS
 const SET_ITEMS = 'SET_ITEMS';
+const DESTROY_ITEM = 'DESTROY_ITEM';
 
+//ACTION CREATORS
 export const setItems = (items) => {
   return {
     type: SET_ITEMS,
     items,
+  };
+};
+
+const _destroyItem = (id) => {
+  return {
+    type: DESTROY_ITEM,
+    id,
   };
 };
 
@@ -25,10 +34,25 @@ export const fetchItems = () => {
   };
 };
 
+export const destroyItem = (id) => {
+  //should user auth token be passed in to confirm admin? @kuperavv
+  try {
+    axios.post('/api/items/destroy', { id });
+    return async function (dispatch) {
+      return dispatch(_destroyItem(id));
+    };
+  } catch (error) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
+
 export default function itemsReducer(state = [], action) {
   if (action.type === SET_ITEMS) {
     return action.items;
-  } else {
-    return state;
   }
+  if (action.type === DESTROY_ITEM) {
+    return state.filter((item) => item.id !== action.id);
+  }
+  return state;
 }
