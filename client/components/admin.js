@@ -39,6 +39,7 @@ class Admin extends React.Component {
           </form>
 
           <p>You are admin. list of users</p>
+          {/* TODO: @sjsamphex IMPLEMENT USER LIST AND CRUD. USE USERSREDUCER STORE*/}
         </div>
       </div>
     );
