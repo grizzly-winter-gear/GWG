@@ -21,7 +21,7 @@ class SingleItem extends Component {
 
         <button
           onClick={() =>
-            this.props.fetchAddItem(this.props.state.auth.id, singleItem.id, 1)
+            this.props.fetchAddItem(this.props.state.auth.id, item.id, 1)
           }
         >
           Add to Cart
