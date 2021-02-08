@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setItems, fetchItems } from '../store/allItems';
+import { fetchItems, destroyItem } from '../store/allItems';
 import { fetchAddItem } from '../store/cart';
-import { withRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class All_Items extends React.Component {
   componentDidMount() {
@@ -38,9 +38,7 @@ class All_Items extends React.Component {
                   </button>
                   {/* TODO: IMPLEMENT STOCK CONTROLS AND DELETION CONTROLS FOR ADMINISTRATOR PRIV */}
                   {privilege === 'administrator' && (
-                    <button
-                      onClick={() => this.props.fetchAdminDeleteItem(item.id)}
-                    >
+                    <button onClick={() => this.props.destroyItem(item.id)}>
                       Delete
                     </button>
                   )}
@@ -68,6 +66,7 @@ const mapDispatch = (dispatch) => {
     getItems: () => dispatch(fetchItems()),
     fetchAddItem: (userId, itemId, quantity) =>
       dispatch(fetchAddItem(userId, itemId, quantity)),
+    destroyItem: (id) => dispatch(destroyItem(id)),
   };
 };
 
