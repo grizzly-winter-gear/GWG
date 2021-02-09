@@ -14,6 +14,7 @@ Item.belongsToMany(Cart, { through: Purchases });
 Cart.belongsToMany(Item, { through: Purchases });
 Purchases.belongsTo(Cart);
 Cart.belongsTo(User);
+User.hasMany(Cart);
 
 const syncAndSeed = async () => {
   await db.sync({ force: true });

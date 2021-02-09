@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {
   models: { User, Item, Cart },
 } = require('../db');
+const Purchases = require('../db/models/purchases');
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
@@ -22,10 +23,10 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+//Broken route: Sequelize Eager Loading Error: cart is not associated to a user!
 router.get('/purchases', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-
     const purchases = await User.findOne({
       where: {
         id: user.id,
@@ -36,18 +37,7 @@ router.get('/purchases', async (req, res, next) => {
         include: { model: Item },
       },
     });
-
     res.send(purchases);
-
-    // if (user.privilege === 'adminstrator') {
-    //   const users = await User.findAll({
-    //     // explicitly select only the id and email fields - even though
-    //     // users' passwords are encrypted, it won't help if we just
-    //     // send everything to anyone who asks!
-    //     attributes: ['id', 'email', 'privilege'],
-    //   });
-    //   res.send(users);
-    //}
   } catch (err) {
     next(err);
   }
@@ -73,30 +63,35 @@ router.post('/addItem', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
 
-    const cartItem = await Cart.findOne({
-      where: {
-        userId: user.id,
-        itemId: req.body.itemId,
-        status: 'unpurchased',
-      },
-    });
-    if (!cartItem) {
-      await Cart.create({
-        userId: user.id,
-        itemId: req.body.itemId,
-        quantity: req.body.quantity,
-        status: 'unpurchased',
-      });
-    } else {
-      cartItem.quantity++;
-      await cartItem.save();
-    }
-
     const item = await Item.findOne({
       where: {
         id: req.body.itemId,
       },
     });
+
+    let cart = await Cart.findOne({
+      where: {
+        userId: user.id,
+        status: 'unpurchased',
+      },
+    });
+    if (!cart) {
+      cart = await Cart.create({
+        userId: user.id,
+        itemId: req.body.itemId,
+        quantity: req.body.quantity,
+        status: 'unpurchased',
+      });
+      cart.addItem(item);
+    } else {
+      const purchase = await Purchases.findOne({
+        where: {
+          cartId: cart.id,
+        },
+      });
+      purchase.quantity++;
+      await purchase.save();
+    }
 
     res.send(item);
   } catch (err) {
