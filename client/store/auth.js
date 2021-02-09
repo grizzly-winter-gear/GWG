@@ -54,9 +54,20 @@ export const logout = () => {
 export const fetchEditPrivilege = (userId, privilege) => async (dispatch) => {
   let res;
   try {
-    res = await axios.put('/api/users/editPrivilege', { userId, privilege });
-    console.log('privilege result:', res);
-    dispatch(setPrivilege(privilege));
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      res = await axios.put(
+        '/api/users/editPrivilege',
+        { userId, privilege },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      console.log('privilege result:', res);
+      dispatch(setPrivilege(privilege));
+    }
   } catch (error) {
     console.log(error);
     throw new Error(error);

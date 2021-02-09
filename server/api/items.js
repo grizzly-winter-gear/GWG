@@ -1,7 +1,9 @@
-const router = require('express').Router();
 const {
-  models: { Item },
+  models: { User, Item, Cart },
 } = require('../db');
+
+const router = require('express').Router();
+
 module.exports = router;
 
 router.get('/', async (req, res, next) => {
@@ -28,14 +30,22 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/destroy', async (req, res, next) => {
   try {
-    const item = await Item.findOne({
-      where: {
-        id: req.body.id,
-      },
-    });
-    await item.destroy();
-    res.sendStatus(204);
+    console.log(req.headers.authorization);
+    const user = await User.findByToken(req.headers.authorization);
+
+    console.log(user);
+
+    if (user.privilege === 'administrator') {
+      const item = await Item.findOne({
+        where: {
+          id: req.body.id,
+        },
+      });
+      await item.destroy();
+      res.sendStatus(204);
+    }
   } catch (err) {
+    console.log(err);
     next(err);
   }
 });

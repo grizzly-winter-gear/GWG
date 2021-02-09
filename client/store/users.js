@@ -21,10 +21,17 @@ const _destroyUser = (id) => {
 
 //THUNKS
 export const fetchUsers = async () => {
-  let users = await axios.get('/api/users');
-  return function (dispatch) {
-    return dispatch(_fetchUsers(users.data));
-  };
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    let users = await axios.get('/api/users', {
+      headers: {
+        authorization: token,
+      },
+    });
+    return function (dispatch) {
+      return dispatch(_fetchUsers(users.data));
+    };
+  }
 };
 
 export const destroyUser = (id) => {
