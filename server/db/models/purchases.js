@@ -7,6 +7,9 @@ const Purchases = db.define('purchases', {
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
   },
+  quantity: {
+    type: Sequelize.INTEGER,
+  },
 });
 
 module.exports = Purchases;

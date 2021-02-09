@@ -7,9 +7,6 @@ const Cart = db.define('cart', {
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
   },
-  quantity: {
-    type: Sequelize.INTEGER,
-  },
   status: {
     type: Sequelize.ENUM('unpurchased', 'purchased'),
   },
