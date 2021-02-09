@@ -22,13 +22,11 @@ const _destroyItem = (id) => {
 
 //AXIOS CALL
 export const pullItems = async (index) => {
-  console.log('sending index request ', index);
   let result = await axios.get(`/api/items/offset/${index}`);
   return result;
 };
 
 //THUNKS
-//this function should work.. not sure why it's not...
 export const fetchItems = (index) => {
   return function (dispatch) {
     return pullItems(index).then((result) => dispatch(setItems(result.data)));

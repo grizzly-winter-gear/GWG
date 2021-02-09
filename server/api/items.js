@@ -4,6 +4,7 @@ const {
 } = require('../db');
 module.exports = router;
 
+//maintaining old route if admin needs it. could dry out
 router.get('/', async (req, res, next) => {
   try {
     const items = await Item.findAll();
