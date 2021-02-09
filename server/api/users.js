@@ -43,6 +43,7 @@ router.get('/purchases', async (req, res, next) => {
   }
 });
 
+//Broken?
 router.get('/:id', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
@@ -59,6 +60,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+//Now working. Might be able to dry up the number of db calls
 router.post('/addItem', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
@@ -100,6 +102,7 @@ router.post('/addItem', async (req, res, next) => {
   }
 });
 
+//can't reach this yet
 router.post('/deleteItem', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
@@ -118,6 +121,7 @@ router.post('/deleteItem', async (req, res, next) => {
   }
 });
 
+//can't reach this yet
 router.put('/editQuantity', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
@@ -140,6 +144,7 @@ router.put('/editQuantity', async (req, res, next) => {
   }
 });
 
+//working.
 router.put('/editPrivilege', async (req, res, next) => {
   try {
     console.log(req.body);
