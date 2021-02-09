@@ -22,6 +22,37 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/purchases', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+
+    const purchases = await User.findOne({
+      where: {
+        id: user.id,
+      },
+      include: {
+        model: Cart,
+        where: { status: 'purchased' },
+        include: { model: Item },
+      },
+    });
+
+    res.send(purchases);
+
+    // if (user.privilege === 'adminstrator') {
+    //   const users = await User.findAll({
+    //     // explicitly select only the id and email fields - even though
+    //     // users' passwords are encrypted, it won't help if we just
+    //     // send everything to anyone who asks!
+    //     attributes: ['id', 'email', 'privilege'],
+    //   });
+    //   res.send(users);
+    //}
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/:id', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
