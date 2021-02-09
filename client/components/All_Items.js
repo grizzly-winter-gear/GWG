@@ -12,14 +12,13 @@ class All_Items extends React.Component {
   render() {
     //UPDADTE QUANTITY AMOUNT LATER (OPTION FOR QUANTITYS), FIXED TO 1//)
     const { privilege } = this.props.state.auth;
-
+    let { catalog } = this.props.state.allItems;
     return (
       <div>
         {privilege === 'administrator' && <h4>You have admin control</h4>}
         <ul className="catalog">
-          {Array.isArray(this.props.state.allItems) &&
-          this.props.state.allItems.length !== 0 ? (
-            this.props.state.allItems.map((item, idx) => {
+          {Array.isArray(catalog) && catalog.length !== 0 ? (
+            catalog.map((item, idx) => {
               return (
                 <li key={idx}>
                   <img src={item.imageURL} title={item.name} />
@@ -55,7 +54,6 @@ class All_Items extends React.Component {
 } //end class
 
 const mapState = (state) => {
-  // console.log("current state parameter", state)
   return {
     state,
   };

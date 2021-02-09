@@ -47,12 +47,18 @@ export const destroyItem = (id) => {
   }
 };
 
-export default function itemsReducer(state = [], action) {
+export default function itemsReducer(
+  state = { catalog: [], index: 0 },
+  action
+) {
   if (action.type === SET_ITEMS) {
-    return action.items;
+    return { ...state, catalog: action.items };
   }
   if (action.type === DESTROY_ITEM) {
-    return state.filter((item) => item.id !== action.id);
+    return {
+      ...state,
+      catalog: state.catalog.filter((item) => item.id !== action.id),
+    };
   }
   return state;
 }
