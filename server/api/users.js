@@ -27,49 +27,56 @@ router.get('/', async (req, res, next) => {
 router.get('/purchases', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    const purchases = await User.findOne({
+
+    const carts = await Cart.findAll({
       where: {
-        id: user.id,
+        userId: user.id,
+        status: 'purchased',
       },
       include: {
-        model: Cart,
-        where: { status: 'purchased' },
+        model: Purchases,
         include: { model: Item },
       },
     });
-    res.send(purchases);
+
+    // const purchases = await User.findOne({
+    //   where: {
+    //     id: user.id,
+    //   },
+    //   include: {
+    //     model: Cart,
+    //     where: { status: 'purchased' },
+    //     include: { model: Item },
+    //   },
+    // });
+    res.send(carts);
   } catch (err) {
     next(err);
   }
 });
 
-//Broken?
+//Fixed
 router.get('/:id', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    const items = await Cart.findAll({
+    const cart = await Cart.findOne({
       where: {
         userId: user.id,
         status: 'unpurchased',
       },
-      include: { model: Item },
+      include: { model: Purchases, include: { model: Item } },
     });
-    res.send(items);
+    console.log(cart);
+    res.send(cart.purchases);
   } catch (err) {
     next(err);
   }
 });
 
-//Now working. Might be able to dry up the number of db calls
+//Not sure if we need to return purchase or not, I don't think it's used....
 router.post('/addItem', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-
-    const item = await Item.findOne({
-      where: {
-        id: req.body.itemId,
-      },
-    });
 
     let cart = await Cart.findOne({
       where: {
@@ -80,38 +87,65 @@ router.post('/addItem', async (req, res, next) => {
     if (!cart) {
       cart = await Cart.create({
         userId: user.id,
-        itemId: req.body.itemId,
-        quantity: req.body.quantity,
         status: 'unpurchased',
       });
-      cart.addItem(item);
-    } else {
-      const purchase = await Purchases.findOne({
-        where: {
-          cartId: cart.id,
-          itemId: item.id,
-        },
-      });
-      purchase.quantity++;
-      await purchase.save();
     }
 
-    res.send(item);
+    const item = await Item.findOne({
+      where: {
+        id: req.body.itemId,
+      },
+    });
+
+    let purchase = await Purchases.findOne({
+      where: {
+        cartId: cart.id,
+        itemId: item.id,
+      },
+    });
+
+    if (!purchase) {
+      purchase = await Purchases.create({
+        cartId: cart.id,
+        itemId: item.id,
+      });
+    }
+
+    purchase.quantity++;
+    await purchase.save();
+
+    purchase = await Purchases.findOne({
+      where: {
+        cartId: cart.id,
+        itemId: item.id,
+      },
+      include: {
+        model: Item,
+      },
+    });
+
+    res.send(purchase);
   } catch (err) {
     next(err);
   }
 });
 
-//can't reach this yet
+//Fixed
 router.post('/deleteItem', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
 
-    await Cart.destroy({
+    const cart = await Cart.findOne({
       where: {
         userId: user.id,
-        itemId: req.body.itemId,
         status: 'unpurchased',
+      },
+    });
+
+    await Purchases.destroy({
+      where: {
+        cartId: cart.id,
+        itemId: req.body.itemId,
       },
     });
 
@@ -121,19 +155,26 @@ router.post('/deleteItem', async (req, res, next) => {
   }
 });
 
-//can't reach this yet
+//Fixed
 router.put('/editQuantity', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    await Cart.update(
+
+    const cart = await Cart.findOne({
+      where: {
+        userId: user.id,
+        status: 'unpurchased',
+      },
+    });
+
+    await Purchases.update(
       {
         quantity: req.body.quantity,
       },
       {
         where: {
-          userId: user.id,
+          cartId: cart.id,
           itemId: req.body.itemId,
-          status: 'unpurchased',
         },
       }
     );

@@ -21,6 +21,7 @@ export const fetchCart = (id) => async (dispatch) => {
           },
         })
       ).data;
+      console.log(cart);
       return dispatch(setCart(cart));
     }
   } catch (ex) {
@@ -33,7 +34,7 @@ export const fetchAddItem = (userId, itemId, quantity) => async (dispatch) => {
   try {
     const token = window.localStorage.getItem('token');
     if (token) {
-      const item = (
+      const purchase = (
         await axios.post(
           '/api/users/addItem',
           {
@@ -48,7 +49,8 @@ export const fetchAddItem = (userId, itemId, quantity) => async (dispatch) => {
           }
         )
       ).data;
-      return dispatch(setAddItem(item));
+      console.log(purchase);
+      return dispatch(setAddItem(purchase));
     }
   } catch (ex) {
     console.log(ex);

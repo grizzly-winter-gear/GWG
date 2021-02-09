@@ -13,8 +13,11 @@ const faker = require('faker');
 Item.belongsToMany(Cart, { through: Purchases });
 Cart.belongsToMany(Item, { through: Purchases });
 Purchases.belongsTo(Cart);
+Cart.hasMany(Purchases); //new line
 Cart.belongsTo(User);
 User.hasMany(Cart);
+Purchases.belongsTo(Item);
+Item.hasMany(Purchases);
 
 const syncAndSeed = async () => {
   await db.sync({ force: true });
