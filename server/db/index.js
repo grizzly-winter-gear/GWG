@@ -13,6 +13,8 @@ Item.belongsToMany(User, { through: Cart });
 User.belongsToMany(Item, { through: Cart });
 Item.hasMany(Cart);
 Cart.belongsTo(Item);
+User.hasMany(Cart);
+Cart.belongsTo(User);
 //might also need to add User.hasMany(Cart) && Cart.belongsToUser // we'll see
 
 const syncAndSeed = async () => {
