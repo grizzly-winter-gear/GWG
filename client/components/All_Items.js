@@ -6,26 +6,31 @@ import { Link } from 'react-router-dom';
 
 class All_Items extends React.Component {
   componentDidMount() {
-    this.props.getItems();
+    this.props.getItems(this.props.state.allItems.index);
   }
 
   render() {
     //UPDADTE QUANTITY AMOUNT LATER (OPTION FOR QUANTITYS), FIXED TO 1//)
     const { privilege } = this.props.state.auth;
-
+    let { catalog } = this.props.state.allItems;
     return (
       <div>
+        <p>Catalog items on this page: {catalog.length}</p>
+        <button
+          onClick={() => this.props.getItems(this.props.state.allItems.index)}
+        >
+          Next Page
+        </button>
         {privilege === 'administrator' && <h4>You have admin control</h4>}
         <ul className="catalog">
-          {Array.isArray(this.props.state.allItems) &&
-          this.props.state.allItems.length !== 0 ? (
-            this.props.state.allItems.map((item, idx) => {
+          {catalog.length !== 0 ? (
+            catalog.map((item, idx) => {
               return (
                 <li key={idx}>
                   <img src={item.imageURL} title={item.name} />
                   <Link to={`/singleItem/${item.id}`}>{item.name}</Link>
                   <button
-                    title={'Add ' + item.name + ' to cart'}
+                    title={'Add to cart: ' + item.name}
                     onClick={() =>
                       this.props.fetchAddItem(
                         this.props.state.auth.id,
@@ -38,7 +43,10 @@ class All_Items extends React.Component {
                   </button>
                   {/* TODO: IMPLEMENT STOCK CONTROLS AND DELETION CONTROLS FOR ADMINISTRATOR PRIV */}
                   {privilege === 'administrator' && (
-                    <button onClick={() => this.props.destroyItem(item.id)}>
+                    <button
+                      title={'Delete ' + item.name}
+                      onClick={() => this.props.destroyItem(item.id)}
+                    >
                       Delete
                     </button>
                   )}
@@ -55,7 +63,6 @@ class All_Items extends React.Component {
 } //end class
 
 const mapState = (state) => {
-  // console.log("current state parameter", state)
   return {
     state,
   };
@@ -63,7 +70,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getItems: () => dispatch(fetchItems()),
+    getItems: (index) => dispatch(fetchItems(index)),
     fetchAddItem: (userId, itemId, quantity) =>
       dispatch(fetchAddItem(userId, itemId, quantity)),
     destroyItem: (id) => dispatch(destroyItem(id)),

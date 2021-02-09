@@ -6,9 +6,24 @@ const router = require('express').Router();
 
 module.exports = router;
 
+//maintaining old route if admin needs it. could dry out
 router.get('/', async (req, res, next) => {
   try {
     const items = await Item.findAll();
+    res.json(items);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/offset/:offset', async (req, res, next) => {
+  try {
+    console.log(req.params);
+    const items = await Item.findAll({
+      limit: 10,
+      offset: req.params.offset,
+      order: [['name', 'ASC']],
+    });
     res.json(items);
   } catch (err) {
     next(err);
