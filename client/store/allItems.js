@@ -36,11 +36,24 @@ export const fetchItems = () => {
 
 export const destroyItem = (id) => {
   //should user auth token be passed in to confirm admin? @kuperavv
+  const token = window.localStorage.getItem('token');
   try {
-    axios.post('/api/items/destroy', { id });
-    return async function (dispatch) {
-      return dispatch(_destroyItem(id));
-    };
+    if (token) {
+      axios.post(
+        '/api/items/destroy',
+        {
+          id,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      return async function (dispatch) {
+        return dispatch(_destroyItem(id));
+      };
+    }
   } catch (error) {
     console.log(error);
     throw new Error(error);
