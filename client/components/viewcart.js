@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCart, fetchDeleteItem, fetchEditItem } from '../store/cart';
-
+import { Link } from 'react-router-dom';
 /**
  * COMPONENT
  */
@@ -64,6 +64,7 @@ class ViewCart extends React.Component {
             </li>
           ))}
         </ul>
+        <Link to="/payments">Proceed to Payments</Link>
       </div>
     );
   }
