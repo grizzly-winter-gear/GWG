@@ -21,16 +21,17 @@ const _destroyItem = (id) => {
 };
 
 //AXIOS CALL
-export const pullItems = async () => {
-  let result = await axios.get('/api/items');
+export const pullItems = async (index) => {
+  console.log('sending index request ', index);
+  let result = await axios.get(`/api/items/offset/${index}`);
   return result;
 };
 
 //THUNKS
 //this function should work.. not sure why it's not...
-export const fetchItems = () => {
+export const fetchItems = (index) => {
   return function (dispatch) {
-    return pullItems().then((result) => dispatch(setItems(result.data)));
+    return pullItems(index).then((result) => dispatch(setItems(result.data)));
   };
 };
 
@@ -52,7 +53,7 @@ export default function itemsReducer(
   action
 ) {
   if (action.type === SET_ITEMS) {
-    return { ...state, catalog: action.items };
+    return { index: state.index + 10, catalog: action.items };
   }
   if (action.type === DESTROY_ITEM) {
     return {

@@ -13,6 +13,20 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/offset/:offset', async (req, res, next) => {
+  try {
+    console.log(req.params);
+    const items = await Item.findAll({
+      limit: 10,
+      offset: req.params.offset,
+      order: [['name', 'ASC']],
+    });
+    res.json(items);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/:id', async (req, res, next) => {
   try {
     const item = await Item.findOne({

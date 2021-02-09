@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 class All_Items extends React.Component {
   componentDidMount() {
-    this.props.getItems();
+    this.props.getItems(this.props.state.allItems.index);
   }
 
   render() {
@@ -15,9 +15,15 @@ class All_Items extends React.Component {
     let { catalog } = this.props.state.allItems;
     return (
       <div>
+        <p>Catalog items on this page: {catalog.length}</p>
+        <button
+          onClick={() => this.props.getItems(this.props.state.allItems.index)}
+        >
+          Next Page
+        </button>
         {privilege === 'administrator' && <h4>You have admin control</h4>}
         <ul className="catalog">
-          {Array.isArray(catalog) && catalog.length !== 0 ? (
+          {catalog.length !== 0 ? (
             catalog.map((item, idx) => {
               return (
                 <li key={idx}>
@@ -64,7 +70,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getItems: () => dispatch(fetchItems()),
+    getItems: (index) => dispatch(fetchItems(index)),
     fetchAddItem: (userId, itemId, quantity) =>
       dispatch(fetchAddItem(userId, itemId, quantity)),
     destroyItem: (id) => dispatch(destroyItem(id)),
