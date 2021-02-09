@@ -24,7 +24,7 @@ class All_Items extends React.Component {
                   <img src={item.imageURL} title={item.name} />
                   <Link to={`/singleItem/${item.id}`}>{item.name}</Link>
                   <button
-                    title={'Add ' + item.name + ' to cart'}
+                    title={'Add to cart: ' + item.name}
                     onClick={() =>
                       this.props.fetchAddItem(
                         this.props.state.auth.id,
@@ -37,7 +37,10 @@ class All_Items extends React.Component {
                   </button>
                   {/* TODO: IMPLEMENT STOCK CONTROLS AND DELETION CONTROLS FOR ADMINISTRATOR PRIV */}
                   {privilege === 'administrator' && (
-                    <button onClick={() => this.props.destroyItem(item.id)}>
+                    <button
+                      title={'Delete ' + item.name}
+                      onClick={() => this.props.destroyItem(item.id)}
+                    >
                       Delete
                     </button>
                   )}
