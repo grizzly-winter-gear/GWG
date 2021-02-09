@@ -87,6 +87,7 @@ router.post('/addItem', async (req, res, next) => {
       const purchase = await Purchases.findOne({
         where: {
           cartId: cart.id,
+          itemId: item.id,
         },
       });
       purchase.quantity++;
