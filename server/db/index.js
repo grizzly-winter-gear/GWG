@@ -5,17 +5,19 @@ const db = require('./db');
 const User = require('./models/user');
 const Item = require('./models/item');
 const Cart = require('./models/cart');
+const Purchases = require('./models/purchases');
 
 const faker = require('faker');
 
 // //associations could go here!
-Item.belongsToMany(User, { through: Cart });
-User.belongsToMany(Item, { through: Cart });
-Item.hasMany(Cart);
-Cart.belongsTo(Item);
-User.hasMany(Cart);
+Item.belongsToMany(Cart, { through: Purchases });
+Cart.belongsToMany(Item, { through: Purchases });
+Purchases.belongsTo(Cart);
+Cart.hasMany(Purchases); //new line
 Cart.belongsTo(User);
-//might also need to add User.hasMany(Cart) && Cart.belongsToUser // we'll see
+User.hasMany(Cart);
+Purchases.belongsTo(Item);
+Item.hasMany(Purchases);
 
 const syncAndSeed = async () => {
   await db.sync({ force: true });
@@ -46,10 +48,22 @@ const syncAndSeed = async () => {
     });
   }
   const [helmet, boot] = items;
-  await cody.addItem(boot, { through: { status: 'unpurchased', quantity: 1 } });
-  await murphy.addItem(helmet, {
-    through: { status: 'unpurchased', quantity: 1 },
+  // await cody.addItem(boot, { through: { status: 'unpurchased', quantity: 1 } });
+  // await murphy.addItem(helmet, {
+  //   through: { status: 'unpurchased', quantity: 1 },
+  // });
+  const tempcart = await Cart.create({
+    status: 'unpurchased',
+    userId: murphy.id,
   });
+  await tempcart.addItem(boot);
+
+  const tempcart2 = await Cart.create({
+    status: 'unpurchased',
+    userId: cody.id,
+  });
+  await tempcart2.addItem(helmet);
+
   return {
     users: {
       cody,

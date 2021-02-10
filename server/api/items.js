@@ -18,7 +18,6 @@ router.get('/', async (req, res, next) => {
 
 router.get('/offset/:offset', async (req, res, next) => {
   try {
-    console.log(req.params);
     const items = await Item.findAll({
       limit: 10,
       offset: req.params.offset,
@@ -45,11 +44,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/destroy', async (req, res, next) => {
   try {
-    console.log(req.headers.authorization);
     const user = await User.findByToken(req.headers.authorization);
-
-    console.log(user);
-
     if (user.privilege === 'administrator') {
       const item = await Item.findOne({
         where: {

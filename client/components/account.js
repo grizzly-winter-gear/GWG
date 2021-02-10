@@ -14,8 +14,6 @@ class Account extends React.Component {
 
   render() {
     const { account } = this.props;
-    console.log(this.props.purchases);
-    console.log(account);
     return (
       <div>
         <h3>
@@ -36,14 +34,22 @@ class Account extends React.Component {
         </ul>
         {account.privilege === 'administrator' && <Admin />}
         Previous Purchases
-        <ul className="catalog">
-          {this.props.purchases.map((item, idx) => {
+        <ul>
+          {this.props.purchases.map((cart, idx) => {
             return (
-              <li key={idx}>
-                <img src={item.item.imageURL} title={item.item.name} />
-                <Link to={`/singleItem/${item.item.id}`}>{item.item.name}</Link>
-                <span>Quantity: {item.quantity}</span>
-              </li>
+              <ul className="catalog" key={idx}>
+                {cart.purchases.map((item, _idx) => {
+                  return (
+                    <li key={`purchase_${idx}`}>
+                      <img src={item.item.imageURL} title={item.item.name} />
+                      <Link to={`/singleItem/${item.item.id}`}>
+                        {item.item.name}
+                      </Link>
+                      <span>Quantity: {item.quantity}</span>
+                    </li>
+                  );
+                })}
+              </ul>
             );
           })}
         </ul>

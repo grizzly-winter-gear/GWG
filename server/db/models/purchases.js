@@ -1,15 +1,16 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Cart = db.define('cart', {
+const Purchases = db.define('purchases', {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
   },
-  status: {
-    type: Sequelize.ENUM('unpurchased', 'purchased'),
+  quantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
   },
 });
 
-module.exports = Cart;
+module.exports = Purchases;
