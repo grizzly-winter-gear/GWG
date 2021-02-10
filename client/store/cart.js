@@ -10,6 +10,7 @@ const setCart = (cart) => ({ type: SET_CART, cart });
 const setDeleteItem = (itemId) => ({ type: DELETE_ITEM, itemId });
 const setEditItem = (data) => ({ type: EDIT_ITEM, data });
 
+//this is still throwing an error on clientside if user opens View Cart with no items in cart (upon fresh seed and login)
 export const fetchCart = (id) => async (dispatch) => {
   try {
     const token = window.localStorage.getItem('token');
@@ -21,8 +22,9 @@ export const fetchCart = (id) => async (dispatch) => {
           },
         })
       ).data;
-      console.log(cart);
-      return dispatch(setCart(cart));
+      if (cart) {
+        return dispatch(setCart(cart));
+      }
     }
   } catch (ex) {
     console.log(ex);
@@ -49,7 +51,6 @@ export const fetchAddItem = (userId, itemId, quantity) => async (dispatch) => {
           }
         )
       ).data;
-      console.log(purchase);
       return dispatch(setAddItem(purchase));
     }
   } catch (ex) {

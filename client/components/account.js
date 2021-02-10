@@ -14,8 +14,6 @@ class Account extends React.Component {
 
   render() {
     const { account } = this.props;
-    console.log(this.props.purchases);
-    console.log(account);
     return (
       <div>
         <h3>

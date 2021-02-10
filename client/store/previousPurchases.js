@@ -5,7 +5,6 @@ const SET_PURCHASES = 'SET_PURCHASES';
 const setPurchases = (carts) => ({ type: SET_PURCHASES, carts });
 
 export const fetchPurchases = () => async (dispatch) => {
-  console.log('hi');
   const token = window.localStorage.getItem('token');
   if (token) {
     const carts = (

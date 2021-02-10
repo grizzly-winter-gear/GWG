@@ -66,7 +66,7 @@ router.get('/:id', async (req, res, next) => {
       },
       include: { model: Purchases, include: { model: Item } },
     });
-    console.log(cart);
+
     res.send(cart.purchases);
   } catch (err) {
     next(err);
