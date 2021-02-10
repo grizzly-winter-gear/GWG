@@ -21,10 +21,7 @@ class All_Items extends React.Component {
           onClick={() => this.props.getItems(this.props.state.allItems.index)}
         >
           Next Page
-<<<<<<< HEAD
         </Button>
-=======
-        </button>
         <div className="divider"/>
         <div className="dropdown">
           <button className="dropbtn">Select a category</button>
@@ -34,9 +31,6 @@ class All_Items extends React.Component {
                 <a href="/account">Category 3</a>
           </div>
         </div>
-
-
->>>>>>> 09bd82cdcbc428db38b7d76cde97d39dffc84859
         {privilege === 'administrator' && <h4>You have admin control</h4>}
         <ul className="catalog">
           {catalog.length !== 0 ? (
