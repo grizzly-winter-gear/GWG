@@ -21,6 +21,17 @@ class All_Items extends React.Component {
         >
           Next Page
         </button>
+        <div className="divider"/>
+        <div className="dropdown">
+          <button className="dropbtn">Select a category</button>
+            <div className="dropdown-content">
+                <a href="/account ">Category 1</a>
+                <a href="/account">Category 2</a>
+                <a href="/account">Category 3</a>
+          </div>
+        </div>
+
+
         {privilege === 'administrator' && <h4>You have admin control</h4>}
         <ul className="catalog">
           {catalog.length !== 0 ? (
@@ -41,6 +52,7 @@ class All_Items extends React.Component {
                   >
                     Add to Cart
                   </button>
+
                   {/* TODO: IMPLEMENT STOCK CONTROLS AND DELETION CONTROLS FOR ADMINISTRATOR PRIV */}
                   {privilege === 'administrator' && (
                     <button
