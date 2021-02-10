@@ -21,10 +21,15 @@
     "test:dev:models": "npm run test:dev -- --grep=model",
     "test:dev:routes": "npm run test:dev -- --grep=route"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grizzly-winter-gear/GWG"
+  },
   "author": "Vince, Devy, Samir",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@stripe/react-stripe-js": "^1.2.2",
     "@stripe/stripe-js": "^1.12.1",
     "axios": "^0.21.1",
