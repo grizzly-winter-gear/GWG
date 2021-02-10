@@ -21,6 +21,10 @@
     "test:dev:models": "npm run test:dev -- --grep=model",
     "test:dev:routes": "npm run test:dev -- --grep=route"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grizzly-winter-gear/GWG"
+  },
   "author": "Vince, Devy, Samir",
   "license": "MIT",
   "dependencies": {
