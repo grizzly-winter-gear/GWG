@@ -32,13 +32,14 @@ const syncAndSeed = async () => {
 
   //create some items here
   const items = await Promise.all([
-    Item.create({ name: 'helmet a ', category: 'helmets' }),
-    Item.create({ name: 'cool boots', category: 'footwear' }),
+    Item.create({ name: 'helmet a ', category: 'Gear' }),
+    Item.create({ name: 'cool boots', category: 'Gear' }),
   ]);
+  const categories = ['Clothes', 'Gear', 'Accessories'];
   for (let i = 0; i < 50; i++) {
     await Item.create({
       name: faker.commerce.productName(),
-      category: faker.commerce.productAdjective(),
+      category: categories[i % 3],
       description: faker.commerce.productDescription(),
       price: faker.commerce.price(),
       rating: Math.random() * 5,
