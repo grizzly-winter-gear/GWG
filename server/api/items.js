@@ -43,6 +43,25 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+router.get('/:category', async (req, res, next) => {
+  try {
+    const categoryName = String(req.params.category)
+    console.log("!!!!!!!!!!!!!! this is the category name",categoryName);
+    const category = await Item.findOne({
+      where: {
+        category: categoryName,
+      },
+    });
+    res.send(category);
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+
+
+
 router.post('/destroy', async (req, res, next) => {
   try {
     console.log(req.headers.authorization);
