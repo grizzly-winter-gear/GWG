@@ -3,12 +3,12 @@
 }
 body {
   font-family: sans-serif;
-  background-image: url('./images/stockBG.jpeg');
+  background-image: url();
   background-repeat: repeat-y;
   background-position: top;
 }
 .header {
-  background-color: green;
+  background-color: #006ad1;
   padding: 1rem;
 }
 a {

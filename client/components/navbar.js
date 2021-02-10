@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
+import {ThemeProvider as MUIThemeProvider } from "@material-ui/core/styles";
+
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div className="header">

@@ -26,9 +26,9 @@ class All_Items extends React.Component {
         <div className="dropdown">
           <button className="dropbtn">Select a category</button>
             <div className="dropdown-content">
-                <a href="/account ">Category 1</a>
-                <a href="/account">Category 2</a>
-                <a href="/account">Category 3</a>
+                <a href="/singlecategory/category1">Category 1</a>
+                <a href="/singlecategory/category2">Category 2</a>
+                <a href="/singlecategory/category3">Category 3</a>
           </div>
         </div>
         {privilege === 'administrator' && <h4>You have admin control</h4>}

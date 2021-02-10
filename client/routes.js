@@ -39,7 +39,7 @@ class Routes extends Component {
             <Route path="/checkout" component={checkoutPage} />
             <Route path={`/singleItem/:id`} component={SingleItem} />
             <Route path={`/singleCategory/:category`} component={SingleCategory} />
-            {/* <Redirect to="/home" /> */}
+            <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>
