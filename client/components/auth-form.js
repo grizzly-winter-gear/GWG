@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
-
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
 /**
  * COMPONENT
  */
@@ -15,13 +16,15 @@ const AuthForm = (props) => {
   } = props;
 
   return (
-    <div>
+    <FormControl>
+      <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="email">
             <small>Email</small>
           </label>
           <input name="email" type="text" autoComplete="email" />
+          {/* <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText> */}
         </div>
         <div>
           <label htmlFor="password">
@@ -42,6 +45,7 @@ const AuthForm = (props) => {
         <a href={window.githubURL}>Login / Register Via Github </a>
       )}
     </div>
+    </FormControl>
   );
 };
 
