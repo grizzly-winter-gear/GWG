@@ -42,9 +42,6 @@ class All_Items extends React.Component {
 
   render() {
     const styles = {
-      root: {
-        maxWidth: 345,
-      },
       card: {
         margin: '1rem',
         display: 'flex',
@@ -87,7 +84,15 @@ class All_Items extends React.Component {
           </div>
         </div>
         {privilege === 'administrator' && <h4>You have admin control</h4>}
-        <Grid className="catalog">
+        <Grid
+          container
+          spacing={0}
+          direction="row"
+          alignItems="center"
+          justify="center"
+          // style={{ minHeight: '100vh' }}
+          // className="catalog"
+        >
           {catalog.length !== 0 ? (
             catalog.map((item, idx) => {
               return (
