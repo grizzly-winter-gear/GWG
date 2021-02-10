@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchItems, destroyItem } from '../store/allItems';
 import { fetchAddItem } from '../store/cart';
 import { Link } from 'react-router-dom';
+import Button from "@material-ui/core/Button";
 
 class All_Items extends React.Component {
   componentDidMount() {
@@ -16,11 +17,11 @@ class All_Items extends React.Component {
     return (
       <div>
         <p>Catalog items on this page: {catalog.length}</p>
-        <button
+        <Button variant="contained" color="primary"
           onClick={() => this.props.getItems(this.props.state.allItems.index)}
         >
           Next Page
-        </button>
+        </Button>
         {privilege === 'administrator' && <h4>You have admin control</h4>}
         <ul className="catalog">
           {catalog.length !== 0 ? (
