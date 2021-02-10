@@ -9,11 +9,35 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 
 class All_Items extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+    this.addToCart = this.addToCart.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
   componentDidMount() {
     this.props.getItems(this.props.state.allItems.index);
+  }
+  addToCart(id) {
+    this.props.fetchAddItem(this.props.state.auth.id, id, 1);
+    this.setState({ open: true });
+  }
+
+  handleClose(event, reason) {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    this.setState({ open: false });
   }
 
   render() {
@@ -38,6 +62,7 @@ class All_Items extends React.Component {
         margin: '0.5rem',
       },
     };
+
     //UPDADTE QUANTITY AMOUNT LATER (OPTION FOR QUANTITYS), FIXED TO 1//)
     const { privilege } = this.props.state.auth;
     let { catalog } = this.props.state.allItems;
@@ -62,7 +87,7 @@ class All_Items extends React.Component {
           </div>
         </div>
         {privilege === 'administrator' && <h4>You have admin control</h4>}
-        <Box className="catalog">
+        <Grid className="catalog">
           {catalog.length !== 0 ? (
             catalog.map((item, idx) => {
               return (
@@ -81,13 +106,7 @@ class All_Items extends React.Component {
                       color="primary"
                       size="small"
                       title={'Add to cart: ' + item.name}
-                      onClick={() =>
-                        this.props.fetchAddItem(
-                          this.props.state.auth.id,
-                          item.id,
-                          1
-                        )
-                      }
+                      onClick={() => this.addToCart(item.id)}
                     >
                       Add to Cart
                     </Button>
@@ -109,7 +128,29 @@ class All_Items extends React.Component {
           ) : (
             <p>No Items To Display</p>
           )}
-        </Box>
+        </Grid>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          open={this.state.open}
+          autoHideDuration={500}
+          onClose={this.handleClose}
+          message="Added to cart"
+          action={
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={this.handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
       </div>
     );
   }

@@ -66,15 +66,6 @@ form div {
   align-items: center;
 }
 
-.catalog img,
-.itemImage {
-  border: 1px solid black;
-  border-radius: 2px;
-  margin: 2px;
-  padding: 2px;
-  width: 150px;
-}
-
 .delete_btn {
   width: 1rem;
   height: 1rem;
