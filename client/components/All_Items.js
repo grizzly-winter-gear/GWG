@@ -90,8 +90,6 @@ class All_Items extends React.Component {
           direction="row"
           alignItems="center"
           justify="center"
-          // style={{ minHeight: '100vh' }}
-          // className="catalog"
         >
           {catalog.length !== 0 ? (
             catalog.map((item, idx) => {
