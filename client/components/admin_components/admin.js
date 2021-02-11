@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchEditPrivilege } from '../store/auth';
+import { fetchEditPrivilege } from '../../store/auth';
+import AdminItems from './AdminItems';
+import AdminUsers from './AdminUsers';
+import SimpleTabs from './SimpleTabs';
 /**
  * COMPONENT
  */
@@ -22,7 +25,6 @@ class Admin extends React.Component {
   }
   render() {
     const { account } = this.props;
-    console.log(account);
     return (
       <div>
         <div className="admin_account_view">
@@ -39,16 +41,15 @@ class Admin extends React.Component {
           </form>
 
           <p>You are admin. list of users</p>
-          {/* TODO: @sjsamphex IMPLEMENT USER LIST AND CRUD. USE USERSREDUCER STORE*/}
+          {/* <AdminUsers /> */}
+          <AdminItems />
+          {/* <SimpleTabs /> */}
         </div>
       </div>
     );
   }
 }
 
-/**
- * CONTAINER
- */
 const mapState = (state) => {
   return {
     account: state.auth,
