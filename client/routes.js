@@ -8,12 +8,13 @@ import {
   Account,
   ViewCart,
   SingleItem,
+  Success,
   // SingleCategory
 } from './components';
 
-import paymentPage from "./components/paymentPage";
-import checkoutPage from "./components/checkoutPage";
-import SingleCategory from "./components/SingleCategory";
+import paymentPage from './components/paymentPage';
+import checkoutPage from './components/checkoutPage';
+import SingleCategory from './components/SingleCategory';
 
 import { me } from './store';
 
@@ -38,7 +39,11 @@ class Routes extends Component {
             <Route path="/payments" component={paymentPage} />
             <Route path="/checkout" component={checkoutPage} />
             <Route path={`/singleItem/:id`} component={SingleItem} />
-            <Route path={`/singleCategory/:category`} component={SingleCategory} />
+            <Route
+              path={`/singleCategory/:category`}
+              component={SingleCategory}
+            />
+            <Route path="/success" component={Success} />
             {/* <Redirect to="/home" /> */}
           </Switch>
         ) : (

@@ -23,6 +23,26 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/purchasedCart', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+
+    const cart = await Cart.findOne({
+      where: {
+        userId: user.id,
+        status: 'unpurchased',
+      },
+    });
+
+    cart.status = 'purchased';
+    await cart.save();
+
+    res.sendStatus(200);
+  } catch (err) {
+    next(err);
+  }
+});
+
 //Broken route: Sequelize Eager Loading Error: cart is not associated to a user!
 router.get('/purchases', async (req, res, next) => {
   try {
