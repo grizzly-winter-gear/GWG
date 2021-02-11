@@ -52,7 +52,7 @@ class AdminUsers extends React.Component {
               ); //close return
             }) //close map
           ) : (
-            <h3>No Items To Display</h3>
+            <p>No Items To Display</p>
           )}
         </Box>
         {/* <Snackbar
