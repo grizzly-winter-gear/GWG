@@ -11,14 +11,13 @@ import IconButton from '@material-ui/core/IconButton';
 // Icons
 import EditIcon from '@material-ui/icons/EditOutlined';
 import DoneIcon from '@material-ui/icons/DoneAllTwoTone';
-import RevertIcon from '@material-ui/icons/NotInterestedOutlined';
+import DeleteIcon from '@material-ui/icons/DeleteForeverOutlined';
 import { connect } from 'react-redux';
 import { destroyItem, fetchItems } from '../store/allItems';
 
-const useStyles = makeStyles((theme) => ({
+const styles = {
   root: {
     width: '100%',
-    marginTop: theme.spacing(3),
     overflowX: 'auto',
   },
   table: {
@@ -28,32 +27,11 @@ const useStyles = makeStyles((theme) => ({
     width: 60,
   },
   tableCell: {
-    width: 130,
-    height: 40,
+    height: 10,
   },
   input: {
-    width: 130,
-    height: 40,
+    height: 10,
   },
-}));
-
-const CustomTableCell = ({ row, name, onChange }) => {
-  const classes = useStyles();
-  const { isEditMode } = row;
-  return (
-    <TableCell align="left" className={classes.tableCell}>
-      {isEditMode ? (
-        <Input
-          value={row[name]}
-          name={name}
-          onChange={(e) => onChange(e, row)}
-          className={classes.input}
-        />
-      ) : (
-        row[name]
-      )}
-    </TableCell>
-  );
 };
 
 class AdminItemsTable extends React.Component {
@@ -61,20 +39,25 @@ class AdminItemsTable extends React.Component {
     super(props);
     this.state = {
       rows: [],
-      previous: {},
     };
     this.onToggleEditMode = this.onToggleEditMode.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onRevert = this.onRevert.bind(this);
   }
   componentDidMount() {
     this.props.getItems(0);
     let initRows = this.props.state.allItems.catalog;
-    console.log(initRows);
     this.setState({
       rows: initRows,
     });
-    console.log(this.state);
+  }
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.state.allItems.catalog !== this.props.state.allItems.catalog
+    ) {
+      this.setState({
+        rows: this.props.state.allItems.catalog,
+      });
+    }
   }
   onToggleEditMode(id) {
     this.setState((state) => {
@@ -90,13 +73,6 @@ class AdminItemsTable extends React.Component {
   }
 
   onChange(e, row) {
-    if (!this.state.previous[row.id]) {
-      this.setState((state) => {
-        return {
-          previous: { ...state, [row.id]: row },
-        };
-      });
-    }
     const value = e.target.value;
     const name = e.target.name;
     const { id } = row;
@@ -111,30 +87,10 @@ class AdminItemsTable extends React.Component {
     });
   }
 
-  onRevert(id) {
-    const newRows = this.state.rows.map((row) => {
-      if (row.id === id) {
-        return previous[id] ? previous[id] : row;
-      }
-      return row;
-    });
-    this.setState({
-      rows: newRows,
-    });
-    this.setState((state) => {
-      delete state.previous[id];
-      return {
-        previous: state.previous,
-      };
-    });
-    this.onToggleEditMode(id);
-  }
-
   render() {
     return (
       <Paper>
-        <Table aria-label="caption table">
-          <caption>Edit Items here</caption>
+        <Table style={styles.table} aria-label="table">
           <TableHead>
             <TableRow>
               <TableCell align="left" />
@@ -146,7 +102,7 @@ class AdminItemsTable extends React.Component {
           <TableBody>
             {this.state.rows.map((row) => (
               <TableRow key={row.id}>
-                <TableCell>
+                <TableCell style={styles.selectTableCell}>
                   {row.isEditMode ? (
                     <>
                       <IconButton
@@ -156,10 +112,10 @@ class AdminItemsTable extends React.Component {
                         <DoneIcon />
                       </IconButton>
                       <IconButton
-                        aria-label="revert"
-                        onClick={() => this.onRevert(row.id)}
+                        aria-label="destroy"
+                        onClick={() => this.props.destroyItem(row.id)}
                       >
-                        <RevertIcon />
+                        <DeleteIcon />
                       </IconButton>
                     </>
                   ) : (
@@ -171,9 +127,10 @@ class AdminItemsTable extends React.Component {
                     </IconButton>
                   )}
                 </TableCell>
-                <TableCell align="left">
+                <TableCell style={styles.tableCell} align="left">
                   {row.isEditMode ? (
                     <Input
+                      style={styles.input}
                       value={row.name}
                       name={row.name}
                       onChange={(e) => this.onChange(e, row)}
@@ -182,9 +139,10 @@ class AdminItemsTable extends React.Component {
                     row.name
                   )}
                 </TableCell>
-                <TableCell align="left">
+                <TableCell style={styles.tableCell} align="left">
                   {row.isEditMode ? (
                     <Input
+                      style={styles.input}
                       value={row.category}
                       name={row.category}
                       onChange={(e) => this.onChange(e, row)}
