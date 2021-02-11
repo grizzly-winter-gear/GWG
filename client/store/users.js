@@ -26,7 +26,6 @@ export const fetchUsers = () => async (dispatch) => {
 
 export default function (state = [], action) {
   if (action.type === FETCH_USERS) {
-    console.log('reducer seeing users, ', action.users);
     return action.users;
   }
   return state;
