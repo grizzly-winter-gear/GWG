@@ -12,7 +12,7 @@ function _fetchUsers(users) {
 }
 
 //THUNKS
-export const fetchUsers = async () => {
+export const fetchUsers = () => async (dispatch) => {
   const token = window.localStorage.getItem('token');
   if (token) {
     let users = await axios.get('/api/users', {
@@ -20,12 +20,23 @@ export const fetchUsers = async () => {
         authorization: token,
       },
     });
-
-    return function (dispatch) {
-      return dispatch(_fetchUsers(users.data));
-    };
+    return dispatch(_fetchUsers(users.data));
   }
 };
+
+// export const fetchUsers = async () => {
+//   const token = window.localStorage.getItem('token');
+//   if (token) {
+//     let users = await axios.get('/api/users', {
+//       headers: {
+//         authorization: token,
+//       },
+//     });
+//     return function (dispatch) {
+//       return dispatch(_fetchUsers(users.data));
+//     };
+//   }
+// };
 
 export default function (state = [], action) {
   if (action.type === FETCH_USERS) {

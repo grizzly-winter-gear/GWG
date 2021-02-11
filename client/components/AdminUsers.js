@@ -36,44 +36,25 @@ class AdminUsers extends React.Component {
         margin: '0.5rem',
       },
     };
-    let users = this.props.state.usersReducer;
+    let users = this.props.state.users;
+    console.log(users);
     return (
       <div>
-        {/* <Box direction="row" alignItems="center" justify="center">
+        <Box direction="row" alignItems="center" justify="center">
           {users.length !== 0 ? (
             users.map((user, idx) => {
               return (
                 <Card style={styles.card} key={idx}>
-                  <Typography style={styles.type} gutterBottom variant="button">
+                  <Typography style={styles.type} gutterBottom variant="body1">
                     {user.name}
                   </Typography>
-                  <CardActions style={styles.cardActions}>
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      size="small"
-                      title={'Add to cart: ' + item.name}
-                      onClick={() => this.addToCart(item.id)}
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      size="small"
-                      title={'Delete ' + item.name}
-                      onClick={() => this.props.destroyItem(item.id)}
-                    >
-                      Delete
-                    </Button>
-                  </CardActions>
                 </Card>
               ); //close return
             }) //close map
           ) : (
             <h3>No Items To Display</h3>
           )}
-        </Box> */}
+        </Box>
         {/* <Snackbar
           anchorOrigin={{
             vertical: 'top',
