@@ -6,12 +6,12 @@ const FETCH_USERS = 'FETCH_USERS';
 // const DESTROY_USER = 'DESTROY_USER';
 
 //ACTION CREATORS
-const _fetchUsers = (users) => {
+function _fetchUsers(users) {
   return {
     type: FETCH_USERS,
     users,
   };
-};
+}
 
 // const _destroyUser = (id) => {
 //   return {
