@@ -59,14 +59,16 @@ router.get('/purchases', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    const cart = await Cart.findOne({
+    let cart = await Cart.findOne({
       where: {
         userId: user.id,
         status: 'unpurchased',
       },
       include: { model: Purchases, include: { model: Item } },
     });
-
+    if (!cart) {
+      cart = [];
+    }
     res.send(cart.purchases);
   } catch (err) {
     next(err);
