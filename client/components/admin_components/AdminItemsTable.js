@@ -22,6 +22,7 @@ const styles = {
   },
   table: {
     minWidth: 650,
+    overflowY: 'auto',
   },
   selectTableCell: {
     width: 60,

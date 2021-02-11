@@ -8,13 +8,11 @@ const TOKEN = 'token';
  * ACTION TYPES
  */
 const SET_AUTH = 'SET_AUTH';
-const SET_PRIVILEGE = 'SET_PRIVILEGE';
 
 /**
  * ACTION CREATORS
  */
 const setAuth = (auth) => ({ type: SET_AUTH, auth });
-const setPrivilege = (privilege) => ({ type: SET_PRIVILEGE, privilege });
 
 /**
  * THUNK CREATORS
@@ -51,28 +49,6 @@ export const logout = () => {
   };
 };
 
-export const fetchEditPrivilege = (userId, privilege) => async (dispatch) => {
-  let res;
-  try {
-    const token = window.localStorage.getItem('token');
-    if (token) {
-      res = await axios.put(
-        '/api/users/editPrivilege',
-        { userId, privilege },
-        {
-          headers: {
-            authorization: token,
-          },
-        }
-      );
-      console.log('privilege result:', res);
-      dispatch(setPrivilege(privilege));
-    }
-  } catch (error) {
-    console.log(error);
-    throw new Error(error);
-  }
-};
 /**
  * REDUCER
  */
@@ -80,8 +56,6 @@ export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
       return action.auth;
-    case SET_PRIVILEGE:
-      return { ...state, privilege: action.privilege };
     default:
       return state;
   }

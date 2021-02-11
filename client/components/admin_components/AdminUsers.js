@@ -20,6 +20,8 @@ class AdminUsers extends React.Component {
     const styles = {
       Table: {
         minWidth: 650,
+        height: 200,
+        overflowY: 'auto',
       },
       Row: {},
       Cell: {

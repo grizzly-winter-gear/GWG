@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchEditPrivilege } from '../../store/auth';
+import { fetchEditPrivilege } from '../../store/users';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -26,7 +26,7 @@ class PrivilegeForm extends React.Component {
 
   handleSubmit(event) {
     console.log('submitting');
-    this.props.fetchEditPrivilege(this.props.account.id, this.state.value);
+    this.props.fetchEditPrivilege(this.props.id, this.state.value);
     event.preventDefault();
   }
   render() {
