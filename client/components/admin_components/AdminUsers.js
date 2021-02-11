@@ -12,11 +12,12 @@ import Box from '@material-ui/core/Box';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import { destroyUser, fetchUsers } from '../../store/users';
+import { fetchUsers } from '../../store/users';
 
 class AdminUsers extends React.Component {
   componentDidMount() {
     this.props.fetchUsers();
+    console.log(this.props);
   }
   render() {
     const styles = {
@@ -36,7 +37,6 @@ class AdminUsers extends React.Component {
         margin: '0.5rem',
       },
     };
-    console.log(this.props.state);
     let users = this.props.state.usersReducer;
     return (
       <div>
@@ -108,11 +108,8 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    fetchUsers: () => dispatch(fetchUsers()),
-    destroyUser: (id) => dispatch(destroyUser(id)),
-  };
+const mapDispatch = {
+  fetchUsers,
 };
 
 export default connect(mapState, mapDispatch)(AdminUsers);

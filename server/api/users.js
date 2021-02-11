@@ -8,6 +8,7 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
+    console.log('hello from back end');
 
     if (user.privilege === 'adminstrator') {
       const users = await User.findAll({

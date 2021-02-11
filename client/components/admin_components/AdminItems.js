@@ -11,6 +11,7 @@ import Box from '@material-ui/core/Box';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import AdminCreateItemForm from './AdminCreateItemForm';
 
 class AdminItems extends React.Component {
   componentDidMount() {
@@ -37,6 +38,7 @@ class AdminItems extends React.Component {
     let { catalog } = this.props.state.allItems;
     return (
       <div>
+        <AdminCreateItemForm />
         <Box spacing={0} direction="row" alignItems="center" justify="center">
           {catalog.length !== 0
             ? catalog.map((item, idx) => {

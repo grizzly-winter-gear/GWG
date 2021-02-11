@@ -41,7 +41,7 @@ class Admin extends React.Component {
           </form>
 
           <p>You are admin. list of users</p>
-          {/* <AdminUsers /> */}
+          <AdminUsers />
           <AdminItems />
           {/* <SimpleTabs /> */}
         </div>
