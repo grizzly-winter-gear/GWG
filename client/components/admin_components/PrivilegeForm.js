@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchEditPrivilege } from '../store/auth';
-import AdminItems from './AdminItems';
-import AdminUsers from './AdminUsers';
-import SimpleTabs from './SimpleTabs';
+import { fetchEditPrivilege } from '../../store/auth';
 
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';

@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import { fetchUsers } from '../store/users';
+import { fetchUsers } from '../../store/users';
 import PrivilegeForm from './PrivilegeForm';
 
 class AdminUsers extends React.Component {

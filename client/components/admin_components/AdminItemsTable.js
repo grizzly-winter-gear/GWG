@@ -13,7 +13,7 @@ import EditIcon from '@material-ui/icons/EditOutlined';
 import DoneIcon from '@material-ui/icons/DoneAllTwoTone';
 import DeleteIcon from '@material-ui/icons/DeleteForeverOutlined';
 import { connect } from 'react-redux';
-import { destroyItem, fetchItems } from '../store/allItems';
+import { destroyItem, fetchItems } from '../../store/allItems';
 
 const styles = {
   root: {
