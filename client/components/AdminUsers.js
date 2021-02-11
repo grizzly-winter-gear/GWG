@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import { fetchUsers } from '../store/users';
+import PrivilegeForm from './PrivilegeForm';
 
 class AdminUsers extends React.Component {
   componentDidMount() {
@@ -21,7 +22,9 @@ class AdminUsers extends React.Component {
         minWidth: 650,
       },
       Row: {},
-      Cell: {},
+      Cell: {
+        width: 130,
+      },
     };
     let users = this.props.state.users;
     return (
@@ -30,8 +33,8 @@ class AdminUsers extends React.Component {
           <Table style={styles.Table} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Email</TableCell>
-                <TableCell align="right">Privilege</TableCell>
+                <TableCell align="left">Email</TableCell>
+                <TableCell align="justify">Privilege</TableCell>
                 <TableCell align="right">githubId</TableCell>
                 <TableCell align="right">id</TableCell>
               </TableRow>
@@ -42,7 +45,10 @@ class AdminUsers extends React.Component {
                   <TableCell component="th" scope="row">
                     {user.email}
                   </TableCell>
-                  <TableCell align="right">{user.privilege}</TableCell>
+                  <TableCell align="right">
+                    {/* {user.privilege} */}
+                    <PrivilegeForm id={user.id} privilege={user.privilege} />
+                  </TableCell>
                   <TableCell align="right">{user.githubId}</TableCell>
                   <TableCell align="right">{user.id}</TableCell>
                 </TableRow>
