@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const ADD_ITEM = 'ADD_ITEM';
+const PURCHASED_CART = 'PURCHASED_CART';
 const SET_CART = 'SET_CART';
 const DELETE_ITEM = 'DELETE_ITEM';
 const EDIT_ITEM = 'EDIT_ITEM';
@@ -9,6 +10,7 @@ const setAddItem = (item) => ({ type: ADD_ITEM, item });
 const setCart = (cart) => ({ type: SET_CART, cart });
 const setDeleteItem = (itemId) => ({ type: DELETE_ITEM, itemId });
 const setEditItem = (data) => ({ type: EDIT_ITEM, data });
+const setPurchaseCart = () => ({ type: PURCHASED_CART });
 
 //this is still throwing an error on clientside if user opens View Cart with no items in cart (upon fresh seed and login)
 export const fetchCart = (id) => async (dispatch) => {
@@ -112,6 +114,23 @@ export const fetchEditItem = (userId, itemId, quantity) => async (dispatch) => {
   }
 };
 
+export const fetchPurchasedCart = () => async (dispatch) => {
+  try {
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      await axios.get(`/api/users/purchasedCart`, {
+        headers: {
+          authorization: token,
+        },
+      });
+      return dispatch(setPurchaseCart());
+    }
+  } catch (ex) {
+    console.log(ex);
+    throw new Error(ex);
+  }
+};
+
 const initialState = [];
 
 export default function (state = initialState, action) {
@@ -132,6 +151,8 @@ export default function (state = initialState, action) {
           ? { ...item, quantity: action.data.quantity }
           : item
       );
+    case PURCHASED_CART:
+      return [];
     default:
       return state;
   }
