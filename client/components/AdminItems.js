@@ -12,6 +12,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import AdminCreateItemForm from './AdminCreateItemForm';
+import AdminItemsTable from './AdminItemsTable';
 
 class AdminItems extends React.Component {
   componentDidMount() {
@@ -39,7 +40,11 @@ class AdminItems extends React.Component {
     return (
       <div>
         <AdminCreateItemForm />
-        <Box spacing={0} direction="row" alignItems="center" justify="center">
+        <AdminItemsTable
+        // catalog={catalog}
+        // destroyItem={this.props.destroyItem}
+        />
+        {/* <Box spacing={0} direction="row" alignItems="center" justify="center">
           {catalog.length !== 0
             ? catalog.map((item, idx) => {
                 return (
@@ -66,7 +71,7 @@ class AdminItems extends React.Component {
                 ); //close return
               }) //close map
             : 'No Items To Display'}
-        </Box>
+        </Box> */}
         {/* <Snackbar
           anchorOrigin={{
             vertical: 'top',

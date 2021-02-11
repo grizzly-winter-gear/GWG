@@ -24,7 +24,6 @@ class AdminUsers extends React.Component {
       Cell: {},
     };
     let users = this.props.state.users;
-    console.log(users);
     return (
       <div>
         <TableContainer component={Paper}>
