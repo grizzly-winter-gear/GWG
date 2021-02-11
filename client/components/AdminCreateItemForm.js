@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createItem } from '../../store/allItems';
+// import { createItem } from '../../store/allItems';
 
 class CreateItem extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class CreateItem extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.createItem({ ...this.state });
+    // this.props.createItem({ ...this.state });
     this.setState({
       name: '',
       category: '',
@@ -49,7 +49,7 @@ const mapState = ({ state }) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    createItem: (item) => dispatch(createItem(item)),
+    // createItem: (item) => dispatch(createItem(item)),
   };
 };
 

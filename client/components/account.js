@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import { fetchEditPrivilege } from '../store/auth';
-import Admin from './admin_components/admin';
+import Admin from './admin';
 import { fetchPurchases } from '../store/previousPurchases';
 /**
  * COMPONENT

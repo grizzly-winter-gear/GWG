@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchEditPrivilege } from '../../store/auth';
+import { fetchEditPrivilege } from '../store/auth';
 import AdminItems from './AdminItems';
 import AdminUsers from './AdminUsers';
 import SimpleTabs from './SimpleTabs';
@@ -42,7 +42,7 @@ class Admin extends React.Component {
 
           <p>You are admin. list of users</p>
           <AdminUsers />
-          <AdminItems />
+          {/* <AdminItems /> */}
           {/* <SimpleTabs /> */}
         </div>
       </div>

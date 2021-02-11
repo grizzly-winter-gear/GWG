@@ -12,12 +12,11 @@ import Box from '@material-ui/core/Box';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import { fetchUsers } from '../../store/users';
+import { fetchUsers } from '../store/users';
 
 class AdminUsers extends React.Component {
   componentDidMount() {
     this.props.fetchUsers();
-    console.log(this.props);
   }
   render() {
     const styles = {
@@ -108,8 +107,10 @@ const mapState = (state) => {
   };
 };
 
-const mapDispatch = {
-  fetchUsers,
+const mapDispatch = (dispatch) => {
+  return {
+    fetchUsers: () => dispatch(fetchUsers()),
+  };
 };
 
 export default connect(mapState, mapDispatch)(AdminUsers);
