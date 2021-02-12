@@ -36,7 +36,6 @@ class ViewCatalog extends Component {
   }
 
   render() {
-    const { privilege } = this.props.state.auth;
     const styles = {
       card: {
         margin: '1rem',
@@ -59,7 +58,7 @@ class ViewCatalog extends Component {
       <div>
         <Grid
           container
-          spacing={0}
+          spacing={3}
           direction="row"
           alignItems="center"
           justify="center"
@@ -67,27 +66,35 @@ class ViewCatalog extends Component {
           {this.props.catalog.length !== 0 ? (
             this.props.catalog.map((product, idx) => {
               return (
-                <Card style={styles.card} key={idx}>
-                  <CardMedia
-                    style={styles.media}
-                    image={product.imageURL}
-                    title={product.name}
-                  />
-                  <Typography style={styles.type} gutterBottom variant="button">
-                    <Link to={`/singleItem/${product.id}`}>{product.name}</Link>
-                  </Typography>
-                  <CardActions style={styles.cardActions}>
-                    <Button
-                      variant="outlined"
-                      color="primary"
-                      size="small"
-                      title={'Add to cart: ' + product.name}
-                      onClick={() => this.addToCart(product.id)}
+                <Grid item lg={2} md={3} sm={4} xs={12} key={idx}>
+                  <Card style={styles.card}>
+                    <CardMedia
+                      style={styles.media}
+                      image={product.imageURL}
+                      title={product.name}
+                    />
+                    <Typography
+                      style={styles.type}
+                      gutterBottom
+                      variant="button"
                     >
-                      Add to Cart
-                    </Button>
-                  </CardActions>
-                </Card>
+                      <Link to={`/singleItem/${product.id}`}>
+                        {product.name}
+                      </Link>
+                    </Typography>
+                    <CardActions style={styles.cardActions}>
+                      <Button
+                        variant="outlined"
+                        color="primary"
+                        size="small"
+                        title={'Add to cart: ' + product.name}
+                        onClick={() => this.addToCart(product.id)}
+                      >
+                        Add to Cart
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
               ); //close return
             }) //close map
           ) : (
