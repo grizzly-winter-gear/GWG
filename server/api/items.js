@@ -99,3 +99,20 @@ router.put('/create', async (req, res, next) => {
     next(err);
   }
 });
+
+router.put('/update', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    if (user.privilege === 'administrator') {
+      const item = await Item.findByPk(req.body.id);
+      item.update({
+        name: req.body.name,
+        category: req.body.category,
+        stock: req.body.stock,
+      });
+      res.send(item);
+    }
+  } catch (err) {
+    next(err);
+  }
+});

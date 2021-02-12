@@ -13,7 +13,7 @@ import EditIcon from '@material-ui/icons/EditOutlined';
 import DoneIcon from '@material-ui/icons/DoneAllTwoTone';
 import DeleteIcon from '@material-ui/icons/DeleteForeverOutlined';
 import { connect } from 'react-redux';
-import { destroyItem, fetchItems } from '../../store/allItems';
+import { destroyItem, fetchItems, updateItem } from '../../store/allItems';
 
 const styles = {
   root: {
@@ -34,6 +34,7 @@ class AdminItemsTable extends React.Component {
     };
     this.onToggleEditMode = this.onToggleEditMode.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidMount() {
     this.props.getItems(0);
@@ -78,6 +79,10 @@ class AdminItemsTable extends React.Component {
       rows: newRows,
     });
   }
+  onSubmit(id) {
+    this.props.updateItem(this.state.rows.find((item) => item.id === id));
+    this.onToggleEditMode(id);
+  }
 
   render() {
     return (
@@ -99,7 +104,7 @@ class AdminItemsTable extends React.Component {
                     <>
                       <IconButton
                         aria-label="done"
-                        onClick={() => this.onToggleEditMode(row.id)}
+                        onClick={() => this.onSubmit(row.id)}
                       >
                         <DoneIcon />
                       </IconButton>
@@ -126,7 +131,7 @@ class AdminItemsTable extends React.Component {
                       name={'name'}
                       onChange={(e) => this.onChange(e, row)}
                       onKeyDown={(e) =>
-                        e.key === 'Enter' ? this.onToggleEditMode(row.id) : null
+                        e.key === 'Enter' ? this.onSubmit(row.id) : null
                       }
                     />
                   ) : (
@@ -140,7 +145,7 @@ class AdminItemsTable extends React.Component {
                       name={'category'}
                       onChange={(e) => this.onChange(e, row)}
                       onKeyDown={(e) =>
-                        e.key === 'Enter' ? this.onToggleEditMode(row.id) : null
+                        e.key === 'Enter' ? this.onSubmit(row.id) : null
                       }
                     />
                   ) : (
@@ -155,7 +160,7 @@ class AdminItemsTable extends React.Component {
                       name={'stock'}
                       onChange={(e) => this.onChange(e, row)}
                       onKeyDown={(e) =>
-                        e.key === 'Enter' ? this.onToggleEditMode(row.id) : null
+                        e.key === 'Enter' ? this.onSubmit(row.id) : null
                       }
                     />
                   ) : (
@@ -181,6 +186,7 @@ const mapDispatch = (dispatch) => {
   return {
     getItems: (index) => dispatch(fetchItems(index)),
     destroyItem: (id) => dispatch(destroyItem(id)),
+    updateItem: (item) => dispatch(updateItem(item)),
   };
 };
 

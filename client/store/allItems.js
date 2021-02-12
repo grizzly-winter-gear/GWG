@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 const SET_ITEMS = 'SET_ITEMS';
 const DESTROY_ITEM = 'DESTROY_ITEM';
 const CREATE_ITEM = 'CREATE_ITEM';
+const UPDATE_ITEM = 'UPDATE_ITEM';
 
 //ACTION CREATORS
 export const setItems = (items) => {
@@ -24,6 +25,13 @@ const _destroyItem = (id) => {
 const _createItem = (item) => {
   return {
     type: CREATE_ITEM,
+    item,
+  };
+};
+
+const _updateItem = (item) => {
+  return {
+    type: UPDATE_ITEM,
     item,
   };
 };
@@ -84,6 +92,26 @@ export const createItem = ({ name, category }) => async (dispatch) => {
   }
 };
 
+export const updateItem = ({ id, name, category, stock }) => async (
+  dispatch
+) => {
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    const item = (
+      await axios.put(
+        '/api/items/update',
+        { id, name, category, stock },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      )
+    ).data;
+    return dispatch(_updateItem(item));
+  }
+};
+
 export default function itemsReducer(
   state = { catalog: [], index: 0 },
   action
@@ -99,6 +127,18 @@ export default function itemsReducer(
   }
   if (action.type === CREATE_ITEM) {
     return { ...state, catalog: [action.item, ...state.catalog] };
+  }
+  if (action.type === UPDATE_ITEM) {
+    return {
+      ...state,
+      catalog: state.catalog.map((item) => {
+        if (item.id === action.item.id) {
+          return action.item;
+        } else {
+          return item;
+        }
+      }),
+    };
   }
   return state;
 }
