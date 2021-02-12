@@ -34,7 +34,6 @@ export const fetchItems = (index) => {
 };
 
 export const destroyItem = (id) => {
-  //should user auth token be passed in to confirm admin? @kuperavv
   const token = window.localStorage.getItem('token');
   try {
     if (token) {

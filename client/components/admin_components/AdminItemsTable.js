@@ -21,17 +21,8 @@ const styles = {
     overflowX: 'auto',
   },
   table: {
-    minWidth: 650,
+    // minWidth: 650,
     overflowY: 'auto',
-  },
-  selectTableCell: {
-    width: 60,
-  },
-  tableCell: {
-    height: 10,
-  },
-  input: {
-    height: 10,
   },
 };
 
@@ -96,14 +87,14 @@ class AdminItemsTable extends React.Component {
             <TableRow>
               <TableCell align="left" />
               <TableCell align="left">Item</TableCell>
-              <TableCell align="left">Category</TableCell>
-              <TableCell align="left">Quantity</TableCell>
+              <TableCell align="right">Category</TableCell>
+              <TableCell align="right">Stock</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {this.state.rows.map((row) => (
               <TableRow key={row.id}>
-                <TableCell style={styles.selectTableCell}>
+                <TableCell>
                   {row.isEditMode ? (
                     <>
                       <IconButton
@@ -128,28 +119,37 @@ class AdminItemsTable extends React.Component {
                     </IconButton>
                   )}
                 </TableCell>
-                <TableCell style={styles.tableCell} align="left">
+                <TableCell align="left">
                   {row.isEditMode ? (
                     <Input
-                      style={styles.input}
                       value={row.name}
-                      name={row.name}
+                      name={'name'}
                       onChange={(e) => this.onChange(e, row)}
                     />
                   ) : (
                     row.name
                   )}
                 </TableCell>
-                <TableCell style={styles.tableCell} align="left">
+                <TableCell align="right">
                   {row.isEditMode ? (
                     <Input
-                      style={styles.input}
                       value={row.category}
-                      name={row.category}
+                      name={'category'}
                       onChange={(e) => this.onChange(e, row)}
                     />
                   ) : (
                     row.category
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {row.isEditMode ? (
+                    <Input
+                      value={row.stock}
+                      name={'stock'}
+                      onChange={(e) => this.onChange(e, row)}
+                    />
+                  ) : (
+                    row.stock
                   )}
                 </TableCell>
               </TableRow>
