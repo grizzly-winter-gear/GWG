@@ -15,18 +15,13 @@ import Button from '@material-ui/core/Button';
 class PrivilegeForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: this.props.privilege || 'administrator' };
+    this.state = { value: this.props.privilege || 'loading' };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    this.props.fetchEditPrivilege(this.props.id, this.state.value);
-    event.preventDefault();
+    this.props.fetchEditPrivilege(this.props.id, event.target.value);
   }
   render() {
     const { account } = this.props;
@@ -49,8 +44,7 @@ class PrivilegeForm extends React.Component {
             <MenuItem value={'engineer'}>Engineer</MenuItem>
             <MenuItem value={'administrator'}>Administrator</MenuItem>
           </Select>
-          <FormHelperText>Set Privilege</FormHelperText>
-          <Button onClick={this.handleSubmit}>Submit </Button>
+          {/* <FormHelperText>Set Privilege</FormHelperText> */}
         </FormControl>
       </div>
     );
