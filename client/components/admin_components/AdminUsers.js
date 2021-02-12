@@ -28,7 +28,7 @@ class AdminUsers extends React.Component {
         width: 130,
       },
     };
-    let users = this.props.state.users;
+    let { users } = this.props.state;
     return (
       <div>
         <TableContainer component={Paper}>

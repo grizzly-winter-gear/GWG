@@ -25,7 +25,6 @@ class PrivilegeForm extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('submitting');
     this.props.fetchEditPrivilege(this.props.id, this.state.value);
     event.preventDefault();
   }
@@ -60,7 +59,7 @@ class PrivilegeForm extends React.Component {
 
 const mapState = (state) => {
   return {
-    account: state.auth,
+    state,
   };
 };
 

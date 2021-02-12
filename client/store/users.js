@@ -44,7 +44,6 @@ export const fetchEditPrivilege = (userId, privilege) => async (dispatch) => {
           },
         }
       );
-      console.log('privilege result:', res);
       return dispatch(setPrivilege(userId, privilege));
     }
   } catch (error) {

@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
         // explicitly select only the id and email fields - even though
         // users' passwords are encrypted, it won't help if we just
         // send everything to anyone who asks!
-        attributes: ['id', 'email', 'privilege'],
+        attributes: ['id', 'email', 'privilege', 'githubId'],
       });
       res.send(users);
     }
@@ -189,13 +189,12 @@ router.put('/editQuantity', async (req, res, next) => {
 //working.
 router.put('/editPrivilege', async (req, res, next) => {
   try {
-    console.log(req.body);
     const user = await User.findByToken(req.headers.authorization);
 
     if ((user.privilege = 'administrator')) {
-      const user = await User.findByPk(req.body.userId);
-      user.privilege = req.body.privilege;
-      await user.save();
+      const userEdit = await User.findByPk(req.body.userId);
+      userEdit.privilege = req.body.privilege;
+      await userEdit.save();
       res.sendStatus(200);
     }
   } catch (err) {
