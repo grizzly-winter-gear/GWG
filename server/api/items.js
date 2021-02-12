@@ -29,6 +29,21 @@ router.get('/offset/:offset', async (req, res, next) => {
   }
 });
 
+router.get('/:category', async (req, res, next) => {
+  try {
+    const categoryName = toUpperCase(String(req.params.category))
+    console.log("!!!!this is the caetgory name passed in", categoryName);
+    const result = await Item.findAll({
+      where: {
+        category: categoryName
+      },
+    });
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/:id', async (req, res, next) => {
   try {
     const item = await Item.findOne({
@@ -41,24 +56,6 @@ router.get('/:id', async (req, res, next) => {
     next(err);
   }
 });
-
-router.get('/:category', async (req, res, next) => {
-  try {
-    const categoryName = String(req.params.category)
-    console.log("!!!!!!!!!!!!!! this is the category name",categoryName);
-    const category = await Item.findOne({
-      where: {
-        category: categoryName,
-      },
-    });
-    res.send(category);
-  } catch (err) {
-    next(err);
-  }
-});
-
-
-
 
 
 router.post('/destroy', async (req, res, next) => {
@@ -91,3 +88,15 @@ router.get('/:category', async (req, res, next) => {
     next(err);
   }
 });
+
+//helper function
+const toUpperCase = (string) => {
+  let firstLetter = string[0];
+  let firstLetterUpper = firstLetter.toUpperCase();
+  let result = firstLetterUpper;
+  for (let i = 1; i < string.length; i++){
+    let currentLetterLower = string[i].toLowerCase();
+    result += currentLetterLower;
+  }
+  return result;
+}
