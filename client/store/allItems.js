@@ -1,5 +1,4 @@
 import axios from 'axios';
-import thunk from 'redux-thunk';
 
 //ACTION CONSTANTS
 const SET_ITEMS = 'SET_ITEMS';
