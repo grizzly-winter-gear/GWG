@@ -1,3 +1,4 @@
+import Container from '@material-ui/core/Container';
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchItems, destroyItem } from '../store/allItems';
@@ -12,9 +13,9 @@ class All_Items extends React.Component {
   render() {
     let { catalog } = this.props.state.allItems;
     return (
-      <div>
+      <Container>
         <ViewCatalog catalog={catalog} />
-      </div>
+      </Container>
     );
   }
 }

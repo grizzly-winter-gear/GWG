@@ -42,6 +42,8 @@ class ViewCatalog extends Component {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        minWidth: 150,
+        minHeight: 200,
       },
       media: {
         height: 150,
