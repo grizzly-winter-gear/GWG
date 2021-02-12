@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { AdminBrowser } from './AdminBrowser';
 import AdminItems from './AdminItems';
 import AdminUsers from './AdminUsers';
-import SimpleTabs from './SimpleTabs';
 
 /**
  * COMPONENT
@@ -14,9 +14,9 @@ class Admin extends React.Component {
       <div>
         <div className="admin_account_view">
           <p>You are admin. list of users</p>
-          <AdminUsers />
-          <AdminItems />
-          {/* <SimpleTabs /> */}
+          <AdminBrowser />
+          {/* <AdminUsers />
+          <AdminItems /> */}
         </div>
       </div>
     );
