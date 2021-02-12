@@ -8,28 +8,32 @@ const Cart = require('./cart');
 
 const SALT_ROUNDS = 5;
 
-const User = db.define('user', {
-  id: {
-    type: Sequelize.UUID,
-    defaultValue: Sequelize.UUIDV4,
-    primaryKey: true,
+const User = db.define(
+  'user',
+  {
+    id: {
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      primaryKey: true,
+    },
+    email: {
+      type: Sequelize.STRING,
+      unique: true,
+      allowNull: false,
+    },
+    password: {
+      type: Sequelize.STRING,
+    },
+    githubId: {
+      type: Sequelize.INTEGER,
+    },
+    privilege: {
+      type: Sequelize.ENUM('customer', 'administrator', 'engineer'),
+      defaultValue: 'customer',
+    },
   },
-  email: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false,
-  },
-  password: {
-    type: Sequelize.STRING,
-  },
-  githubId: {
-    type: Sequelize.INTEGER,
-  },
-  privilege: {
-    type: Sequelize.ENUM('customer', 'administrator', 'engineer'),
-    defaultValue: 'customer',
-  },
-});
+  { timestamps: false }
+);
 
 module.exports = User;
 

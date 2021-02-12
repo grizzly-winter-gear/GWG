@@ -6,7 +6,7 @@ import AdminUsers from './AdminUsers';
 import AdminItems from './AdminItems';
 
 export function AdminBrowser() {
-  const allTabs = ['/account/users', '/account/items'];
+  const allTabs = ['/account', '/account/items'];
   const styles = {
     tabs: {
       backgroundColor: 'white',
@@ -29,7 +29,7 @@ export function AdminBrowser() {
               >
                 <Tab
                   label="Users"
-                  value="/account/users"
+                  value="/account"
                   variant="contained"
                   component={Link}
                   to={allTabs[0]}
