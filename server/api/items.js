@@ -110,6 +110,7 @@ router.put('/update', async (req, res, next) => {
         category: req.body.category,
         stock: req.body.stock,
       });
+      await item.save();
       res.send(item);
     }
   } catch (err) {
