@@ -83,7 +83,6 @@ class All_Items extends React.Component {
             <a href="/account">Category 3</a>
           </div>
         </div>
-        {privilege === 'administrator' && <h4>You have admin control</h4>}
         <Grid
           container
           spacing={0}
@@ -113,7 +112,7 @@ class All_Items extends React.Component {
                     >
                       Add to Cart
                     </Button>
-                    {privilege === 'administrator' && (
+                    {/* {privilege === 'administrator' && (
                       <Button
                         variant="outlined"
                         color="primary"
@@ -123,7 +122,7 @@ class All_Items extends React.Component {
                       >
                         Delete
                       </Button>
-                    )}
+                    )} */}
                   </CardActions>
                 </Card>
               ); //close return
