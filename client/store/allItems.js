@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 //ACTION CONSTANTS
 const SET_ITEMS = 'SET_ITEMS';
 const DESTROY_ITEM = 'DESTROY_ITEM';
+const CREATE_ITEM = 'CREATE_ITEM';
 
 //ACTION CREATORS
 export const setItems = (items) => {
@@ -17,6 +18,13 @@ const _destroyItem = (id) => {
   return {
     type: DESTROY_ITEM,
     id,
+  };
+};
+
+const _createItem = (item) => {
+  return {
+    type: CREATE_ITEM,
+    item,
   };
 };
 
@@ -58,6 +66,24 @@ export const destroyItem = (id) => {
   }
 };
 
+export const createItem = ({ name, category }) => async (dispatch) => {
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    const item = (
+      await axios.put(
+        '/api/items/create',
+        { name, category },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      )
+    ).data;
+    return dispatch(_createItem(item));
+  }
+};
+
 export default function itemsReducer(
   state = { catalog: [], index: 0 },
   action
@@ -70,6 +96,9 @@ export default function itemsReducer(
       ...state,
       catalog: state.catalog.filter((item) => item.id !== action.id),
     };
+  }
+  if (action.type === CREATE_ITEM) {
+    return { ...state, catalog: [action.item, ...state.catalog] };
   }
   return state;
 }

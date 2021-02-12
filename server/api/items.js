@@ -44,8 +44,8 @@ router.get('/:id', async (req, res, next) => {
 
 router.get('/:category', async (req, res, next) => {
   try {
-    const categoryName = String(req.params.category)
-    console.log("!!!!!!!!!!!!!! this is the category name",categoryName);
+    const categoryName = String(req.params.category);
+    console.log('!!!!!!!!!!!!!! this is the category name', categoryName);
     const category = await Item.findOne({
       where: {
         category: categoryName,
@@ -56,10 +56,6 @@ router.get('/:category', async (req, res, next) => {
     next(err);
   }
 });
-
-
-
-
 
 router.post('/destroy', async (req, res, next) => {
   try {
@@ -87,6 +83,18 @@ router.get('/:category', async (req, res, next) => {
       },
     });
     res.json(items);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/create', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    if (user.privilege === 'administrator') {
+      const item = await Item.create(req.body);
+      res.send(item);
+    }
   } catch (err) {
     next(err);
   }
