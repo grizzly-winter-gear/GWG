@@ -112,7 +112,7 @@ class AdminItemsTable extends React.Component {
                     </>
                   ) : (
                     <IconButton
-                      aria-label="delete"
+                      aria-label="edit"
                       onClick={() => this.onToggleEditMode(row.id)}
                     >
                       <EditIcon />
@@ -125,6 +125,9 @@ class AdminItemsTable extends React.Component {
                       value={row.name}
                       name={'name'}
                       onChange={(e) => this.onChange(e, row)}
+                      onKeyDown={(e) =>
+                        e.key === 'Enter' ? this.onToggleEditMode(row.id) : null
+                      }
                     />
                   ) : (
                     row.name
@@ -136,6 +139,9 @@ class AdminItemsTable extends React.Component {
                       value={row.category}
                       name={'category'}
                       onChange={(e) => this.onChange(e, row)}
+                      onKeyDown={(e) =>
+                        e.key === 'Enter' ? this.onToggleEditMode(row.id) : null
+                      }
                     />
                   ) : (
                     row.category
@@ -145,8 +151,12 @@ class AdminItemsTable extends React.Component {
                   {row.isEditMode ? (
                     <Input
                       value={row.stock}
+                      type="number"
                       name={'stock'}
                       onChange={(e) => this.onChange(e, row)}
+                      onKeyDown={(e) =>
+                        e.key === 'Enter' ? this.onToggleEditMode(row.id) : null
+                      }
                     />
                   ) : (
                     row.stock
