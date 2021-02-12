@@ -74,15 +74,7 @@ class All_Items extends React.Component {
         >
           Next Page
         </Button>
-        <div className="divider" />
-        <div className="dropdown">
-          <button className="dropbtn">Select a category</button>
-          <div className="dropdown-content">
-            <a href="/account ">Category 1</a>
-            <a href="/account">Category 2</a>
-            <a href="/account">Category 3</a>
-          </div>
-        </div>
+
         <Grid
           container
           spacing={0}

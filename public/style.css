@@ -8,8 +8,12 @@ body {
   background-position: top;
 }
 .header {
-  background-color: green;
+  background-color: #006ad1;
   padding: 1rem;
+}
+.category-header{
+  color: black;
+  font-family: sans-serif;
 }
 a {
   text-decoration: none;
@@ -66,10 +70,11 @@ form div {
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #4caf50;
-  color: white;
+  background-color: #006ad1;
+  color: snow;
+  padding: 1rem;
   padding: 10px;
-  font-size: 12px;
+  font-size: 14px;
   border: none;
   align-items: flex-end;
 }
@@ -77,7 +82,9 @@ form div {
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -117,7 +124,7 @@ form div {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+  /* background-color: #3e8e41; */
 }
 
 #item-form {

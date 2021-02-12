@@ -14,6 +14,7 @@ class Account extends React.Component {
 
   render() {
     const { account } = this.props;
+    console.log(this.props.purchases);
     return (
       <div>
         <h3>
@@ -40,7 +41,7 @@ class Account extends React.Component {
               <ul className="catalog" key={idx}>
                 {cart.purchases.map((item, _idx) => {
                   return (
-                    <li key={`purchase_${idx}`}>
+                    <li key={`purchase_${_idx}`}>
                       <img src={item.item.imageURL} title={item.item.name} />
                       <Link to={`/singleItem/${item.item.id}`}>
                         {item.item.name}
