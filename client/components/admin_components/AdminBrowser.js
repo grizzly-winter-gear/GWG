@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import { Switch, Route, Link, BrowserRouter, Redirect } from 'react-router-dom';
+import { Switch, Route, Link, BrowserRouter } from 'react-router-dom';
 import AdminUsers from './AdminUsers';
 import AdminItems from './AdminItems';
 import Container from '@material-ui/core/Container';

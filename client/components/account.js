@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { fetchEditPrivilege } from '../store/auth';
 import Admin from './admin_components/Admin';
 import { fetchPurchases } from '../store/previousPurchases';
 /**
