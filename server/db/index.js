@@ -38,7 +38,7 @@ const syncAndSeed = async () => {
     Item.create({ name: 'cool boots', category: 'Gear' }),
   ]);
   const categories = ['Clothes', 'Gear', 'Accessories'];
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 100; i++) {
     await Item.create({
       name: faker.commerce.productName(),
       category: categories[i % 3],
