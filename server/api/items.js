@@ -1,5 +1,5 @@
 const {
-  models: { User, Item, Cart },
+  models: { User, Item },
 } = require('../db');
 
 const router = require('express').Router();
@@ -89,6 +89,36 @@ router.get('/:category', async (req, res, next) => {
   }
 });
 
+router.put('/create', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    if (user.privilege === 'administrator') {
+      const item = await Item.create(req.body);
+      res.send(item);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/update', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+    if (user.privilege === 'administrator') {
+      const item = await Item.findByPk(req.body.id);
+      item.update({
+        name: req.body.name,
+        category: req.body.category,
+        stock: req.body.stock,
+      });
+      await item.save();
+      res.send(item);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 //helper function
 const toUpperCase = (string) => {
   let firstLetter = string[0];
@@ -100,3 +130,4 @@ const toUpperCase = (string) => {
   }
   return result;
 }
+

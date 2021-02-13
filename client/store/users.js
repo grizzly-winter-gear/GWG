@@ -1,26 +1,24 @@
 import axios from 'axios';
-import thunk from 'redux-thunk';
 
 //ACTION CONSTANTS
 const FETCH_USERS = 'FETCH_USERS';
-const DESTROY_USER = 'DESTROY_USER';
+const SET_PRIVILEGE = 'SET_PRIVILEGE';
 
 //ACTION CREATORS
-const _fetchUsers = () => {
+function _fetchUsers(users) {
   return {
     type: FETCH_USERS,
+    users,
   };
-};
-
-const _destroyUser = (id) => {
-  return {
-    type: DESTROY_USER,
-    id,
-  };
-};
+}
+const setPrivilege = (id, privilege) => ({
+  type: SET_PRIVILEGE,
+  id,
+  privilege,
+});
 
 //THUNKS
-export const fetchUsers = async () => {
+export const fetchUsers = () => async (dispatch) => {
   const token = window.localStorage.getItem('token');
   if (token) {
     let users = await axios.get('/api/users', {
@@ -28,31 +26,43 @@ export const fetchUsers = async () => {
         authorization: token,
       },
     });
-    return function (dispatch) {
-      return dispatch(_fetchUsers(users.data));
-    };
+    return dispatch(_fetchUsers(users.data));
   }
 };
 
-export const destroyUser = (id) => {
-  //should user auth token be passed in to confirm admin? @kuperavv
+export const fetchEditPrivilege = (userId, privilege) => async (dispatch) => {
+  let res;
   try {
-    axios.post('/api/users/destroy', { id });
-    return async function (dispatch) {
-      return dispatch(_destroyItem(id));
-    };
+    const token = window.localStorage.getItem('token');
+    if (token) {
+      res = await axios.put(
+        '/api/users/editPrivilege',
+        { userId, privilege },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      return dispatch(setPrivilege(userId, privilege));
+    }
   } catch (error) {
     console.log(error);
     throw new Error(error);
   }
 };
 
-export default function usersReducer(state = [], action) {
+export default function (state = [], action) {
   if (action.type === FETCH_USERS) {
     return action.users;
   }
-  if (action.type === DESTROY_USER) {
-    return state.filter((user) => user.id !== action.id);
+  if (action.type === SET_PRIVILEGE) {
+    return state.map((user) => {
+      if (user.id === action.id) {
+        user.privilege = action.privilege;
+      }
+      return user;
+    });
   }
   return state;
 }

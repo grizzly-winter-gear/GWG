@@ -1,9 +1,10 @@
 import axios from 'axios';
-import thunk from 'redux-thunk';
 
 //ACTION CONSTANTS
 const SET_ITEMS = 'SET_ITEMS';
 const DESTROY_ITEM = 'DESTROY_ITEM';
+const CREATE_ITEM = 'CREATE_ITEM';
+const UPDATE_ITEM = 'UPDATE_ITEM';
 
 //ACTION CREATORS
 export const setItems = (items) => {
@@ -17,6 +18,20 @@ const _destroyItem = (id) => {
   return {
     type: DESTROY_ITEM,
     id,
+  };
+};
+
+const _createItem = (item) => {
+  return {
+    type: CREATE_ITEM,
+    item,
+  };
+};
+
+const _updateItem = (item) => {
+  return {
+    type: UPDATE_ITEM,
+    item,
   };
 };
 
@@ -34,7 +49,6 @@ export const fetchItems = (index) => {
 };
 
 export const destroyItem = (id) => {
-  //should user auth token be passed in to confirm admin? @kuperavv
   const token = window.localStorage.getItem('token');
   try {
     if (token) {
@@ -59,6 +73,44 @@ export const destroyItem = (id) => {
   }
 };
 
+export const createItem = ({ name, category }) => async (dispatch) => {
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    const item = (
+      await axios.put(
+        '/api/items/create',
+        { name, category },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      )
+    ).data;
+    return dispatch(_createItem(item));
+  }
+};
+
+export const updateItem = ({ id, name, category, stock }) => async (
+  dispatch
+) => {
+  const token = window.localStorage.getItem('token');
+  if (token) {
+    const item = (
+      await axios.put(
+        '/api/items/update',
+        { id, name, category, stock },
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      )
+    ).data;
+    return dispatch(_updateItem(item));
+  }
+};
+
 export default function itemsReducer(
   state = { catalog: [], index: 0 },
   action
@@ -70,6 +122,21 @@ export default function itemsReducer(
     return {
       ...state,
       catalog: state.catalog.filter((item) => item.id !== action.id),
+    };
+  }
+  if (action.type === CREATE_ITEM) {
+    return { ...state, catalog: [action.item, ...state.catalog] };
+  }
+  if (action.type === UPDATE_ITEM) {
+    return {
+      ...state,
+      catalog: state.catalog.map((item) => {
+        if (item.id === action.item.id) {
+          return action.item;
+        } else {
+          return item;
+        }
+      }),
     };
   }
   return state;
