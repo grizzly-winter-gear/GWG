@@ -29,16 +29,45 @@ router.get('/offset/:offset', async (req, res, next) => {
   }
 });
 
-router.get('/:category', async (req, res, next) => {
+router.get('/:category/:offset', async (req, res, next) => {
   try {
-    const categoryName = toUpperCase(String(req.params.category))
-    console.log("!!!!this is the caetgory name passed in", categoryName);
-    const result = await Item.findAll({
-      where: {
-        category: categoryName
-      },
-    });
-    res.send(result);
+    const categoryName = await toUpperCase(String(req.params.category));
+    let offset = parseInt(req.params.offset);
+    let result;
+    if (categoryName === 'All') {
+      const count = await Item.count();
+      if (offset > count) {
+        offset = 0;
+      } else if (offset < 0) {
+        offset = count - 10;
+      }
+      result = await Item.findAll({
+        limit: 10,
+        offset: offset,
+        order: [['name', 'ASC']],
+      });
+    } else {
+      const count = await Item.count({
+        where: {
+          category: categoryName,
+        },
+      });
+      if (offset > count) {
+        offset = 0;
+      } else if (offset < 0) {
+        offset = count - 10;
+      }
+      result = await Item.findAll({
+        where: {
+          category: categoryName,
+        },
+        limit: 10,
+        offset: offset,
+        order: [['name', 'ASC']],
+      });
+    }
+
+    res.send({ items: result, offset: offset });
   } catch (err) {
     next(err);
   }
@@ -56,7 +85,6 @@ router.get('/:id', async (req, res, next) => {
     next(err);
   }
 });
-
 
 router.post('/destroy', async (req, res, next) => {
   try {
@@ -124,10 +152,10 @@ const toUpperCase = (string) => {
   let firstLetter = string[0];
   let firstLetterUpper = firstLetter.toUpperCase();
   let result = firstLetterUpper;
-  for (let i = 1; i < string.length; i++){
+  for (let i = 1; i < string.length; i++) {
     let currentLetterLower = string[i].toLowerCase();
     result += currentLetterLower;
   }
+  console.log(result);
   return result;
-}
-
+};

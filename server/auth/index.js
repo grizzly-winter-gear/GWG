@@ -28,7 +28,7 @@ router.get('/github/callback', async (req, res, next) => {
         window.localStorage.setItem('token', '${await User.authenticateGithub(
           req.query.code
         )}');
-        window.document.location = '/';
+        window.document.location = '/singlecategory/All/0';
         </script>
       </body>
       </html>

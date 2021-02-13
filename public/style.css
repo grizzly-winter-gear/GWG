@@ -11,7 +11,7 @@ body {
   background-color: #006ad1;
   padding: 1rem;
 }
-.category-header{
+.category-header {
   color: black;
   font-family: sans-serif;
 }
@@ -132,6 +132,13 @@ form div {
   justify-content: space-around;
   align-items: center;
   margin: 1rem;
+}
+
+#pagination {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  align-items: center;
 }
 
 @media (max-width: 600px) {

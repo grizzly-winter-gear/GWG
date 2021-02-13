@@ -56,6 +56,7 @@ class ViewCatalog extends Component {
         margin: '0.5rem',
       },
     };
+    console.log(this.props.catalog);
     return (
       <div>
         <Grid
@@ -65,8 +66,8 @@ class ViewCatalog extends Component {
           alignItems="center"
           justify="center"
         >
-          {this.props.catalog.length !== 0 ? (
-            this.props.catalog.map((product, idx) => {
+          {this.props.catalog.list.length !== 0 ? (
+            this.props.catalog.list.map((product, idx) => {
               return (
                 <Grid item lg={2} md={3} sm={4} xs={12} key={idx}>
                   <Card style={styles.card}>

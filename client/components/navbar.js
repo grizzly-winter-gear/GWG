@@ -12,14 +12,15 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* The navbar will show these links after you log in */}
           <Link to="/home">Home</Link>
 
-        <div className="dropdown">
-          <button className="dropbtn">Select a category</button>
-          <div className="dropdown-content">
-            <a href="/singlecategory/Accessories">Accessories</a>
-            <a href="/singlecategory/Clothes">Clothes</a>
-            <a href="/singlecategory/Gear">Gear</a>
+          <div className="dropdown">
+            <button className="dropbtn">Select a category</button>
+            <div className="dropdown-content">
+              <a href="/singlecategory/All/0">All</a>
+              <a href="/singlecategory/Accessories/0">Accessories</a>
+              <a href="/singlecategory/Clothes/0">Clothes</a>
+              <a href="/singlecategory/Gear/0">Gear</a>
+            </div>
           </div>
-        </div>
 
           <Link to="/account">Account</Link>
           <Link to="/viewcart">View Cart</Link>
