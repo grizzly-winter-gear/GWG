@@ -22,8 +22,18 @@ class Stripe extends Component {
     //   method: 'POST',
     // });
 
-    const session = (await axios.post('/api/stripe/create-checkout-session'))
-      .data;
+    const token = window.localStorage.getItem('token');
+    const session = (
+      await axios.post(
+        '/api/stripe/create-checkout-session',
+        {},
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      )
+    ).data;
 
     // const session = await response.json();
 
