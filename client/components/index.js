@@ -6,7 +6,7 @@
 export { default as Navbar } from './navbar';
 export { default as Home } from './home';
 export { default as Account } from './account';
-export { default as ViewCart } from './viewcart';
+export { default as ViewCart } from './ViewCart';
 export { Login, Signup } from './auth-form';
 export { default as SingleItem } from './SingleItem';
 export { default as Success } from './success';
