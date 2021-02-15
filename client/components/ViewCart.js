@@ -38,8 +38,6 @@ class ViewCart extends React.Component {
       flexDirection: 'row',
       justifyContent: 'space-around',
       alignItems: 'center',
-      // paddingBottom: 10,
-      // paddingTop: 10,
     };
     return (
       <div>
