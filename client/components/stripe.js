@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import Grid from '@material-ui/core/Grid';
 import { loadStripe } from '@stripe/stripe-js';
 
 const Stripe_Publishable_Key =
@@ -11,6 +11,9 @@ const stripePromise = loadStripe(Stripe_Publishable_Key);
 class Stripe extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      Quantity: [],
+    };
     this.handleClick = this.handleClick.bind(this);
   }
   async handleClick(event) {
@@ -50,15 +53,31 @@ class Stripe extends Component {
         console.log(result.error);
       }
     } else {
-      console.log(session.quantityCheck);
+      // console.log(session.quantityCheck);
+      this.setState({
+        Quantity: session.quantityCheck,
+      });
     }
   }
 
   render() {
+    console.log(this.state.Quantity);
     return (
-      <button role="link" onClick={() => this.handleClick()}>
-        Checkout
-      </button>
+      <Grid>
+        <button role="link" onClick={() => this.handleClick()}>
+          Checkout
+        </button>
+        {this.state.Quantity.length > 0 && (
+          <Grid item>
+            There's a problem with this purchase:{' '}
+            {this.state.Quantity.map((item) => (
+              <Grid item key={item.itemId}>
+                {item.name} only has {item.stock} left in stock
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </Grid>
     );
   }
 }
