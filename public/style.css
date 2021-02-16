@@ -63,11 +63,6 @@ form div {
   justify-content: space-between;
 }
 
-.delete_btn {
-  width: 1rem;
-  height: 1rem;
-}
-
 /* Dropdown Button */
 .dropbtn {
   background-color: #006ad1;

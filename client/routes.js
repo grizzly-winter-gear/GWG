@@ -9,7 +9,6 @@ import {
   ViewCart,
   SingleItem,
   Success,
-  // SingleCategory
 } from './components';
 
 import paymentPage from './components/paymentPage';
