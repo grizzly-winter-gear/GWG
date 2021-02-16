@@ -65,11 +65,25 @@ router.get('/success', async (req, res, next) => {
         sessionId: session.id,
         status: 'unpurchased',
       },
+      include: { model: Purchases },
     });
 
     if (cart && session.payment_status === 'paid') {
       cart.status = 'purchased';
       await cart.save();
+      const items = await Promise.all(
+        cart.purchases.map((purchase) =>
+          Item.findOne({
+            where: {
+              id: purchase.itemId,
+            },
+          })
+        )
+      );
+      cart.purchases.forEach((purchase, idx) => {
+        items[idx].stock -= purchase.quantity;
+      });
+      await Promise.all(items.map((item) => item.save()));
     }
 
     // console.log(session);
