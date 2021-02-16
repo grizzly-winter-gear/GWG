@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import { SignalWifi1BarLockSharp } from '@material-ui/icons';
 
 class ViewCatalog extends Component {
   constructor(props) {
@@ -54,7 +55,12 @@ class ViewCatalog extends Component {
       },
       type: {
         margin: '0.5rem',
-      },
+      }
+    };
+
+    const link_style = {
+      color: "black",
+      diplay: "flex",
     };
     return (
       <div>
@@ -73,14 +79,13 @@ class ViewCatalog extends Component {
                     <CardMedia
                       style={styles.media}
                       image={product.imageURL}
-                      title={product.name}
-                      style={{textTransform:"none"}}
+                      // title={product.name}
                     />
-
+                    <div style={link_style}>
                       <Link to={`/singleItem/${product.id}`}>
                         {product.name}
                       </Link>
-
+                    </div>
                     <CardActions style={styles.cardActions}>
                     <Button
                       variant="contained"

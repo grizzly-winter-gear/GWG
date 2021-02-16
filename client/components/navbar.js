@@ -10,6 +10,14 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       {isLoggedIn ? (
         <div className="navBar">
           {/* The navbar will show these links after you log in */}
+
+          <form class="example" action="action_page.php">
+            <input type="text" placeholder="Search.." name="search"/>
+            <div id='button-holder'>
+              <img src="./images/magnifying-glass.png" />
+            </div>
+          </form>
+
           <Link to="/home">Home</Link>
 
         <div className="dropdown">
@@ -20,7 +28,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             <a href="/singlecategory/Gear">Gear</a>
           </div>
         </div>
-
           <Link to="/account">Account</Link>
           <Link to="/viewcart">View Cart</Link>
           <a href="#" onClick={handleClick}>
