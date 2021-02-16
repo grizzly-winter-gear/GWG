@@ -21,7 +21,7 @@ module.exports = {
         Item.create({
           imageURL: `/images/GWGImages/${clothe.id}.jpg`,
           name: clothe.productDisplayName,
-          category: clothe.MasterCategory,
+          category: clothe.masterCategory,
           //     category: categories[i % 3],
 
           description: faker.commerce.productDescription(),

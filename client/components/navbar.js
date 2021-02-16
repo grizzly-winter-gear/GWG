@@ -17,8 +17,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             <div className="dropdown-content">
               <a href="/singlecategory/All/0">All</a>
               <a href="/singlecategory/Accessories/0">Accessories</a>
-              <a href="/singlecategory/Clothes/0">Clothes</a>
-              <a href="/singlecategory/Gear/0">Gear</a>
+              <a href="/singlecategory/Apparel/0">Apparel</a>
+              <a href="/singlecategory/Footwear/0">Footwear</a>
             </div>
           </div>
 

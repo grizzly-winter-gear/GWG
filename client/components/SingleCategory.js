@@ -17,7 +17,7 @@ class SingleCategory extends Component {
     const offset = parseInt(this.props.match.params.offset);
     const styles = {
       button: {
-        height: '30px',
+        // height: '30px',
       },
     };
     return (
@@ -28,6 +28,7 @@ class SingleCategory extends Component {
           </h1>
           <div id="pagination">
             <Button
+              size="small"
               variant="contained"
               color="primary"
               style={styles.button}
@@ -45,6 +46,7 @@ class SingleCategory extends Component {
               Displaying: {offset + 1} to {offset + 10}
             </h2>
             <Button
+              size="small"
               variant="contained"
               color="primary"
               style={styles.button}
