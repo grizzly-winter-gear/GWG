@@ -65,10 +65,7 @@ router.get('/success', async (req, res, next) => {
         sessionId: session.id,
         status: 'unpurchased',
       },
-      include: [
-        { model: Purchases, include: { model: Item } },
-        { model: User },
-      ],
+      include: { model: Purchases },
     });
 
     if (cart && session.payment_status === 'paid') {
@@ -87,24 +84,10 @@ router.get('/success', async (req, res, next) => {
         items[idx].stock -= purchase.quantity;
       });
       await Promise.all(items.map((item) => item.save()));
-
-      let str = '';
-      cart.purchases.forEach((purchase) => {
-        str += `${purchase.item.name}\n`;
-      });
-
-      if (cart.user.email) {
-        const send = require('gmail-send')({
-          user: process.env.EMAIL,
-          pass: process.env.EMAIL_PASSWORD,
-          to: cart.user.email,
-          subject: 'Grizzly Winter Gear Purchase Confirmtion',
-          html: `<p>This is your email confirmation for your recent purchase at Grizzly Winter Gear.</p><p>${str}</p><p>Return to <a href='https://grizzly-winter-gear.herokuapp.com/'>Grizzly Winter Gear</a></p>`,
-        });
-        await send();
-      }
     }
 
+    // console.log(session);
+    // console.log(customer);
     res.redirect('/success');
   } catch (er) {
     console.log(er);
