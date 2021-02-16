@@ -25,7 +25,7 @@ class ViewCart extends React.Component {
   }
 
   onChange(userId, itemId, e) {
-    console.log(userId, itemId, e.target);
+    // console.log(userId, itemId, e.target);
     this.props.fetchEditItem(userId, itemId, parseInt(e.target.value));
   }
 
