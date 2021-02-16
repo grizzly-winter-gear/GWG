@@ -200,7 +200,7 @@ router.put('/editQuantity', async (req, res, next) => {
       }
     );
 
-    res.send(201);
+    res.sendStatus(201);
   } catch (err) {
     next(err);
   }

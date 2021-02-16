@@ -18,8 +18,8 @@ router.post('/create-checkout-session', async (req, res, next) => {
     include: { model: Purchases, include: { model: Item } },
   });
 
-  console.log(cart.purchases);
   const lineItems = [];
+  const quantityCheck = [];
 
   cart.purchases.forEach((purchase) => {
     lineItems.push({
@@ -32,6 +32,13 @@ router.post('/create-checkout-session', async (req, res, next) => {
       },
       quantity: purchase.quantity,
     });
+    if (purchase.quantity > purchase.item.stock) {
+      quantityCheck.push({
+        itemId: purchase.item.id,
+        name: purchase.item.name,
+        stock: purchase.item.stock,
+      });
+    }
   });
 
   const session = await stripe.checkout.sessions.create({
@@ -43,7 +50,7 @@ router.post('/create-checkout-session', async (req, res, next) => {
   });
   cart.sessionId = session.id;
   await cart.save();
-  res.json({ id: session.id });
+  res.json({ id: session.id, quantityCheck: quantityCheck });
 });
 
 router.get('/success', async (req, res, next) => {
