@@ -74,29 +74,28 @@ class ViewCatalog extends Component {
                       style={styles.media}
                       image={product.imageURL}
                       title={product.name}
+                      style={{textTransform:"none"}}
                     />
-                    <Typography
-                      style={styles.type}
-                      gutterBottom
-                      variant="button"
-                    >
+
                       <Link to={`/singleItem/${product.id}`}>
                         {product.name}
                       </Link>
-                    </Typography>
+
                     <CardActions style={styles.cardActions}>
-                      <Button
-                        variant="outlined"
-                        color="primary"
-                        size="small"
-                        title={'Add to cart: ' + product.name}
-                        onClick={() => this.addToCart(product.id)}
-                      >
-                        Add to Cart
-                      </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      style={{textTransform:"none"}}
+                    title={'Add to cart: ' + product.name}
+                    onClick={() => this.addToCart(product.id)}
+                  >
+                 Add to Cart
+                  </Button>
                     </CardActions>
                   </Card>
                 </Grid>
+
               ); //close return
             }) //close map
           ) : (

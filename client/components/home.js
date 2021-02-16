@@ -9,7 +9,16 @@ export const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome to GWG, {email}</h3>
+      <center>
+      <div id="intro">
+        <i>Welcome to Grizzly Winter Gear, {email}! </i>
+        </div>
+      </center>
+      <section>
+        <center>
+       <img class="carousel-image" src="./images/skimountain.jpg"/>
+       </center>
+      </section>
       <All_Items />
     </div>
   );

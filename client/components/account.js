@@ -18,9 +18,10 @@ class Account extends React.Component {
       <div>
         <h3>
           Welcome to GWG, {account.email}. You may view your account info and
-          orders here
+          orders here:
         </h3>
         <h3>Account details</h3>
+        <a className="link-button" href = "/editprofile">Edit Profile </a>
         <ul id="account_component" className="account_component_class">
           {Object.keys(account)
             .filter((key) => key !== 'password')
@@ -33,7 +34,7 @@ class Account extends React.Component {
             })}
         </ul>
         {account.privilege === 'administrator' && <Admin />}
-        Previous Purchases
+        Previous Purchases:
         <ul>
           {this.props.purchases.map((cart, idx) => {
             return (

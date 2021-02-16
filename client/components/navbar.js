@@ -13,7 +13,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           <Link to="/home">Home</Link>
 
         <div className="dropdown">
-          <button className="dropbtn">Select a category</button>
+          <button className="dropbtn">Shop</button>
           <div className="dropdown-content">
             <a href="/singlecategory/Accessories">Accessories</a>
             <a href="/singlecategory/Clothes">Clothes</a>
