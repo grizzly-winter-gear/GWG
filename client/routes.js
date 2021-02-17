@@ -9,7 +9,6 @@ import {
   ViewCart,
   SingleItem,
   Success,
-  // SingleCategory
 } from './components';
 
 import paymentPage from './components/paymentPage';
@@ -40,7 +39,7 @@ class Routes extends Component {
             <Route path="/checkout" component={checkoutPage} />
             <Route path={`/singleItem/:id`} component={SingleItem} />
             <Route
-              path={`/singleCategory/:category`}
+              path={`/singleCategory/:category/:offset`}
               component={SingleCategory}
             />
             <Route path="/success" component={Success} />
@@ -63,11 +62,13 @@ class Routes extends Component {
  * CONTAINER
  */
 const mapState = (state) => {
+  // console.log(state);
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
     isLoggedIn: !!state.auth.id,
     singleItem: state.singleItem,
+    offset: state.singleCategory.offset,
   };
 };
 

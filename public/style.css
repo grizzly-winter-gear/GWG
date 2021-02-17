@@ -23,7 +23,7 @@ body {
   /* background-color:  #000072; */
   padding: 1rem;
 }
-.category-header{
+.category-header {
   color: black;
   font-family: sans-serif;
 }
@@ -92,6 +92,7 @@ form div {
   justify-content: space-between;
 }
 
+ user-profile-buildout
 .delete_btn {
   width: 1rem;
   height: 1rem;
@@ -140,6 +141,8 @@ section {
 }
 
 
+
+ main
 /* Dropdown Button */
 .dropbtn {
   background-color:white;
@@ -210,6 +213,7 @@ form.example::after {
   display: table;
 }
 
+ user-profile-buildout
 #button-holder{
   background-color: lightpink;
   border-top:thin solid #e5e5e5;
@@ -225,4 +229,21 @@ form.example::after {
 #button-holder img{
   margin:4px;
   width:20px;
+
+#pagination {
+  display: flex;
+  width: 50%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+  .navBar {
+    display: flex;
+    flex-direction: column;
+  }
+ main
 }

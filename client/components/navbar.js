@@ -22,6 +22,7 @@ const Navbar = ({ handleClick, isLoggedIn, handleSubmit, handleSearchInput }) =>
 
           <Link to="/home">Home</Link>
 
+ user-profile-buildout
         <div className="dropdown">
           <button className="dropbtn">Shop</button>
           <div className="dropdown-content">
@@ -30,6 +31,18 @@ const Navbar = ({ handleClick, isLoggedIn, handleSubmit, handleSearchInput }) =>
             <a href="/singlecategory/Gear">Gear</a>
           </div>
         </div>
+
+          <div className="dropdown">
+            <button className="dropbtn">Select a category</button>
+            <div className="dropdown-content">
+              <a href="/singlecategory/All/0">All</a>
+              <a href="/singlecategory/Accessories/0">Accessories</a>
+              <a href="/singlecategory/Clothes/0">Clothes</a>
+              <a href="/singlecategory/Gear/0">Gear</a>
+            </div>
+          </div>
+
+ main
           <Link to="/account">Account</Link>
           <Link to="/viewcart">View Cart</Link>
           <a href="#" onClick={handleClick}>
