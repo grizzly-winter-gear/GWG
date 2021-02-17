@@ -78,29 +78,12 @@ const syncAndSeed = async () => {
   //     imageURL: faker.image.imageUrl(null, null, 'sports', true),
   //   });
   // }
-  // const [helmet, boot] = items;
-  // await cody.addItem(boot, { through: { status: 'unpurchased', quantity: 1 } });
-  // await murphy.addItem(helmet, {
-  //   through: { status: 'unpurchased', quantity: 1 },
-  // });
-  // const tempcart = await Cart.create({
-  //   status: 'unpurchased',
-  //   userId: murphy.id,
-  // });
-  // await tempcart.addItem(boot);
-
-  // const tempcart2 = await Cart.create({
-  //   status: 'unpurchased',
-  //   userId: cody.id,
-  // });
-  // await tempcart2.addItem(helmet);
 
   return {
     users: {
       cody,
       murphy,
     },
-    // items,
   };
 };
 
@@ -111,5 +94,6 @@ module.exports = {
     User,
     Item,
     Cart,
+    Purchases,
   },
 };
