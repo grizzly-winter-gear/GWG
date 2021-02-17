@@ -14,6 +14,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
+
 class ViewCatalog extends Component {
   constructor(props) {
     super(props);
@@ -54,7 +55,12 @@ class ViewCatalog extends Component {
       },
       type: {
         margin: '0.5rem',
-      },
+      }
+    };
+
+    const link_style = {
+      color: "black",
+      diplay: "flex",
     };
     console.log(this.props.catalog);
     return (
@@ -74,30 +80,28 @@ class ViewCatalog extends Component {
                     <CardMedia
                       style={styles.media}
                       image={product.imageURL}
-                      title={product.name}
+                      // title={product.name}
                     />
-                    <Typography
-                      style={styles.type}
-                      gutterBottom
-                      variant="button"
-                    >
+                    <div style={link_style}>
                       <Link to={`/singleItem/${product.id}`}>
                         {product.name}
                       </Link>
-                    </Typography>
+                    </div>
                     <CardActions style={styles.cardActions}>
-                      <Button
-                        variant="outlined"
-                        color="primary"
-                        size="small"
-                        title={'Add to cart: ' + product.name}
-                        onClick={() => this.addToCart(product.id)}
-                      >
-                        Add to Cart
-                      </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      style={{textTransform:"none"}}
+                    title={'Add to cart: ' + product.name}
+                    onClick={() => this.addToCart(product.id)}
+                  >
+                 Add to Cart
+                  </Button>
                     </CardActions>
                   </Card>
                 </Grid>
+
               ); //close return
             }) //close map
           ) : (

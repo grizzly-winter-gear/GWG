@@ -1,5 +1,7 @@
 import axios from 'axios';
 import history from '../history';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const storage = () => window.localStorage;
 const TOKEN = 'token';
@@ -48,6 +50,15 @@ export const logout = () => {
     auth: {},
   };
 };
+
+export const redirect = () => {
+  history.push(`/singleItem/1`)
+  console.log("in the redirect function");
+  console.log("the state",state)
+
+}
+
+
 
 /**
  * REDUCER
