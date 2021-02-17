@@ -56,7 +56,6 @@ class ViewCatalog extends Component {
         margin: '0.5rem',
       },
     };
-    console.log(this.props.catalog);
     return (
       <div>
         <Grid
