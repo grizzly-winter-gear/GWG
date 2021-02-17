@@ -32,45 +32,130 @@ const syncAndSeed = async () => {
   ]);
   const [cody, murphy] = users;
 
-  //create some items here
-  const items = await Promise.all([
-    Item.create({ name: 'helmet a ', category: 'Gear' }),
-    Item.create({ name: 'cool boots', category: 'Gear' }),
-  ]);
-  const categories = ['Clothes', 'Gear', 'Accessories'];
-  for (let i = 0; i < 100; i++) {
-    await Item.create({
-      name: faker.commerce.productName(),
-      category: categories[i % 3],
-      description: faker.commerce.productDescription(),
-      price: faker.commerce.price(),
-      rating: Math.random() * 5,
-      imageURL: faker.image.imageUrl(null, null, 'sports', true),
-    });
-  }
-  const [helmet, boot] = items;
-  // await cody.addItem(boot, { through: { status: 'unpurchased', quantity: 1 } });
-  // await murphy.addItem(helmet, {
-  //   through: { status: 'unpurchased', quantity: 1 },
-  // });
-  const tempcart = await Cart.create({
-    status: 'unpurchased',
-    userId: murphy.id,
-  });
-  await tempcart.addItem(boot);
+  const itemSeed = [
+    {
+      name: "Arc'teryx Hoody Men's",
+      description:
+        'The lightest, most breathable Arc’teryx GORE-TEX trail running jacket.',
+      imageURL: '/images/arc_hoody.png',
+      price: 325,
+      stock: 52,
+      rating: 4,
+      category: 'Clothes',
+    },
+    {
+      name: "Arc'teryx Aerios FL Mid GTX Shoe",
+      description:
+        'Supportive, light and agile GORE-TEX footwear for hiking technical terrain.',
+      imageURL: '/images/arc_shoe.png',
+      price: 185,
+      stock: 25,
+      rating: 5,
+      category: 'Gear',
+    },
+    {
+      name: "Arc'teryx GAMMA AR PANT WOMEN'S",
+      description:
+        'Versatile weather-resistant softshell pant with performance stretch. Gamma Series: Softshell outerwear with stretch | AR: All Round.',
+      imageURL: '/images/arc_pants.png',
+      price: 199,
+      stock: 10,
+      rating: 3.4,
+      category: 'Clothes',
+    },
+    {
+      name: 'Sklon Ski Strap and Pole Carrier',
+      description:
+        'Forget awkwardly lugging around those heavy skis and enjoy the relief + comfort of owning the #1 solution for transporting ski equipment. FINALLY! - After a long and physically exhausting day of skiing, the Ski Strap & Pole Carrier by Sklon will allow you to comfortably carry your skis and poles to and from the mountain WITHOUT the usual STRUGGLE and FRUSTRATION.',
+      imageURL: '/images/sklon.jpg',
+      price: 17,
+      stock: 10,
+      rating: 3.3,
+      category: 'Accessories',
+    },
+    {
+      name: 'Snow skis for Kids',
+      description:
+        'Our snow skis build perfect technique whether you’re a learner of downhill skiing, CC or ski jumping. Thanks to the 26 in/65cm length the beginner instinctively hones core balance.',
+      imageURL: '/images/SnowSkisForKids.jpg',
+      price: 46,
+      stock: 10,
+      rating: 4.1,
+      category: 'Gear',
+    },
+    {
+      name: 'Meowntain Shirt',
+      description:
+        "If you're a skier or snowboarder you'll love this cool cat wearing ski / snowboard goggles.",
+      imageURL: '/images/meowntain.jpg',
+      price: 18,
+      stock: 10,
+      rating: 5.0,
+      category: 'Clothes',
+    },
+    {
+      name: 'Yeti Socks',
+      description: '85% Cotton, 10% Polyester, 5% Spandex',
+      imageURL: '/images/yetisock.jpg',
+      price: 10,
+      stock: 10,
+      rating: 5.0,
+      category: 'Clothes',
+    },
+    {
+      name: 'Cat Balaclava',
+      description:
+        'Vivid animal pattern and unique ear sewing process, The ears stand up perfectly and are very stable ( no flopping or adjustments needed). Ears maintain a 3D shape, looks more real, more interesting, more lovely, very cool, suitable for any occasion',
+      imageURL: '/images/cat_balaclava.jpg',
+      price: 19,
+      stock: 10,
+      rating: 3.2,
+      category: 'Clothes',
+    },
+    {
+      name: 'Skeletal Gloves',
+      description:
+        'SKELETON PRINT GLOWS IN THE DARK! Your child will never want come inside this winter because the skeleton print glows in the dark! For the best results, place the gloves in a brightly lit room or under a light fixture prior to use, the light charges it up. The gloves also have a grippers throughout the palms, fingers and thumbs, and nubuck reinforced thumbs, making them well suited for playing in the snow.',
+      imageURL: '/images/glow_gloves.jpg',
+      price: 18,
+      stock: 10,
+      rating: 4.1,
+      category: 'Gear',
+    },
+    {
+      name: 'Boot Dryer',
+      description:
+        'Portable boot dryer and shoe dryer combines traditional convection drying with forced air',
+      imageURL: '/images/boot_dryer.jpg',
+      price: 37,
+      stock: 10,
+      rating: 4.1,
+      category: 'Accessories',
+    },
+  ];
 
-  const tempcart2 = await Cart.create({
-    status: 'unpurchased',
-    userId: cody.id,
-  });
-  await tempcart2.addItem(helmet);
+  //create some items here
+  // await Promise.all([itemSeed.map((item) => Item.create(item))]);
+  for (let i = 0; i < itemSeed.length; i++) {
+    await Item.create(itemSeed[i]);
+  }
+  const categories = ['Clothes', 'Gear', 'Accessories'];
+  // for (let i = 0; i < 100; i++) {
+  //   await Item.create({
+  //     name: faker.commerce.productName(),
+  //     category: categories[i % 3],
+  //     description: faker.commerce.productDescription(),
+  //     price: faker.commerce.price(),
+  //     rating: Math.random() * 5,
+  //     imageURL: faker.image.imageUrl(null, null, 'sports', true),
+  //   });
+  // }
 
   return {
     users: {
       cody,
       murphy,
     },
-    items,
   };
 };
 
@@ -81,5 +166,6 @@ module.exports = {
     User,
     Item,
     Cart,
+    Purchases,
   },
 };

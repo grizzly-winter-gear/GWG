@@ -10,6 +10,9 @@ const Cart = db.define('cart', {
   status: {
     type: Sequelize.ENUM('unpurchased', 'purchased'),
   },
+  sessionId: {
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = Cart;

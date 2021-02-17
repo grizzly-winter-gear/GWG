@@ -65,9 +65,9 @@
 
 ### As a customer, I want to be able to:
 
-- see all products that belong to a certain category.
+[x] see all products that belong to a certain category.
   - _Keep this simple. For example, a product can only belong to one category._
-- explore an aesthetically pleasing website so I can easily navigate around and enjoy the experience (UI/UX).
+[x] explore an aesthetically pleasing website so I can easily navigate around and enjoy the experience (UI/UX).
   - _This includes front-end data validations. For example, if certain fields of a form are required and must be in a specific format, this is obvious to the user._
 - have a persistent cart so I can revisit and pick up where I left off.
   - _There are two more experiences to consider here. Explore your favorite websites to see what the intended behavior is for the following cases:_
@@ -77,16 +77,17 @@
 
 ### As a logged-in customer, I want to be able to:
 
-- see my order history so I can remember my previously purchased items and their prices at the time of purchase.
+[x] see my order history so I can remember my previously purchased items and their prices at the time of purchase.
 - view and edit my user profile so I can update my information when necessary.
-- log in through third-party authentication so I can avoid creating an account specific to the website.
-  - _For example, Google OAuth._
+[x] log in through third-party authentication so I can avoid creating an account specific to the website.
+- For example, Google OAuth.
 
 ### As an administrator, I want to be able to:
 
 - allow customers to have a variety of payment method options in order to increase checkout conversion.
-  - _Begin by integrating Stripe, and, if interested, dive into integrating PayPal, Venmo, Braintree, or Bitcoin._
-- edit products and manage users through a dashboard so I can easily make changes and assessments as necessary.
+  [x] Begin by integrating Stripe
+  -if interested, dive into integrating PayPal, Venmo, Braintree, or Bitcoin.
+[x] edit products and manage users through a dashboard so I can easily make changes and assessments as necessary.
 
 ### As an engineer, I want:
 

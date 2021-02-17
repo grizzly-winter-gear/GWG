@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import All_Items from './All_Items';
+import SingleCategory from './SingleCategory';
 /**
  * COMPONENT
  */
@@ -9,6 +10,7 @@ export const Home = (props) => {
 
   return (
     <div>
+ user-profile-buildout
       <center>
       <div id="intro">
         <i>Welcome to Grizzly Winter Gear, {email}! </i>
@@ -23,6 +25,10 @@ export const Home = (props) => {
        </center>
       </section>
       <All_Items />
+
+      <h3>Welcome to GWG, {email}</h3>
+      {/* <SingleCategory /> */}
+ main
     </div>
   );
 };
