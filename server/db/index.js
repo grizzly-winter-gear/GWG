@@ -32,6 +32,39 @@ const syncAndSeed = async () => {
   ]);
   const [cody, murphy] = users;
 
+  const itemSeed = [
+    {
+      name: "Arc'teryx Hoody Men's",
+      description:
+        'The lightest, most breathable Arc’teryx GORE-TEX trail running jacket.',
+      imageURL: '/images/arc_hoody.png',
+      price: 325,
+      stock: 52,
+      rating: 4,
+      category: 'Clothes',
+    },
+    {
+      name: "Arc'teryx Aerios FL Mid GTX Shoe",
+      description:
+        'Supportive, light and agile GORE-TEX footwear for hiking technical terrain.',
+      imageURL: '/images/arc_shoe.png',
+      price: 185,
+      stock: 25,
+      rating: 5,
+      category: 'Gear',
+    },
+    {
+      name: "Arc'teryx GAMMA AR PANT WOMEN'S",
+      description:
+        'Versatile weather-resistant softshell pant with performance stretch. Gamma Series: Softshell outerwear with stretch | AR: All Round.',
+      imageURL: '/images/arc_pants.png',
+      price: 199,
+      stock: 10,
+      rating: 3.4,
+      category: 'Clothes',
+    },
+  ];
+
   //create some items here
   const items = await Promise.all([
     Item.create({ name: 'helmet a ', category: 'Gear' }),
