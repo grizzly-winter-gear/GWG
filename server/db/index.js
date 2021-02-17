@@ -63,6 +63,56 @@ const syncAndSeed = async () => {
       rating: 3.4,
       category: 'Clothes',
     },
+    {
+      name: 'Sklon Ski Strap and Pole Carrier',
+      description:
+        'Forget awkwardly lugging around those heavy skis and enjoy the relief + comfort of owning the #1 solution for transporting ski equipment. FINALLY! - After a long and physically exhausting day of skiing, the Ski Strap & Pole Carrier by Sklon will allow you to comfortably carry your skis and poles to and from the mountain WITHOUT the usual STRUGGLE and FRUSTRATION.',
+      imageURL: '/images/sklon.jpg',
+      price: 17,
+      stock: 10,
+      rating: 3.3,
+      category: 'Accessories',
+    },
+    {
+      name: 'Snow skis for Kids',
+      description:
+        'Our snow skis build perfect technique whether you’re a learner of downhill skiing, CC or ski jumping. Thanks to the 26 in/65cm length the beginner instinctively hones core balance.',
+      imageURL: '/images/SnowSkisForKids.jpg',
+      price: 46,
+      stock: 10,
+      rating: 4.1,
+      category: 'Gear',
+    },
+    {
+      name: "Arc'teryx GAMMA AR PANT WOMEN'S",
+      description:
+        'Versatile weather-resistant softshell pant with performance stretch. Gamma Series: Softshell outerwear with stretch | AR: All Round.',
+      imageURL: '/images/arc_pants.png',
+      price: 199,
+      stock: 10,
+      rating: 3.4,
+      category: 'Clothes',
+    },
+    {
+      name: "Arc'teryx GAMMA AR PANT WOMEN'S",
+      description:
+        'Versatile weather-resistant softshell pant with performance stretch. Gamma Series: Softshell outerwear with stretch | AR: All Round.',
+      imageURL: '/images/arc_pants.png',
+      price: 199,
+      stock: 10,
+      rating: 3.4,
+      category: 'Clothes',
+    },
+    {
+      name: "Arc'teryx GAMMA AR PANT WOMEN'S",
+      description:
+        'Versatile weather-resistant softshell pant with performance stretch. Gamma Series: Softshell outerwear with stretch | AR: All Round.',
+      imageURL: '/images/arc_pants.png',
+      price: 199,
+      stock: 10,
+      rating: 3.4,
+      category: 'Clothes',
+    },
   ];
 
   //create some items here
