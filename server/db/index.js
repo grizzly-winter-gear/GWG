@@ -67,7 +67,7 @@ const syncAndSeed = async () => {
       name: 'Sklon Ski Strap and Pole Carrier',
       description:
         'Forget awkwardly lugging around those heavy skis and enjoy the relief + comfort of owning the #1 solution for transporting ski equipment. FINALLY! - After a long and physically exhausting day of skiing, the Ski Strap & Pole Carrier by Sklon will allow you to comfortably carry your skis and poles to and from the mountain WITHOUT the usual STRUGGLE and FRUSTRATION.',
-      imageURL: '/images/sklon.jpg',
+      imageURL: '/images/Sklon.jpg',
       price: 17,
       stock: 10,
       rating: 3.3,
