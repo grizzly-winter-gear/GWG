@@ -66,7 +66,10 @@ const syncAndSeed = async () => {
   ];
 
   //create some items here
-  await Promise.all([itemSeed.map((item) => Item.create(item))]);
+  // await Promise.all([itemSeed.map((item) => Item.create(item))]);
+  for (let i = 0; i < itemSeed.length; i++) {
+    await Item.create(itemSeed[i]);
+  }
   const categories = ['Clothes', 'Gear', 'Accessories'];
   // for (let i = 0; i < 100; i++) {
   //   await Item.create({
