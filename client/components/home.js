@@ -16,7 +16,10 @@ export const Home = (props) => {
       </center>
       <section>
         <center>
-       <img class="carousel-image" src="./images/skimountain.jpg"/>
+          <div class="container">
+            <img class="carousel-image" src="./images/skimountain.jpg"/>
+            <div class="centered">Your premier destination for all winter sports gear!</div>
+          </div>
        </center>
       </section>
       <All_Items />

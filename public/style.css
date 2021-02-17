@@ -31,6 +31,23 @@ a {
   text-decoration: none;
 }
 
+.container {
+  position: relative;
+  text-align: center;
+  color:black;
+  font-style: italic;
+  font-size: 40px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightpink;
+}
+
+
 label {
   display: block;
 }
@@ -179,7 +196,7 @@ form.example input[type=text] {
   float: left;
   width: 65%;
   height: 60%;
-  background: #f1f1f1;
+  background: white;
 }
 
 form.example button:hover {
@@ -194,13 +211,13 @@ form.example::after {
 }
 
 #button-holder{
-  background-color:#f1f1f1;
+  background-color: lightpink;
   border-top:thin solid #e5e5e5;
   box-shadow:1px 1px 1px 1px #e5e5e5;
   cursor:pointer;
   float:left;
-  height:27px;
-  margin:11px 0 0 0;
+  height:30px;
+  margin:0 0 0 0;
   text-align:center;
   width:50px;
 }

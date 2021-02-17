@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
+import { redirect } from "../store";
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn, handleSubmit, handleSearchInput }) => (
+  // let [currentState, updateState] = useState(0);
   <div className="header">
     <nav>
       <h1>Grizzly Winter Gear</h1>
@@ -12,8 +14,8 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* The navbar will show these links after you log in */}
 
           <form class="example" action="action_page.php">
-            <input type="text" placeholder="Search.." name="search"/>
-            <div id='button-holder'>
+            <input type="text" placeholder="Search.." name="search" onChange={handleSearchInput}/>
+            <div id='button-holder' onClick={handleSubmit}>
               <img src="./images/magnifying-glass.png" />
             </div>
           </form>
@@ -60,6 +62,13 @@ const mapDispatch = (dispatch) => {
     handleClick() {
       dispatch(logout());
     },
+    handleSubmit(state){
+      dispatch(redirect(state));
+    },
+    handleSearchInput(event){
+      // console.log("what is the event", event)
+
+    }
   };
 };
 
