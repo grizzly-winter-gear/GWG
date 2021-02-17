@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../store';
 import { redirect } from "../store";
 
 const Navbar = ({ handleClick, isLoggedIn, handleSubmit, handleSearchInput }) => (
-  // let [currentState, updateState] = useState(0);
+
   <div className="header">
     <nav>
       <h1>Grizzly Winter Gear</h1>
