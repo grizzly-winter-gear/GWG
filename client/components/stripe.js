@@ -84,7 +84,7 @@ class Stripe extends Component {
         <button role="link" onClick={this.handleClick}>
           Checkout
         </button>
-        {/* {this.state.Quantity.length > 0 && (
+        {this.state.Quantity.length > 0 && (
           <Grid item>
             There's a problem with this purchase:{' '}
             {this.state.Quantity.map((item) => (
@@ -93,7 +93,7 @@ class Stripe extends Component {
               </Grid>
             ))}
           </Grid>
-        )} */}
+        )}
         <Dialog
           open={this.state.dialog}
           TransitionComponent={Transition}
