@@ -70,20 +70,20 @@ class ViewCatalog extends Component {
               return (
                 <Grid item lg={2} md={3} sm={4} xs={12} key={idx}>
                   <Card style={styles.card}>
-                    <CardMedia
-                      style={styles.media}
-                      image={product.imageURL}
-                      title={product.name}
-                    />
-                    <Typography
-                      style={styles.type}
-                      gutterBottom
-                      variant="button"
-                    >
-                      <Link to={`/singleItem/${product.id}`}>
+                    <Link to={`/singleItem/${product.id}`}>
+                      <CardMedia
+                        style={styles.media}
+                        image={product.imageURL}
+                        title={product.name}
+                      />
+                      <Typography
+                        style={styles.type}
+                        gutterBottom
+                        variant="button"
+                      >
                         {product.name}
-                      </Link>
-                    </Typography>
+                      </Typography>
+                    </Link>
                     <CardActions style={styles.cardActions}>
                       <Button
                         variant="outlined"
