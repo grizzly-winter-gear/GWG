@@ -6,13 +6,13 @@ class EditProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: ''
+      email: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(evt) {
-    console.log("evt.target.value console log",evt.target.value)
+    // console.log("evt.target.value console log",evt.target.value)
     this.setState({
       email: evt.target.value,
     });
@@ -20,10 +20,10 @@ class EditProfile extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.editEmail({ ...this.state });
+    this.props.editEmail(this.props.state.auth.id, this.state.email);
   }
   render() {
-    console.log("props",this.props)
+    // console.log('props', this.props);
     const { email } = this.state;
     const { handleSubmit, handleChange } = this;
     return (
@@ -36,8 +36,10 @@ class EditProfile extends React.Component {
   }
 }
 
-const mapState = ({ state }) => {
-  return { state };
+const mapState = (state) => {
+  return {
+    state,
+  };
 };
 
 const mapDispatch = (dispatch) => {
