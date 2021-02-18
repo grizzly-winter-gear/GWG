@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPurchasedCart } from '../store/cart';
 import { Link } from 'react-router-dom';
-import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 class Success extends Component {
   componentDidMount() {
@@ -10,13 +10,20 @@ class Success extends Component {
   }
   render() {
     return (
-      <Container>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: '100vh' }}
+      >
         <p>Purchased confirmed!</p>
         <br />
-        <Link to="/">
-          <Button variant="contained">Return to Home</Button>
+        <Link to="/singlecategory/All/0">
+          <Button variant="contained">Return to Catalog</Button>
         </Link>
-      </Container>
+      </Grid>
     );
   }
 }
