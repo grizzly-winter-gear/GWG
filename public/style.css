@@ -66,8 +66,8 @@ form div {
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #006ad1;
-  color: snow;
+  background-color: white;
+  color: black;
   padding: 1rem;
   padding: 10px;
   font-size: 14px;
@@ -141,7 +141,8 @@ form div {
 .container {
   position: relative;
   text-align: center;
-  color: black;
+  color: white;
+
 }
 
 .centered {
@@ -149,14 +150,32 @@ form div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: lightpink;
-  font-size: 50px;
+  background-color: #28536B;
+  font-size: 42px;
   font-style: italic;
+  border: solid black 2px;
+}
+
+img {
+  border: solid black 3px;
 }
 
 i {
   font-size: 22px;
 }
+/* end styling on home page */
+
+/*styling on the account page */
+.account-page {
+  margin-left: 2.5%;
+}
+
+.account-page h3 {
+  text-decoration: underline;
+}
+
+/*end styling on account page */
+
 
 @media (max-width: 600px) {
   nav {
