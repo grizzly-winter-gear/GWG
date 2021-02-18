@@ -8,7 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 class SingleItem extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
@@ -17,11 +17,16 @@ class SingleItem extends Component {
 
   render() {
     const styles = {
+      container: {
+        display: 'flex',
+        justifyContent: 'center',
+      },
       card: {
         margin: '1rem',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        width: '50vw',
         // minWidth: 150,
         // minHeight: 200,
       },
@@ -38,7 +43,7 @@ class SingleItem extends Component {
     };
     const item = this.props.state.singleItem;
     return (
-      <Grid>
+      <Container style={styles.container}>
         <Card style={styles.card}>
           <Typography align="center" style={styles.type}>
             {item.name}: {item.price}
@@ -74,7 +79,7 @@ class SingleItem extends Component {
             </Button>
           </CardActions>
         </Card>
-      </Grid>
+      </Container>
     );
   }
 }

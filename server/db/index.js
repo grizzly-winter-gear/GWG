@@ -202,6 +202,56 @@ const syncAndSeed = async () => {
       rating: 3.7,
       category: 'Gear',
     },
+    {
+      name: 'Unicorn Helmet Cover',
+      description:
+        'One size fits most. Good for multi-sport helmets. Sparkling fabric! Makes a GREAT Gift!',
+      imageURL: '/images/unicorn_helmet.jpg',
+      price: 37,
+      stock: 15,
+      rating: 3.2,
+      category: 'Gear',
+    },
+    {
+      name: 'Beard Helmet',
+      description:
+        'Super cool crotcheted beard helmet that is soft and gentle to the skin.',
+      imageURL: '/images/beard_helmet.jpg',
+      price: 18,
+      stock: 12,
+      rating: 3.0,
+      category: 'Gear',
+    },
+    {
+      name: 'ZIONOR Lagopus Ski Snowboard Goggles',
+      description:
+        'Optimized Performance Ski Goggles - Solid & durable lens, enhanced anti-scratch and smart ventilation system.',
+      imageURL: '/images/ZIONOR_Ski_Goggle.jpg',
+      price: 28,
+      stock: 200,
+      rating: 4.1,
+      category: 'Gear',
+    },
+    {
+      name: 'X-TIGER Polarized Sports Sunglasses',
+      description:
+        'Ultralight Frame Weight only 19.2g. you will forget you are wearing them in the middle of an adventure you cannot let heavy sunglasses weigh you down .X-TIGER Sports Polarized Sunglasses are ideal for usage by motorcycle ,cycling, driving, running, baseball,fishing, racing, golf,skiing and climbing, trekking or other outdoor activities enthusiasts.Inner frame can be used for shortsighted lenses.',
+      imageURL: '/images/xtiger_sunglasses.jpg',
+      price: 25,
+      stock: 16,
+      rating: 4.7,
+      category: 'Gear',
+    },
+    {
+      name: 'Tire Chains',
+      description:
+        'Designed for cars, pickups, and SUVs with very limited operating clearance around the drive tires',
+      imageURL: '/images/tire_chains.jpg',
+      price: 90,
+      stock: 5,
+      rating: 4.2,
+      category: 'Accessories',
+    },
   ];
 
   //create some items here
