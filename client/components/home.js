@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import All_Items from './All_Items';
-import SingleCategory from './SingleCategory';
 /**
  * COMPONENT
  */
@@ -10,14 +8,18 @@ export const Home = (props) => {
 
   return (
     <div>
-    <section>
+      <section>
         <center>
           <div className="container">
-            <h3><i>Welcome to Grizzly Winter Gear!</i></h3>
-            <img className="carousel-image" src="./images/skimountain.jpg"/>
-            <div className="centered">Your premier destination for all winter sports gear!</div>
+            <h3>
+              <i>Welcome to Grizzly Winter Gear!</i>
+            </h3>
+            <img className="carousel-image" src="./images/skimountain.jpg" />
+            <div className="centered">
+              Your premier destination for all winter sports gear!
+            </div>
           </div>
-       </center>
+        </center>
       </section>
     </div>
   );

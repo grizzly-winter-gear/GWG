@@ -31,46 +31,47 @@ class PastPurchases extends React.Component {
     };
     const { purchases } = this.props;
     console.log(purchases);
-    return (
-      <div>
-        <h3>Cart View</h3>
-        <Container>
-          <Paper variant="elevation" elevation={24}>
-            <Table size="medium" aria-label="table">
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center">Item</TableCell>
-                  <TableCell align="right">Quantity</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {purchases.length > 0 &&
-                  purchases.map((purchase) =>
-                    purchase.purchases.map((item) => (
-                      <TableRow key={item.id}>
-                        <TableCell style={cellStyle}>
-                          <img
-                            width="100"
-                            className="itemImage"
-                            title={item.item.name}
-                            src={item.item.imageURL}
-                          />
-                          {item.item.name}
-                        </TableCell>
-                        <TableCell align="right">{item.quantity}</TableCell>
-                      </TableRow>
-                    ))
-                  )}
-              </TableBody>
-            </Table>
-          </Paper>
-          <center>
-            <Link to="/payments">Proceed to Payments</Link>
-            <Stripe />
-          </center>
-        </Container>
-      </div>
-    );
+    if (purchases.length > 0) {
+      return (
+        <div>
+          <h3>Previous Purchases</h3>
+          <Container>
+            <Paper variant="elevation" elevation={24}>
+              <Table size="medium" aria-label="table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="center">Item</TableCell>
+                    <TableCell align="right">Quantity</TableCell>
+                  </TableRow>
+                </TableHead>
+
+                <TableBody>
+                  {purchases.length > 0 &&
+                    purchases.map((purchase) =>
+                      purchase.purchases.map((item) => (
+                        <TableRow key={item.id}>
+                          <TableCell style={cellStyle}>
+                            <img
+                              width="100"
+                              className="itemImage"
+                              title={item.item.name}
+                              src={item.item.imageURL}
+                            />
+                            {item.item.name}
+                          </TableCell>
+                          <TableCell align="right">{item.quantity}</TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                </TableBody>
+              </Table>
+            </Paper>
+          </Container>
+        </div>
+      );
+    } else {
+      return <div></div>;
+    }
   }
 }
 
