@@ -34,30 +34,7 @@ class Account extends React.Component {
             })}
         </ul>
         Previous Purchases
-        {/* <PastPurchases /> */}
-        <ul>
-          {this.props.purchases.map((cart, idx) => {
-            return (
-              <ul className="catalog" key={idx}>
-                {cart.purchases.map((item, _idx) => {
-                  return (
-                    <li key={`purchase_${_idx}`}>
-                      <img
-                        src={item.item.imageURL}
-                        title={item.item.name}
-                        height="150"
-                      />
-                      <Link to={`/singleItem/${item.item.id}`}>
-                        {item.item.name}
-                      </Link>
-                      <span>Quantity: {item.quantity}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-            );
-          })}
-        </ul>
+        <PastPurchases />
         {account.privilege === 'administrator' && <Admin />}
       </div>
     );

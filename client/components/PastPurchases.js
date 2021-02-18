@@ -29,7 +29,8 @@ class PastPurchases extends React.Component {
       justifyContent: 'space-around',
       alignItems: 'center',
     };
-    console.log(this.props);
+    const { purchases } = this.props;
+    console.log(purchases);
     return (
       <div>
         <h3>Cart View</h3>
@@ -42,7 +43,25 @@ class PastPurchases extends React.Component {
                   <TableCell align="right">Quantity</TableCell>
                 </TableRow>
               </TableHead>
-              {}
+              <TableBody>
+                {purchases.length > 0 &&
+                  purchases.map((purchase) =>
+                    purchase.purchases.map((item) => (
+                      <TableRow key={item.id}>
+                        <TableCell style={cellStyle}>
+                          <img
+                            width="100"
+                            className="itemImage"
+                            title={item.item.name}
+                            src={item.item.imageURL}
+                          />
+                          {item.item.name}
+                        </TableCell>
+                        <TableCell align="right">{item.quantity}</TableCell>
+                      </TableRow>
+                    ))
+                  )}
+              </TableBody>
             </Table>
           </Paper>
           <center>
