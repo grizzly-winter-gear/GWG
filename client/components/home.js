@@ -6,7 +6,7 @@ import SingleCategory from './SingleCategory';
  * COMPONENT
  */
 export const Home = (props) => {
-  const { email } = props;
+  // const { email } = props;
 
   return (
     <div>

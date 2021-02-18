@@ -42,6 +42,10 @@ nav {
   padding: 1rem;
 }
 
+hr {
+  border: solid black 1.9px;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
@@ -66,8 +70,8 @@ form div {
 
 /* Dropdown Button */
 .dropbtn {
-  background-color: #006ad1;
-  color: snow;
+  background-color: white;
+  color: black;
   padding: 1rem;
   padding: 10px;
   font-size: 14px;
@@ -142,7 +146,8 @@ form div {
 .container {
   position: relative;
   text-align: center;
-  color: black;
+  color: white;
+
 }
 
 .centered {
@@ -150,14 +155,57 @@ form div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: lightpink;
-  font-size: 50px;
+  background-color: #28536B;
+  font-size: 42px;
   font-style: italic;
+  border: solid black 2px;
+}
+
+img {
+  border: solid black 3px;
 }
 
 i {
   font-size: 22px;
+  color: black;
 }
+/* end styling on home page */
+
+/*styling on the account page */
+.account-page {
+  margin-left: 2.5%;
+}
+
+.account-page h3 {
+  text-decoration: underline;
+}
+/*end styling on account page */
+
+/*payment page styling */
+.payment-page {
+ margin-left: 2.5%;
+ margin-right: 2.5%;
+}
+/* end styling on payment page */
+
+/*styling on edit profile component */
+.submit-button{
+ background-color: #28536B;
+  color: white;
+}
+/*end styling on edit profile component*/
+
+/*styling on view cart page */
+.cart-view{
+  margin-left: 2.5%;
+}
+
+.cart-view h3 {
+  text-decoration: underline;
+}
+/*end styling on view cart page */
+
+
 
 @media (max-width: 600px) {
   nav {

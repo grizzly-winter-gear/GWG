@@ -41,7 +41,7 @@ class ViewCart extends React.Component {
     };
     const token = window.localStorage.getItem('token');
     return (
-      <div>
+      <div className="cart-view">
         <h3>Cart View</h3>
         <Container>
           <Paper variant="elevation" elevation={24}>

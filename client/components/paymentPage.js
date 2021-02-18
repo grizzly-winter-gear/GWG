@@ -41,12 +41,15 @@ class paymentPage extends Component {
   render() {
     return (
       <Elements stripe={stripePromise}>
-        <div>
-          <p>Testing Payments Page</p>
+        <div className="payment-page">
+          {/* <p>Testing Payments Page</p> */}
+
+          <CardElement options={cardElementOptions} />
+
           <Link to="/checkout" onClick={this.handleClick}>
             Proceed to checkout
           </Link>
-          <CardElement options={cardElementOptions} />
+
         </div>
       </Elements>
     );

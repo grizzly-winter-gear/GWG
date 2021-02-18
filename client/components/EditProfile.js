@@ -27,13 +27,15 @@ class EditProfile extends React.Component {
     const { email } = this.state;
     const { handleSubmit, handleChange } = this;
     return (
-      <form id="item-form" onSubmit={handleSubmit}>
+      <div className="edit-profile-form">
+      <form id="email-form" onSubmit={handleSubmit}>
         <div>
         <label htmlFor="email">New Email Adress:</label>
         <input name="email" onChange={handleChange} value={email} />
-        <button type="submit">Submit</button>
+        <button type="submit" className="submit-button">Submit</button>
         </div>
       </form>
+    </div>
     );
   }
 }
