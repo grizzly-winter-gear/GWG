@@ -223,24 +223,34 @@ const syncAndSeed = async () => {
       category: 'Gear',
     },
     {
-      name: 'C-QUENCE HARNESS MEN',
+      name: 'ZIONOR Lagopus Ski Snowboard Goggles',
       description:
-        'Exceptionally comfortable harness leveraging vanguard Warp Strength Technology',
-      imageURL: '/images/arc_harness.png',
-      price: 145,
-      stock: 650,
-      rating: 3.7,
+        'Optimized Performance Ski Goggles - Solid & durable lens, enhanced anti-scratch and smart ventilation system.',
+      imageURL: '/images/ZIONOR_Ski_Goggle.jpg',
+      price: 28,
+      stock: 200,
+      rating: 4.1,
       category: 'Gear',
     },
     {
-      name: 'C-QUENCE HARNESS MEN',
+      name: 'X-TIGER Polarized Sports Sunglasses',
       description:
-        'Exceptionally comfortable harness leveraging vanguard Warp Strength Technology',
-      imageURL: '/images/arc_harness.png',
-      price: 145,
-      stock: 650,
-      rating: 3.7,
+        'Ultralight Frame Weight only 19.2g. you will forget you are wearing them in the middle of an adventure you cannot let heavy sunglasses weigh you down .X-TIGER Sports Polarized Sunglasses are ideal for usage by motorcycle ,cycling, driving, running, baseball,fishing, racing, golf,skiing and climbing, trekking or other outdoor activities enthusiasts.Inner frame can be used for shortsighted lenses.',
+      imageURL: '/images/xtiger_sunglasses.jpg',
+      price: 25,
+      stock: 16,
+      rating: 4.7,
       category: 'Gear',
+    },
+    {
+      name: 'Tire Chains',
+      description:
+        'Designed for cars, pickups, and SUVs with very limited operating clearance around the drive tires',
+      imageURL: '/images/tire_chains.jpg',
+      price: 90,
+      stock: 5,
+      rating: 4.2,
+      category: 'Accessories',
     },
   ];
 
