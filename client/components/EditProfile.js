@@ -32,7 +32,7 @@ class EditProfile extends React.Component {
         <div>
         <label htmlFor="email">New Email Adress:</label>
         <input name="email" onChange={handleChange} value={email} />
-        <button type="submit">Submit</button>
+        <button type="submit" className="submit-button">Submit</button>
         </div>
       </form>
     </div>

@@ -42,6 +42,10 @@ nav {
   padding: 1rem;
 }
 
+hr {
+  border: solid black 1.9px;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
@@ -162,6 +166,7 @@ img {
 
 i {
   font-size: 22px;
+  color: black;
 }
 /* end styling on home page */
 
@@ -173,8 +178,32 @@ i {
 .account-page h3 {
   text-decoration: underline;
 }
-
 /*end styling on account page */
+
+/*payment page styling */
+.payment-page {
+ margin-left: 2.5%;
+ margin-right: 2.5%;
+}
+/* end styling on payment page */
+
+/*styling on edit profile component */
+.submit-button{
+ background-color: #28536B;
+  color: white;
+}
+/*end styling on edit profile component*/
+
+/*styling on view cart page */
+.cart-view{
+  margin-left: 2.5%;
+}
+
+.cart-view h3 {
+  text-decoration: underline;
+}
+/*end styling on view cart page */
+
 
 
 @media (max-width: 600px) {

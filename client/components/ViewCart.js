@@ -40,7 +40,7 @@ class ViewCart extends React.Component {
       alignItems: 'center',
     };
     return (
-      <div>
+      <div className="cart-view">
         <h3>Cart View</h3>
         <Container>
           <Paper variant="elevation" elevation={24}>

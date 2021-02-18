@@ -41,7 +41,7 @@ class paymentPage extends Component {
   render() {
     return (
       <Elements stripe={stripePromise}>
-        <div>
+        <div className="payment-page">
           {/* <p>Testing Payments Page</p> */}
 
           <CardElement options={cardElementOptions} />
