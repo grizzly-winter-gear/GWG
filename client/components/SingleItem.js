@@ -62,7 +62,12 @@ class SingleItem extends Component {
               size="small"
               title={'Add to cart: ' + item.name}
               onClick={() =>
-                this.props.fetchAddItem(this.props.state.auth.id, item.id, 1)
+                this.props.fetchAddItem(
+                  this.props.state.auth.id,
+                  item.id,
+                  1,
+                  item
+                )
               }
             >
               Add to Cart
@@ -83,8 +88,8 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchItem: (id) => dispatch(fetchItem(id)),
-    fetchAddItem: (userId, itemId, quantity) =>
-      dispatch(fetchAddItem(userId, itemId, quantity)),
+    fetchAddItem: (userId, itemId, quantity, item) =>
+      dispatch(fetchAddItem(userId, itemId, quantity, item)),
   };
 };
 
