@@ -41,7 +41,7 @@ class Routes extends Component {
               component={SingleCategory}
             />
             <Route path="/success" component={Success} />
-            {/* <Redirect to="/home" /> */}
+            <Redirect to="/home" />
           </Switch>
         ) : (
           <Switch>
