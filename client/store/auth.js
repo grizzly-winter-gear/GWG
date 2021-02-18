@@ -60,12 +60,12 @@ export const authenticate = (email, password, method) => async (dispatch) => {
   }
 };
 
-export const logout = () => (dispatch) => {
+export const logout = () => {
   storage().removeItem(TOKEN);
   if (window.localStorage.getItem('cart')) {
     window.localStorage.removeItem('cart');
   }
-  dispatch(clearCart());
+  //dispatch(clearCart());
 
   history.push('/login');
   return {
