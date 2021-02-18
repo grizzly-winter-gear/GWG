@@ -31,6 +31,9 @@ class Account extends React.Component {
                 </li>
               );
             })}
+
+          <a className="link-button" href = "/editprofile">Edit Profile </a>
+
         </ul>
         {account.privilege === 'administrator' && <Admin />}
         Previous Purchases

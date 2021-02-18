@@ -14,6 +14,7 @@ import {
 import paymentPage from './components/paymentPage';
 import checkoutPage from './components/checkoutPage';
 import SingleCategory from './components/SingleCategory';
+import EditProfile from "./components/EditProfile";
 
 import { me } from './store';
 
@@ -32,6 +33,7 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
+            <Route path="/editprofile" component={EditProfile}/>
             <Route path="/home" component={Home} />
             <Route path="/account" component={Account} />
             <Route path="/viewcart" component={ViewCart} />
