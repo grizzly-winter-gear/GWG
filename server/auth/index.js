@@ -44,7 +44,6 @@ router.post('/signup', async (req, res, next) => {
   try {
     const user = await User.create(req.body);
 
-    console.log(req.body);
     if (req.body.cart) {
       const cart = await Cart.create({
         userId: user.id,
