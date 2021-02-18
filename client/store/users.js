@@ -40,6 +40,7 @@ export const fetchUsers = () => async (dispatch) => {
 
 export const fetchEditPrivilege = (userId, privilege) => async (dispatch) => {
   let res;
+  console.log("in the edit email thunk")
   try {
     const token = window.localStorage.getItem('token');
     if (token) {
