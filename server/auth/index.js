@@ -44,6 +44,7 @@ router.post('/signup', async (req, res, next) => {
   try {
     const user = await User.create(req.body);
 
+    console.log(req.body);
     if (req.body.cart) {
       const cart = await Cart.create({
         userId: user.id,
@@ -88,7 +89,7 @@ router.post('/me', async (req, res, next) => {
           userId: user.id,
           status: 'unpurchased',
         });
-        console.log(req.body.cart);
+
         await Promise.all(
           req.body.cart.map((el) =>
             Purchases.create({

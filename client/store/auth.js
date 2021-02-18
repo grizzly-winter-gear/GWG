@@ -1,6 +1,6 @@
 import axios from 'axios';
 import history from '../history';
-import { clearCart } from './cart';
+import { clearCart, setCart } from './cart';
 
 const storage = () => window.localStorage;
 const TOKEN = 'token';
@@ -48,8 +48,14 @@ export const me = () => async (dispatch) => {
 export const authenticate = (email, password, method) => async (dispatch) => {
   let res;
   try {
-    res = await axios.post(`/auth/${method}`, { email, password });
+    let cart = window.localStorage.getItem('cart');
+    if (cart) {
+      cart = JSON.parse(cart);
+    }
+
+    res = await axios.post(`/auth/${method}`, { email, password, cart });
     window.localStorage.removeItem('cart');
+
     storage().setItem(TOKEN, res.data.token);
     dispatch(me());
   } catch (authError) {
@@ -60,18 +66,18 @@ export const authenticate = (email, password, method) => async (dispatch) => {
   }
 };
 
-export const logout = () => {
+export const logout = () => (dispatch) => {
   storage().removeItem(TOKEN);
   if (window.localStorage.getItem('cart')) {
     window.localStorage.removeItem('cart');
   }
-  //dispatch(clearCart());
+  dispatch(clearCart());
 
   history.push('/login');
-  return {
+  return dispatch({
     type: SET_AUTH,
     auth: {},
-  };
+  });
 };
 
 /**

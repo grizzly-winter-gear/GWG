@@ -7,7 +7,7 @@ const DELETE_ITEM = 'DELETE_ITEM';
 const EDIT_ITEM = 'EDIT_ITEM';
 
 const setAddItem = (item) => ({ type: ADD_ITEM, item });
-const setCart = (cart) => ({ type: SET_CART, cart });
+export const setCart = (cart) => ({ type: SET_CART, cart });
 const setDeleteItem = (itemId) => ({ type: DELETE_ITEM, itemId });
 const setEditItem = (data) => ({ type: EDIT_ITEM, data });
 const setPurchaseCart = () => ({ type: PURCHASED_CART });
