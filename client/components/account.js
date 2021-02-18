@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Admin from './admin_components/Admin';
 import { fetchPurchases } from '../store/previousPurchases';
+import PastPurchases from './PastPurchases';
 /**
  * COMPONENT
  */
@@ -32,8 +33,8 @@ class Account extends React.Component {
               );
             })}
         </ul>
-        {account.privilege === 'administrator' && <Admin />}
         Previous Purchases
+        {/* <PastPurchases /> */}
         <ul>
           {this.props.purchases.map((cart, idx) => {
             return (
@@ -41,7 +42,11 @@ class Account extends React.Component {
                 {cart.purchases.map((item, _idx) => {
                   return (
                     <li key={`purchase_${_idx}`}>
-                      <img src={item.item.imageURL} title={item.item.name} />
+                      <img
+                        src={item.item.imageURL}
+                        title={item.item.name}
+                        height="150"
+                      />
                       <Link to={`/singleItem/${item.item.id}`}>
                         {item.item.name}
                       </Link>
@@ -53,6 +58,7 @@ class Account extends React.Component {
             );
           })}
         </ul>
+        {account.privilege === 'administrator' && <Admin />}
       </div>
     );
   }
