@@ -100,10 +100,12 @@ class ViewCart extends React.Component {
               </TableBody>
             </Table>
           </Paper>
+          <div>
           <center>
             {/* <Link to="/payments">Proceed to Payments</Link> */}
             {token ? <Stripe /> : ''}
           </center>
+          </div>
         </Container>
       </div>
     );

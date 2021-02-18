@@ -26,6 +26,10 @@ label {
 h1 {
   color:black;
 }
+.logo-navbar {
+ font-size: 20px;
+ color: black;
+}
 nav {
   display: flex;
   flex-direction: row;
