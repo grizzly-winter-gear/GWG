@@ -136,6 +136,27 @@ form div {
   align-items: center;
 }
 
+/*styling on the home page */
+.container {
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightpink;
+  font-size: 50px;
+  font-style: italic;
+}
+
+i {
+  font-size: 22px;
+}
+
 @media (max-width: 600px) {
   nav {
     flex-direction: column;
