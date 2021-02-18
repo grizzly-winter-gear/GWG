@@ -102,7 +102,6 @@ class ViewCart extends React.Component {
           </Paper>
           <div>
           <center>
-            {/* <Link to="/payments">Proceed to Payments</Link> */}
             {token ? <Stripe /> : ''}
           </center>
           </div>
