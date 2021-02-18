@@ -11,7 +11,6 @@ export const setCategory = (items) => {
 
 export const fetchItems = (category, offset, history) => async (dispatch) => {
   const token = window.localStorage.getItem('token');
-
   const itemsFromCategory = (
     await axios.get(`/api/items/${category}/${offset}`, {
       headers: { authorization: token },

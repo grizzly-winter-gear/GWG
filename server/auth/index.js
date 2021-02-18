@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const {
-  models: { User },
+  models: { User, Cart },
 } = require('../db');
+const Purchases = require('../db/models/purchases');
 module.exports = router;
 
 router.post('/login', async (req, res, next) => {
@@ -42,6 +43,24 @@ router.get('/github/callback', async (req, res, next) => {
 router.post('/signup', async (req, res, next) => {
   try {
     const user = await User.create(req.body);
+
+    if (req.body.cart) {
+      const cart = await Cart.create({
+        userId: user.id,
+        status: 'unpurchased',
+      });
+
+      await Promise.all(
+        req.body.cart.map((el) =>
+          Purchases.create({
+            quantity: el.quantity,
+            itemId: el.itemId,
+            cartId: cart.id,
+          })
+        )
+      );
+    }
+
     res.send({ token: await user.generateToken() });
   } catch (err) {
     if (err.name === 'SequelizeUniqueConstraintError') {
@@ -52,9 +71,37 @@ router.post('/signup', async (req, res, next) => {
   }
 });
 
-router.get('/me', async (req, res, next) => {
+router.post('/me', async (req, res, next) => {
   try {
-    res.send(await User.findByToken(req.headers.authorization));
+    const user = await User.findByToken(req.headers.authorization);
+
+    if (user) {
+      const cart = await Cart.findOne({
+        where: {
+          userId: user.id,
+          status: 'unpurchased',
+        },
+      });
+
+      if (req.body.cart && !cart) {
+        const cart = await Cart.create({
+          userId: user.id,
+          status: 'unpurchased',
+        });
+        console.log(req.body.cart);
+        await Promise.all(
+          req.body.cart.map((el) =>
+            Purchases.create({
+              quantity: el.quantity,
+              itemId: el.itemId,
+              cartId: cart.id,
+            })
+          )
+        );
+      }
+    }
+
+    res.send(user);
   } catch (ex) {
     next(ex);
   }

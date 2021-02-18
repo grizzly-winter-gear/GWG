@@ -23,8 +23,8 @@ class ViewCatalog extends Component {
     this.addToCart = this.addToCart.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
-  addToCart(id) {
-    this.props.fetchAddItem(this.props.state.auth.id, id, 1);
+  addToCart(id, product) {
+    this.props.fetchAddItem(this.props.state.auth.id, id, 1, product);
     this.setState({ open: true });
   }
   handleClose(event, reason) {
@@ -90,7 +90,7 @@ class ViewCatalog extends Component {
                         color="primary"
                         size="small"
                         title={'Add to cart: ' + product.name}
-                        onClick={() => this.addToCart(product.id)}
+                        onClick={() => this.addToCart(product.id, product)}
                       >
                         Add to Cart
                       </Button>
@@ -138,8 +138,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchAddItem: (userId, productId, quantity) =>
-      dispatch(fetchAddItem(userId, productId, quantity)),
+    fetchAddItem: (userId, productId, quantity, product) =>
+      dispatch(fetchAddItem(userId, productId, quantity, product)),
   };
 };
 

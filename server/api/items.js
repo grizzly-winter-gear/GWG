@@ -36,11 +36,14 @@ router.get('/:category/:offset', async (req, res, next) => {
     let result;
     if (categoryName === 'All') {
       const count = await Item.count();
+      let num = 10;
+      if (count < 10) num = count;
       if (offset > count) {
         offset = 0;
       } else if (offset < 0) {
-        offset = count - 10;
+        offset = count - num;
       }
+      if (offset < 0) offset = 0;
       result = await Item.findAll({
         limit: 10,
         offset: offset,
@@ -52,11 +55,15 @@ router.get('/:category/:offset', async (req, res, next) => {
           category: categoryName,
         },
       });
+      let num = 10;
+
+      if (count < 10) num = count;
       if (offset > count) {
         offset = 0;
       } else if (offset < 0) {
-        offset = count - 10;
+        offset = count - num;
       }
+      if (offset < 0) offset = 0;
       result = await Item.findAll({
         where: {
           category: categoryName,
@@ -66,6 +73,7 @@ router.get('/:category/:offset', async (req, res, next) => {
         order: [['name', 'ASC']],
       });
     }
+    console.log(offset);
 
     res.send({ items: result, offset: offset });
   } catch (err) {
