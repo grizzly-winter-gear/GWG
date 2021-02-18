@@ -132,6 +132,76 @@ const syncAndSeed = async () => {
       rating: 4.1,
       category: 'Accessories',
     },
+    {
+      name: "Arc'teryx Backpack",
+      description:
+        'Exceptionally durable and weather-resistant pack for rock, ice or alpine climbing. Alpha Series: Climbing and alpine focused systems. | FL: Fast and light.',
+      imageURL: '/images/arc_pack.png',
+      price: 200,
+      stock: 12,
+      rating: 4.5,
+      category: 'Accessories',
+    },
+    {
+      name: 'GRANVILLE 16 ZIP BACKPACK',
+      description:
+        'Slim profile urban backpack with weather protection and smart organization.',
+      imageURL: '/images/arc_small_pack.png',
+      price: 180,
+      stock: 200,
+      rating: 3.0,
+      category: 'Accessories',
+    },
+    {
+      name: 'CONVEYOR BELT',
+      description:
+        "Heavy duty, textured webbing belt with contrasting colour stitch detail and a metal buckle with the Arc'teryx logo. Ideal for keeping your pants up.",
+      imageURL: '/images/arc_belt.png',
+      price: 39,
+      stock: 100,
+      rating: 3.5,
+      category: 'Accessories',
+    },
+    {
+      name: "COVERT HOODY MEN'S",
+      description:
+        'Clean, casual technical fleece hoody with versatile wool sweater styling.',
+      imageURL: '/images/arc_fleece.png',
+      price: 199,
+      stock: 125,
+      rating: 4.7,
+      category: 'Clothes',
+    },
+    {
+      name: "PHELIX SHORT 9.5 MEN'S",
+      description:
+        'Trim performance shorts with versatile everyday style and cotton comfort.',
+      imageURL: '/images/arc_shorts.png',
+      price: 99,
+      stock: 24,
+      rating: 4.0,
+      category: 'Clothes',
+    },
+    {
+      name: 'KONSEAL FL 2 SHOE WOMEN',
+      description:
+        'Stable, supportive precision-fit approach shoe for fast, light mountain travel.',
+      imageURL: '/images/arc_shoes.png',
+      price: 145,
+      stock: 65,
+      rating: 3.0,
+      category: 'Clothes',
+    },
+    {
+      name: 'C-QUENCE HARNESS MEN',
+      description:
+        'Exceptionally comfortable harness leveraging vanguard Warp Strength Technology',
+      imageURL: '/images/arc_harness.png',
+      price: 145,
+      stock: 650,
+      rating: 3.7,
+      category: 'Gear',
+    },
   ];
 
   //create some items here
