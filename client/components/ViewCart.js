@@ -48,7 +48,8 @@ class ViewCart extends React.Component {
             <Table size="medium" aria-label="table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="center">Item</TableCell>
+                  <TableCell align="left"></TableCell>
+                  <TableCell align="left">Item</TableCell>
                   <TableCell align="right">Quantity</TableCell>
                   <TableCell align="right" />
                 </TableRow>
@@ -56,15 +57,15 @@ class ViewCart extends React.Component {
               <TableBody>
                 {this.props.cart.map((item) => (
                   <TableRow className="cartItem" key={item.itemId}>
-                    <TableCell style={cellStyle}>
+                    <TableCell align="center">
                       <img
                         width="100"
                         className="itemImage"
                         title={item.item.name}
                         src={item.item.imageURL}
                       />
-                      {item.item.name}
                     </TableCell>
+                    <TableCell>{item.item.name}</TableCell>
                     <TableCell align="right">
                       {/* <span>quantity: {item.quantity}</span> */}
                       <label htmlFor="item_quantity"></label>

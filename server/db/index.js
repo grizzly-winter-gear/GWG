@@ -202,6 +202,46 @@ const syncAndSeed = async () => {
       rating: 3.7,
       category: 'Gear',
     },
+    {
+      name: 'Unicorn Helmet Cover',
+      description:
+        'One size fits most. Good for multi-sport helmets. Sparkling fabric! Makes a GREAT Gift!',
+      imageURL: '/images/unicorn_helmet.jpg',
+      price: 37,
+      stock: 15,
+      rating: 3.2,
+      category: 'Gear',
+    },
+    {
+      name: 'Beard Helmet',
+      description:
+        'Super cool crotcheted beard helmet that is soft and gentle to the skin.',
+      imageURL: '/images/beard_helmet.jpg',
+      price: 18,
+      stock: 12,
+      rating: 3.0,
+      category: 'Gear',
+    },
+    {
+      name: 'C-QUENCE HARNESS MEN',
+      description:
+        'Exceptionally comfortable harness leveraging vanguard Warp Strength Technology',
+      imageURL: '/images/arc_harness.png',
+      price: 145,
+      stock: 650,
+      rating: 3.7,
+      category: 'Gear',
+    },
+    {
+      name: 'C-QUENCE HARNESS MEN',
+      description:
+        'Exceptionally comfortable harness leveraging vanguard Warp Strength Technology',
+      imageURL: '/images/arc_harness.png',
+      price: 145,
+      stock: 650,
+      rating: 3.7,
+      category: 'Gear',
+    },
   ];
 
   //create some items here
