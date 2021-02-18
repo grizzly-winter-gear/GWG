@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Admin from './admin_components/Admin';
 import { fetchPurchases } from '../store/previousPurchases';
+import EditProfile from './EditProfile';
 /**
  * COMPONENT
  */
@@ -31,6 +32,7 @@ class Account extends React.Component {
                 </li>
               );
             })}
+          <EditProfile />
         </ul>
         {account.privilege === 'administrator' && <Admin />}
         Previous Purchases
