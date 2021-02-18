@@ -11,7 +11,6 @@ import {
   Success,
 } from './components';
 
-import paymentPage from './components/paymentPage';
 import checkoutPage from './components/checkoutPage';
 import SingleCategory from './components/SingleCategory';
 
@@ -35,7 +34,6 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/account" component={Account} />
             <Route path="/viewcart" component={ViewCart} />
-            <Route path="/payments" component={paymentPage} />
             <Route path="/checkout" component={checkoutPage} />
             <Route path={`/singleItem/:id`} component={SingleItem} />
             <Route

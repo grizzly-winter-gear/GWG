@@ -20,8 +20,8 @@ class Account extends React.Component {
     return (
       <div className="account-page">
         <h2>
-          Welcome to Grizzly Winter Gear, {account.email}. You may view your account info and
-          orders here:
+          Welcome to Grizzly Winter Gear, {account.email}. You may view your
+          account info and orders here:
         </h2>
         <h3>Account details</h3>
         <ul id="account_component" className="account_component_class">
@@ -37,9 +37,8 @@ class Account extends React.Component {
         </ul>
         <div className="edit-profile">
           <h3> Edit Account Email </h3>
-        <EditProfile />
+          <EditProfile />
         </div>
-        <h3>Previous Purchases</h3>
         <PastPurchases />
         {account.privilege === 'administrator' && <Admin />}
       </div>
