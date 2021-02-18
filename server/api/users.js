@@ -22,6 +22,23 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// router.post('/nocart', async (req, res, next) => {
+//   try {
+//     const itemIds = req.body.data.map((el) => el.itemId);
+//     //console.log(itemIds);
+//     const cartInfo = await Item.findAll({
+//       where: {
+//         id: itemIds,
+//       },
+//     });
+//     console.log(cartInfo);
+//     res.send(cartInfo);
+//   } catch (er) {
+//     console.log(er);
+//     next(er);
+//   }
+// });
+
 router.get('/purchasedCart', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);

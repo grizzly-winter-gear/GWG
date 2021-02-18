@@ -34,7 +34,7 @@ class SingleCategory extends Component {
               onClick={() =>
                 this.props.fetchItems(
                   categName,
-                  offset - 10,
+                  offset - 10 < 0 ? 0 : offset - 10,
                   this.props.history
                 )
               }

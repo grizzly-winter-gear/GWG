@@ -49,8 +49,12 @@ class Routes extends Component {
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            {/*deleted the Route path for Single Item here, not needed here. This Switch Statement indicates that lines 37 - 40 are for a user who is NOT logged in yet. They should only see Login and Signup.*/}
-            {/* <Redirect to="/login" /> */}
+            <Route path={`/singleItem/:id`} component={SingleItem} />
+            <Route
+              path={`/singleCategory/:category/:offset`}
+              component={SingleCategory}
+            />
+            <Route path="/viewcart" component={ViewCart} />
           </Switch>
         )}
       </div>

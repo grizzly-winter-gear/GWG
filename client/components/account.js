@@ -41,7 +41,11 @@ class Account extends React.Component {
                 {cart.purchases.map((item, _idx) => {
                   return (
                     <li key={`purchase_${_idx}`}>
-                      <img src={item.item.imageURL} title={item.item.name} />
+                      <img
+                        src={item.item.imageURL}
+                        className="prevPurch"
+                        title={item.item.name}
+                      />
                       <Link to={`/singleItem/${item.item.id}`}>
                         {item.item.name}
                       </Link>

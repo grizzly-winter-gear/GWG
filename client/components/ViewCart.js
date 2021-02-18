@@ -39,6 +39,7 @@ class ViewCart extends React.Component {
       justifyContent: 'space-around',
       alignItems: 'center',
     };
+    const token = window.localStorage.getItem('token');
     return (
       <div>
         <h3>Cart View</h3>
@@ -99,8 +100,8 @@ class ViewCart extends React.Component {
             </Table>
           </Paper>
           <center>
-            <Link to="/payments">Proceed to Payments</Link>
-            <Stripe />
+            {/* <Link to="/payments">Proceed to Payments</Link> */}
+            {token ? <Stripe /> : ''}
           </center>
         </Container>
       </div>

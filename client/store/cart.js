@@ -24,7 +24,15 @@ export const fetchCart = (id) => async (dispatch) => {
           },
         })
       ).data;
+      console.log(cart);
       if (cart) {
+        return dispatch(setCart(cart));
+      }
+    } else {
+      let cart = window.localStorage.getItem('cart');
+
+      if (cart) {
+        cart = JSON.parse(cart);
         return dispatch(setCart(cart));
       }
     }
@@ -34,7 +42,13 @@ export const fetchCart = (id) => async (dispatch) => {
   }
 };
 
-export const fetchAddItem = (userId, itemId, quantity) => async (dispatch) => {
+export const clearCart = () => (dispatch) => {
+  return dispatch(setCart([]));
+};
+
+export const fetchAddItem = (userId, itemId, quantity, product) => async (
+  dispatch
+) => {
   try {
     const token = window.localStorage.getItem('token');
     if (token) {
@@ -54,6 +68,33 @@ export const fetchAddItem = (userId, itemId, quantity) => async (dispatch) => {
         )
       ).data;
       return dispatch(setAddItem(purchase));
+    } else {
+      let cart = window.localStorage.getItem('cart');
+      if (cart) {
+        cart = JSON.parse(cart);
+        const item = cart.find((el) => el.itemId === itemId);
+
+        if (item) {
+          cart = cart.map((el) =>
+            el.itemId === itemId
+              ? { ...el, quantity: el.quantity + quantity }
+              : el
+          );
+        } else {
+          cart = [
+            ...cart,
+            { itemId: itemId, quantity: quantity, item: product },
+          ];
+        }
+        window.localStorage.setItem('cart', JSON.stringify(cart));
+      } else {
+        window.localStorage.setItem(
+          'cart',
+          JSON.stringify([
+            { itemId: itemId, quantity: quantity, item: product },
+          ])
+        );
+      }
     }
   } catch (ex) {
     console.log(ex);
@@ -78,6 +119,16 @@ export const fetchDeleteItem = (userId, itemId) => async (dispatch) => {
         }
       );
       return dispatch(setDeleteItem(itemId));
+    } else {
+      let cart = window.localStorage.getItem('cart');
+      if (cart) {
+        cart = JSON.parse(cart);
+
+        cart = cart.filter((el) => el.itemId !== itemId);
+
+        window.localStorage.setItem('cart', JSON.stringify(cart));
+        return dispatch(setDeleteItem(itemId));
+      }
     }
   } catch (ex) {
     console.log(ex);
@@ -106,6 +157,19 @@ export const fetchEditItem = (userId, itemId, quantity) => async (dispatch) => {
           }
         );
         return dispatch(setEditItem({ itemId: itemId, quantity: quantity }));
+      } else {
+        let cart = window.localStorage.getItem('cart');
+
+        if (cart) {
+          cart = JSON.parse(cart);
+
+          cart = cart.map((el) =>
+            el.itemId === itemId ? { ...el, quantity: quantity } : el
+          );
+
+          window.localStorage.setItem('cart', JSON.stringify(cart));
+          return dispatch(setEditItem({ itemId: itemId, quantity: quantity }));
+        }
       }
     }
   } catch (ex) {
