@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Admin from './admin_components/Admin';
 import { fetchPurchases } from '../store/previousPurchases';
+import PastPurchases from './PastPurchases';
 import EditProfile from './EditProfile';
+
 /**
  * COMPONENT
  */
@@ -34,27 +36,9 @@ class Account extends React.Component {
             })}
           <EditProfile />
         </ul>
-        {account.privilege === 'administrator' && <Admin />}
         Previous Purchases
-        <ul>
-          {this.props.purchases.map((cart, idx) => {
-            return (
-              <ul className="catalog" key={idx}>
-                {cart.purchases.map((item, _idx) => {
-                  return (
-                    <li key={`purchase_${_idx}`}>
-                      <img src={item.item.imageURL} title={item.item.name} />
-                      <Link to={`/singleItem/${item.item.id}`}>
-                        {item.item.name}
-                      </Link>
-                      <span>Quantity: {item.quantity}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-            );
-          })}
-        </ul>
+        <PastPurchases />
+        {account.privilege === 'administrator' && <Admin />}
       </div>
     );
   }
