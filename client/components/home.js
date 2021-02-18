@@ -10,8 +10,15 @@ export const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome to GWG, {email}</h3>
-      {/* <SingleCategory /> */}
+    <section>
+        <center>
+          <div className="container">
+            <h3><i>Welcome to Grizzly Winter Gear!</i></h3>
+            <img className="carousel-image" src="./images/skimountain.jpg"/>
+            <div className="centered">Your premier destination for all winter sports gear!</div>
+          </div>
+       </center>
+      </section>
     </div>
   );
 };

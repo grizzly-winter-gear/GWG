@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Admin from './admin_components/Admin';
 import { fetchPurchases } from '../store/previousPurchases';
 import PastPurchases from './PastPurchases';
+import EditProfile from './EditProfile';
+
 /**
  * COMPONENT
  */
@@ -32,6 +34,7 @@ class Account extends React.Component {
                 </li>
               );
             })}
+          <EditProfile />
         </ul>
         Previous Purchases
         <PastPurchases />

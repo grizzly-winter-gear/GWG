@@ -221,3 +221,18 @@ router.put('/editPrivilege', async (req, res, next) => {
     next(err);
   }
 });
+
+
+router.put('/editEmail', async (req, res, next) => {
+  try {
+    const user = await User.findByToken(req.headers.authorization);
+
+      const userEdit = await User.findByPk(req.body.userId);
+      userEdit.email = req.body.email;
+      await userEdit.save();
+      res.sendStatus(200);
+
+  } catch (err) {
+    next(err);
+  }
+});
