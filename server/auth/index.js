@@ -88,7 +88,7 @@ router.post('/me', async (req, res, next) => {
           userId: user.id,
           status: 'unpurchased',
         });
-        console.log(req.body.cart);
+
         await Promise.all(
           req.body.cart.map((el) =>
             Purchases.create({
