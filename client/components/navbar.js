@@ -53,10 +53,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           {/* The navbar will show these links before you log in */}
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
-          <Link to="/viewcart">
-            <ShoppingCartIcon fontSize="small" />
-            View Cart
-          </Link>
+
           <div className="dropdown">
             <button className="dropbtn">
               <StorefrontIcon fontSize="small" />
@@ -69,6 +66,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
               <a href="/singlecategory/Gear/0">Gear</a>
             </div>
           </div>
+          <Link to="/viewcart">
+            <ShoppingCartIcon fontSize="small" />
+            View Cart
+          </Link>
         </div>
       )}
     </nav>

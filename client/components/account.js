@@ -25,7 +25,7 @@ class Account extends React.Component {
         <h3>Account details</h3>
         <ul id="account_component" className="account_component_class">
           {Object.keys(account)
-            .filter((key) => key !== 'password')
+            .filter((key) => key !== 'password' && key !== 'id')
             .map((key, idx) => {
               return (
                 <li key={idx}>
