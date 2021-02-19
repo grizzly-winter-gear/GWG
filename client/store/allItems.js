@@ -42,18 +42,18 @@ const _updateItem = (item) => {
   };
 };
 
-//AXIOS CALL
-export const pullItems = async (index) => {
-  let result = await axios.get(`/api/items/offset/${index}`);
-  return result;
-};
+// //AXIOS CALL
+// export const pullItems = async (index) => {
+//   let result = await axios.get(`/api/items/offset/${index}`);
+//   return result;
+// };
 
-//THUNKS
-export const fetchItems = (index) => {
-  return function (dispatch) {
-    return pullItems(index).then((result) => dispatch(setItems(result.data)));
-  };
-};
+// //THUNKS
+// export const fetchItems = (index) => {
+//   return function (dispatch) {
+//     return pullItems(index).then((result) => dispatch(setItems(result.data)));
+//   };
+// };
 
 export const fetchAllItems = () => async (dispatch) => {
   const token = window.localStorage.getItem('token');
