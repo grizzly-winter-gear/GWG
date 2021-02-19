@@ -3,7 +3,7 @@ import axios from 'axios';
 //ACTION CONSTANTS
 const FETCH_USERS = 'FETCH_USERS';
 const SET_PRIVILEGE = 'SET_PRIVILEGE';
-const SET_EMAIL = "SET_EMAIL";
+export const SET_EMAIL = 'SET_EMAIL';
 
 //ACTION CREATORS
 function _fetchUsers(users) {
@@ -24,7 +24,6 @@ const setEmail = (id, email) => ({
   email,
 });
 
-
 //THUNKS
 export const fetchUsers = () => async (dispatch) => {
   const token = window.localStorage.getItem('token');
@@ -40,7 +39,7 @@ export const fetchUsers = () => async (dispatch) => {
 
 export const fetchEditPrivilege = (userId, privilege) => async (dispatch) => {
   let res;
-  console.log("in the edit email thunk")
+  console.log('in the edit email thunk');
   try {
     const token = window.localStorage.getItem('token');
     if (token) {
@@ -82,7 +81,6 @@ export const fetchEditEmail = (userId, email) => async (dispatch) => {
     throw new Error(error);
   }
 };
-
 
 export default function (state = [], action) {
   if (action.type === FETCH_USERS) {
