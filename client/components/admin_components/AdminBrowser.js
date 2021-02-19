@@ -11,7 +11,6 @@ export function AdminBrowser() {
   const styles = {
     tabs: {
       backgroundColor: 'lightgray',
-      fontWeight: '5',
     },
   };
   return (
