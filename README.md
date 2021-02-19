@@ -4,7 +4,7 @@
 https://grizzly-winter-gear.herokuapp.com/login
 
 ## NERP Stack
-- Built with Node.js, Express.js, React.js, PostgreSQL
+- Built with Node.js, Express.js, React.js, PostgreSQL over three weeks in a three person team
 
 ### Front End
 - Front end utilizes React and Material UI for interface, Redux for store management, React Router for page management
