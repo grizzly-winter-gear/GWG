@@ -29,7 +29,7 @@ h1 {
 }
 nav {
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: row;
   justify-content: space-between !important;
   align-items: center !important;
 }
