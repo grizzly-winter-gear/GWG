@@ -64,7 +64,6 @@ export const fetchAllItems = () => async (dispatch) => {
           authorization: token,
         },
       });
-      console.log(items);
       return dispatch(_fetchAllItems(items.data));
     }
   } catch (error) {
@@ -72,7 +71,7 @@ export const fetchAllItems = () => async (dispatch) => {
   }
 };
 
-export const destroyItem = (id) => {
+export const destroyItem = (id) => async (dispatch) => {
   const token = window.localStorage.getItem('token');
   try {
     if (token) {
@@ -87,9 +86,7 @@ export const destroyItem = (id) => {
           },
         }
       );
-      return async function (dispatch) {
-        return dispatch(_destroyItem(id));
-      };
+      return dispatch(_destroyItem(id));
     }
   } catch (error) {
     console.log(error);

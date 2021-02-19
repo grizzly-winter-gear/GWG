@@ -100,7 +100,7 @@ class AdminItemsTable extends React.Component {
             <TableBody>
               {this.state.rows.map((row) => (
                 <TableRow key={row.id}>
-                  <TableCell align="left">
+                  <TableCell>
                     {row.isEditMode ? (
                       <>
                         <IconButton

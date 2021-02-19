@@ -10,7 +10,8 @@ export function AdminBrowser() {
   const allTabs = ['/account', '/account/items'];
   const styles = {
     tabs: {
-      backgroundColor: 'white',
+      backgroundColor: 'lightgray',
+      fontWeight: '5',
     },
   };
   return (

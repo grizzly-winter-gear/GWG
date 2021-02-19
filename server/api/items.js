@@ -6,7 +6,6 @@ const router = require('express').Router();
 
 module.exports = router;
 
-//maintaining old route if admin needs it. could dry out
 router.get('/', async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
