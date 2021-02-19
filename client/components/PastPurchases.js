@@ -30,7 +30,6 @@ class PastPurchases extends React.Component {
       alignItems: 'center',
     };
     const { purchases } = this.props;
-    console.log(purchases);
     if (purchases.length > 0) {
       return (
         <div>

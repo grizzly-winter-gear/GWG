@@ -12,7 +12,6 @@ class EditProfile extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(evt) {
-    // console.log("evt.target.value console log",evt.target.value)
     this.setState({
       email: evt.target.value,
     });
@@ -21,21 +20,25 @@ class EditProfile extends React.Component {
   handleSubmit(evt) {
     evt.preventDefault();
     this.props.editEmail(this.props.state.auth.id, this.state.email);
+    this.setState({
+      email: '',
+    });
   }
   render() {
-    // console.log('props', this.props);
     const { email } = this.state;
     const { handleSubmit, handleChange } = this;
     return (
       <div className="edit-profile-form">
-      <form id="email-form" onSubmit={handleSubmit}>
-        <div>
-        <label htmlFor="email">New Email Adress:</label>
-        <input name="email" onChange={handleChange} value={email} />
-        <button type="submit" className="submit-button">Submit</button>
-        </div>
-      </form>
-    </div>
+        <form id="email-form" onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="email">New Email Adress:</label>
+            <input name="email" onChange={handleChange} value={email} />
+            <button type="submit" className="submit-button">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

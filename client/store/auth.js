@@ -1,6 +1,7 @@
 import axios from 'axios';
 import history from '../history';
 import { clearCart, setCart } from './cart';
+import { SET_EMAIL } from './users';
 
 const storage = () => window.localStorage;
 const TOKEN = 'token';
@@ -87,6 +88,8 @@ export default function (state = {}, action) {
   switch (action.type) {
     case SET_AUTH:
       return action.auth;
+    case SET_EMAIL:
+      return { ...state, email: action.email };
     default:
       return state;
   }
