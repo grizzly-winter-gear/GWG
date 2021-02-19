@@ -24,9 +24,9 @@ class SingleCategory extends Component {
     return (
       <div>
         <center>
-          <h1 className="category-header">
+          <h3 className="category-header">
             {this.props.match.params.category}
-          </h1>
+          </h3>
           <div id="pagination">
             <Button
               variant="contained"
