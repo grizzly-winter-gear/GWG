@@ -106,7 +106,7 @@ const syncAndSeed = async () => {
       name: 'Cat Balaclava',
       description:
         'Vivid animal pattern and unique ear sewing process, The ears stand up perfectly and are very stable ( no flopping or adjustments needed). Ears maintain a 3D shape, looks more real, more interesting, more lovely, very cool, suitable for any occasion',
-      imageURL: '/images/cat_balaclava.jpg',
+      imageURL: '/images/cat_balaclava.jpeg',
       price: 19,
       stock: 10,
       rating: 3.2,

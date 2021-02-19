@@ -4,7 +4,8 @@ import { fetchItems } from '../store/singleCategory';
 import Container from '@material-ui/core/Container';
 import ViewCatalog from './ViewCatalog';
 import Button from '@material-ui/core/Button';
-
+import SkipNextIcon from '@material-ui/icons/SkipNext';
+import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 class SingleCategory extends Component {
   componentDidMount() {
     const categName = this.props.match.params.category;
@@ -17,20 +18,21 @@ class SingleCategory extends Component {
     const offset = parseInt(this.props.match.params.offset);
     const styles = {
       button: {
-        height: '30px',
+        // height: '30px',
       },
     };
     return (
       <div>
         <center>
-          <h1 className="category-header">
+          <h3 className="category-header">
             {this.props.match.params.category}
-          </h1>
+          </h3>
           <div id="pagination">
             <Button
               variant="contained"
               color="primary"
               style={styles.button}
+              startIcon={<SkipPreviousIcon />}
               onClick={() =>
                 this.props.fetchItems(
                   categName,
@@ -41,13 +43,14 @@ class SingleCategory extends Component {
             >
               Previous Page
             </Button>
-            <h2>
+            <h4>
               Displaying: {offset + 1} to {offset + 10}
-            </h2>
+            </h4>
             <Button
               variant="contained"
               color="primary"
               style={styles.button}
+              endIcon={<SkipNextIcon />}
               onClick={() =>
                 this.props.fetchItems(
                   categName,
