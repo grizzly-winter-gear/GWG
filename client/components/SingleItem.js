@@ -53,7 +53,11 @@ class SingleItem extends Component {
             subheader={`$${item.price}`}
             // action={item.rating + ' Stars'}
             action={
-              <Ratings widgetDimensions="10px" rating={parseInt(item.rating)}>
+              <Ratings
+                widgetDimensions="20px"
+                widgetSpacings="1px"
+                rating={parseFloat(item.rating)}
+              >
                 <Ratings.Widget />
                 <Ratings.Widget />
                 <Ratings.Widget />
