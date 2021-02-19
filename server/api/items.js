@@ -9,7 +9,19 @@ module.exports = router;
 //maintaining old route if admin needs it. could dry out
 router.get('/', async (req, res, next) => {
   try {
-    const items = await Item.findAll();
+    const itemName = req.query.itemName;
+    console.log("this is the item name!!!!!", itemName);
+    let queryFilters = {};
+    if (itemName){
+      queryFilters = {
+        where: {
+          name: itemName
+        }
+      };
+    }
+    console.log("queryFilters", queryFilters);
+    const items = await Item.findAll(queryFilters);
+    console.log("items", items);
     res.json(items);
   } catch (err) {
     next(err);

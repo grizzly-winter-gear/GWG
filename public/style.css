@@ -46,6 +46,11 @@ nav {
   padding: 1rem !important;
 }
 
+.search-icon {
+  width: 5%;
+  height: 5%;
+}
+
 hr {
   border: solid black 1.9px !important;
 }

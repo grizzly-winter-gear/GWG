@@ -1,9 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from "axios";
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 import { logout } from '../store';
 
-const Navbar = ({ handleClick, isLoggedIn }) => (
+const Navbar = ({ handleClick, isLoggedIn }) => {
+
+  let history = useHistory();
+  const [searchInput, setSearchInput] = useState(""); //will only edit the variable associated with the function
+
+ const handleSearchChange = (evt) => {
+    setSearchInput(evt.target.value);
+  }
+
+  const handleSearchClick = async (evt) => {
+    //axios call
+      let result = await axios.get(`/api/items`, {
+       params: {
+         itemName: searchInput
+       }
+      });
+
+      if (result.data.length > 0){
+        const item_id = result.data[0].id;
+        console.log(item_id);
+        history.push(`/singleItem/${item_id}`);
+        // window.location.href = `https://localhost:8080/singleItem/${item_id}`
+        // //redirect
+      }
+      else {
+        //redirect to "no result page";
+      }
+  }
+
+  return (
   <div className="header">
     <nav>
       <div className="logo-navbar">
@@ -12,6 +42,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       {isLoggedIn ? (
         <div className="navBar">
           {/* The navbar will show these links after you log in */}
+
+          <input type="text" placeholder="Search..."onChange={handleSearchChange}/>
+          <img className="search-icon" src ="./images/search-icon.jpg"  onClick={handleSearchClick} />
+
           <Link to="/home">Home</Link>
 
           <div className="dropdown">
@@ -50,7 +84,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
     </nav>
     <hr />
   </div>
-);
+)};
 
 /**
  * CONTAINER
