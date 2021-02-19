@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 class ViewCatalog extends Component {
   constructor(props) {
@@ -86,7 +87,8 @@ class ViewCatalog extends Component {
                     </Link>
                     <CardActions style={styles.cardActions}>
                       <Button
-                        variant="outlined"
+                        variant="contained"
+                        startIcon={<AddShoppingCartIcon />}
                         color="primary"
                         size="small"
                         title={'Add to cart: ' + product.name}
