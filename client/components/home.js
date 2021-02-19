@@ -8,19 +8,26 @@ export const Home = (props) => {
 
   return (
     <div>
-      <section>
+
         <center>
-          <div className="container">
             <h3>
               <i>Welcome to Grizzly Winter Gear!</i>
             </h3>
+
+          </center>
+
+
+          <div className="container">
+          <center>
+
             <img className="carousel-image" src="./images/skimountain.jpg" />
             <div className="centered">
               Your premier destination for all winter sports gear!
             </div>
-          </div>
+
         </center>
-      </section>
+        </div>
+
     </div>
   );
 };
