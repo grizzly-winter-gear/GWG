@@ -5,9 +5,7 @@ import AdminCreateItemForm from './AdminCreateItemForm';
 import AdminItemsTable from './AdminItemsTable';
 
 class AdminItems extends React.Component {
-  componentDidMount() {
-    this.props.getItems(this.props.state.allItems.index);
-  }
+  componentDidMount() {}
   render() {
     const styles = {
       card: {
@@ -30,10 +28,7 @@ class AdminItems extends React.Component {
     return (
       <div>
         <AdminCreateItemForm />
-        <AdminItemsTable
-        // catalog={catalog}
-        // destroyItem={this.props.destroyItem}
-        />
+        <AdminItemsTable />
       </div>
     );
   }
@@ -46,10 +41,7 @@ const mapState = (state) => {
 };
 
 const mapDispatch = (dispatch) => {
-  return {
-    getItems: (index) => dispatch(fetchItems(index)),
-    destroyItem: (id) => dispatch(destroyItem(id)),
-  };
+  return {};
 };
 
 export default connect(mapState, mapDispatch)(AdminItems);

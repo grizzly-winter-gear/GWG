@@ -31,12 +31,12 @@ class AdminUsers extends React.Component {
     let { users } = this.props.state;
     return (
       <div>
-        <TableContainer component={Paper}>
-          <Table style={styles.Table} aria-label="simple table">
+        <TableContainer style={{ maxHeight: 600 }} component={Paper}>
+          <Table stickyHeader style={styles.Table} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell align="left">Email</TableCell>
-                <TableCell align="justify">Privilege</TableCell>
+                <TableCell align="left">Privilege</TableCell>
                 <TableCell align="right">githubId</TableCell>
                 <TableCell align="right">id</TableCell>
               </TableRow>
@@ -47,11 +47,11 @@ class AdminUsers extends React.Component {
                   <TableCell component="th" scope="row">
                     {user.email}
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="left">
                     {/* {user.privilege} */}
                     <PrivilegeForm id={user.id} privilege={user.privilege} />
                   </TableCell>
-                  <TableCell align="right">{user.githubId}</TableCell>
+                  <TableCell align="right">{user.githubId || 'none'}</TableCell>
                   <TableCell align="right">{user.id}</TableCell>
                 </TableRow>
               ))}
