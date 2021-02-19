@@ -16,8 +16,7 @@ const AuthForm = (props) => {
   } = props;
 
   return (
-    <FormControl>
-      <div>
+    <FormControl color="primary">
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="email">
@@ -41,10 +40,11 @@ const AuthForm = (props) => {
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
+      <div className="login-link">
       {window.githubURL && (
         <a href={window.githubURL}>Login / Register Via Github </a>
       )}
-    </div>
+      </div>
     </FormControl>
   );
 };
