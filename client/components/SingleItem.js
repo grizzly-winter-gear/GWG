@@ -9,6 +9,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import CardHeader from '@material-ui/core/CardHeader';
+import Ratings from 'react-ratings-declarative';
+
 class SingleItem extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
@@ -45,12 +48,21 @@ class SingleItem extends Component {
     return (
       <Container style={styles.container}>
         <Card style={styles.card}>
-          <Typography align="center" style={styles.type}>
-            {item.name}: {item.price}
-          </Typography>
-          <Typography align="center" style={styles.type}>
-            Rating {item.rating}
-          </Typography>
+          <CardHeader
+            title={item.name}
+            subheader={`$${item.price}`}
+            // action={item.rating + ' Stars'}
+            action={
+              <Ratings widgetDimensions="10px" rating={parseInt(item.rating)}>
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+                <Ratings.Widget />
+              </Ratings>
+            }
+          />
+
           <CardMedia
             style={styles.media}
             image={item.imageURL}
