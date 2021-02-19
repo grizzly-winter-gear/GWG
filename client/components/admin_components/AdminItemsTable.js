@@ -12,7 +12,7 @@ import EditIcon from '@material-ui/icons/EditOutlined';
 import DoneIcon from '@material-ui/icons/DoneAllTwoTone';
 import DeleteIcon from '@material-ui/icons/DeleteForeverOutlined';
 import { connect } from 'react-redux';
-import { destroyItem, fetchItems, updateItem } from '../../store/allItems';
+import { destroyItem, fetchAllItems, updateItem } from '../../store/allItems';
 
 const styles = {
   root: {
@@ -36,7 +36,7 @@ class AdminItemsTable extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidMount() {
-    this.props.getItems(0);
+    this.props.getItems();
     let initRows = this.props.state.allItems.catalog;
     this.setState({
       rows: initRows,
@@ -183,7 +183,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getItems: (index) => dispatch(fetchItems(index)),
+    getItems: () => dispatch(fetchAllItems()),
     destroyItem: (id) => dispatch(destroyItem(id)),
     updateItem: (item) => dispatch(updateItem(item)),
   };

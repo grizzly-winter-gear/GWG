@@ -9,8 +9,11 @@ module.exports = router;
 //maintaining old route if admin needs it. could dry out
 router.get('/', async (req, res, next) => {
   try {
-    const items = await Item.findAll();
-    res.json(items);
+    const user = await User.findByToken(req.headers.authorization);
+    if (user.privilege === 'administrator') {
+      const items = await Item.findAll();
+      res.json(items);
+    }
   } catch (err) {
     next(err);
   }

@@ -14,6 +14,13 @@ export const setItems = (items) => {
   };
 };
 
+export const _fetchAllItems = (items) => {
+  return {
+    type: SET_ITEMS,
+    items,
+  };
+};
+
 const _destroyItem = (id) => {
   return {
     type: DESTROY_ITEM,
@@ -46,6 +53,23 @@ export const fetchItems = (index) => {
   return function (dispatch) {
     return pullItems(index).then((result) => dispatch(setItems(result.data)));
   };
+};
+
+export const fetchAllItems = () => async (dispatch) => {
+  const token = window.localStorage.getItem('token');
+  try {
+    if (token) {
+      const items = await axios.get('/api/items/', {
+        headers: {
+          authorization: token,
+        },
+      });
+      console.log(items);
+      return dispatch(_fetchAllItems(items.data));
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
 };
 
 export const destroyItem = (id) => {
