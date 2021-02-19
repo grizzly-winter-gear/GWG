@@ -11,9 +11,9 @@ import StorefrontIcon from '@material-ui/icons/Storefront';
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div className="header">
     <nav>
-      <div className="logo-navbar">
-        <Link to="/home">Grizzly Winter Gear</Link>
-      </div>
+      <Link className="logo-navbar" to="/home">
+        Grizzly Winter Gear
+      </Link>
       {isLoggedIn ? (
         <div className="navBar">
           {/* The navbar will show these links after you log in */}
