@@ -6,7 +6,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import StorefrontIcon from '@material-ui/icons/Storefront';
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div className="header">
@@ -23,7 +23,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
           </Link>
 
           <div className="dropdown">
-            <button className="dropbtn">Select a category</button>
+            <button className="dropbtn">
+              <StorefrontIcon fontSize="small" />
+              Select a category
+            </button>
             <div className="dropdown-content">
               <a href="/singlecategory/All/0">All</a>
               <a href="/singlecategory/Accessories/0">Accessories</a>
@@ -55,7 +58,10 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
             View Cart
           </Link>
           <div className="dropdown">
-            <button className="dropbtn">Select a category</button>
+            <button className="dropbtn">
+              <StorefrontIcon fontSize="small" />
+              Select a category
+            </button>
             <div className="dropdown-content">
               <a href="/singlecategory/All/0">All</a>
               <a href="/singlecategory/Accessories/0">Accessories</a>
