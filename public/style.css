@@ -30,6 +30,18 @@ h1 {
  font-size: 20px;
  color: black;
 }
+
+input {
+  height: 38px;
+}
+
+.search-icon {
+  background-color: #28536B ;
+  height: 38px !important;
+  width: 40px !important;
+  border: solid black 1px !important;
+}
+
 nav {
   display: flex !important;
   flex-direction: row !important;
@@ -147,6 +159,7 @@ form div {
 
 
 /*styling on the home page */
+
 .container {
   position: relative !important;
   text-align: center !important;
