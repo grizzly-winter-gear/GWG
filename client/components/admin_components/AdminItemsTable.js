@@ -1,4 +1,5 @@
 import React from 'react';
+import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -86,90 +87,92 @@ class AdminItemsTable extends React.Component {
   render() {
     return (
       <Paper>
-        <Table style={styles.table} aria-label="table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="left" />
-              <TableCell align="left">Item</TableCell>
-              <TableCell align="right">Category</TableCell>
-              <TableCell align="right">Stock</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.state.rows.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell>
-                  {row.isEditMode ? (
-                    <>
-                      <IconButton
-                        aria-label="done"
-                        onClick={() => this.onSubmit(row.id)}
-                      >
-                        <DoneIcon />
-                      </IconButton>
-                      <IconButton
-                        aria-label="destroy"
-                        onClick={() => this.props.destroyItem(row.id)}
-                      >
-                        <DeleteIcon />
-                      </IconButton>
-                    </>
-                  ) : (
-                    <IconButton
-                      aria-label="edit"
-                      onClick={() => this.onToggleEditMode(row.id)}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  )}
-                </TableCell>
-                <TableCell align="left">
-                  {row.isEditMode ? (
-                    <Input
-                      value={row.name}
-                      name={'name'}
-                      onChange={(e) => this.onChange(e, row)}
-                      onKeyDown={(e) =>
-                        e.key === 'Enter' ? this.onSubmit(row.id) : null
-                      }
-                    />
-                  ) : (
-                    row.name
-                  )}
-                </TableCell>
-                <TableCell align="right">
-                  {row.isEditMode ? (
-                    <Input
-                      value={row.category}
-                      name={'category'}
-                      onChange={(e) => this.onChange(e, row)}
-                      onKeyDown={(e) =>
-                        e.key === 'Enter' ? this.onSubmit(row.id) : null
-                      }
-                    />
-                  ) : (
-                    row.category
-                  )}
-                </TableCell>
-                <TableCell align="right">
-                  {row.isEditMode ? (
-                    <Input
-                      value={row.stock}
-                      type="number"
-                      name={'stock'}
-                      onChange={(e) => this.onChange(e, row)}
-                      onKeyDown={(e) =>
-                        e.key === 'Enter' ? this.onSubmit(row.id) : null
-                      }
-                    />
-                  ) : (
-                    row.stock
-                  )}
-                </TableCell>
+        <TableContainer style={{ maxHeight: 600 }}>
+          <Table stickyHeader style={styles.table} aria-label="table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="left" />
+                <TableCell align="left">Item</TableCell>
+                <TableCell align="right">Category</TableCell>
+                <TableCell align="right">Stock</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHead>
+            <TableBody>
+              {this.state.rows.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell align="left">
+                    {row.isEditMode ? (
+                      <>
+                        <IconButton
+                          aria-label="done"
+                          onClick={() => this.onSubmit(row.id)}
+                        >
+                          <DoneIcon />
+                        </IconButton>
+                        <IconButton
+                          aria-label="destroy"
+                          onClick={() => this.props.destroyItem(row.id)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </>
+                    ) : (
+                      <IconButton
+                        aria-label="edit"
+                        onClick={() => this.onToggleEditMode(row.id)}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                    )}
+                  </TableCell>
+                  <TableCell align="left">
+                    {row.isEditMode ? (
+                      <Input
+                        value={row.name}
+                        name={'name'}
+                        onChange={(e) => this.onChange(e, row)}
+                        onKeyDown={(e) =>
+                          e.key === 'Enter' ? this.onSubmit(row.id) : null
+                        }
+                      />
+                    ) : (
+                      row.name
+                    )}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.isEditMode ? (
+                      <Input
+                        value={row.category}
+                        name={'category'}
+                        onChange={(e) => this.onChange(e, row)}
+                        onKeyDown={(e) =>
+                          e.key === 'Enter' ? this.onSubmit(row.id) : null
+                        }
+                      />
+                    ) : (
+                      row.category
+                    )}
+                  </TableCell>
+                  <TableCell align="right">
+                    {row.isEditMode ? (
+                      <Input
+                        value={row.stock}
+                        type="number"
+                        name={'stock'}
+                        onChange={(e) => this.onChange(e, row)}
+                        onKeyDown={(e) =>
+                          e.key === 'Enter' ? this.onSubmit(row.id) : null
+                        }
+                      />
+                    ) : (
+                      row.stock
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Paper>
     );
   }
