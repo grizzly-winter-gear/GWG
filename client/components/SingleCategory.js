@@ -18,7 +18,7 @@ class SingleCategory extends Component {
     const offset = parseInt(this.props.match.params.offset);
     const styles = {
       button: {
-        height: '30px',
+        // height: '30px',
       },
     };
     return (
