@@ -9,21 +9,7 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-
 const Navbar = ({ handleClick, isLoggedIn }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const menuHandleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
   return (
     <div className="header">
       <nav>
