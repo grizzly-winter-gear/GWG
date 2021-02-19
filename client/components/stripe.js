@@ -10,7 +10,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
-
+import PaymentIcon from '@material-ui/icons/Payment';
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -81,9 +81,14 @@ class Stripe extends Component {
   render() {
     return (
       <Grid>
-        <button role="link" onClick={this.handleClick}>
+        <Button
+          color="primary"
+          startIcon={<PaymentIcon />}
+          variant="contained"
+          onClick={this.handleClick}
+        >
           Checkout
-        </button>
+        </Button>
         {this.state.Quantity.length > 0 && (
           <Grid item>
             There's a problem with this purchase:{' '}

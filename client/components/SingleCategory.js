@@ -43,9 +43,9 @@ class SingleCategory extends Component {
             >
               Previous Page
             </Button>
-            <h3>
+            <h4>
               Displaying: {offset + 1} to {offset + 10}
-            </h3>
+            </h4>
             <Button
               variant="contained"
               color="primary"
