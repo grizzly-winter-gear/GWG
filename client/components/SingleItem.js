@@ -30,8 +30,6 @@ class SingleItem extends Component {
         flexDirection: 'column',
         justifyContent: 'center',
         width: '50vw',
-        // minWidth: 150,
-        // minHeight: 200,
       },
       media: {
         height: 400,
@@ -51,7 +49,6 @@ class SingleItem extends Component {
           <CardHeader
             title={item.name}
             subheader={`$${item.price}`}
-            // action={item.rating + ' Stars'}
             action={
               <Ratings
                 widgetDimensions="20px"
