@@ -321,6 +321,36 @@ const syncAndSeed = async () => {
       stock: 15,
       rating: 4.8,
       category: 'Accessories',
+    },
+    {
+      name: 'Wantdo’s Mountain Ski Jacket',
+      description:
+        "It’s got all the specs of more expensive jackets at more than half the price: it's waterproof, windproof, and warm, yet breathable.",
+      imageURL: '/images/wantdo_ski_jacket.jpg',
+      price: 60,
+      stock: 15,
+      rating: 4.8,
+      category: 'Clothes',
+    },
+    {
+      name: "The North Face Women's Ohmega Fur Pom Beanie",
+      description:
+        "This The North Face Women's Ohmega Fur Pom Beanie Is Cable Knit And Classically Designed To Keep You Warm And Stylish To Complete Your Winter Outfit.",
+      imageURL: '/images/womens_snow_hat.jpg',
+      price: 10,
+      stock: 15,
+      rating: 4.1,
+      category: 'Clothes',
+    },
+    {
+      name: 'Ski Gloves',
+      description:
+        'These Burton Gortex ski mitts are vegan-friendly, warm, completely waterproof, and have a grippy palm in case you need to pull your phone out on the lift.',
+      imageURL: '/images/womens_ski_gloves.jpg',
+      price: 20,
+      stock: 15,
+      rating: 4.8,
+      category: 'Clothes',
     }
   ];
 
