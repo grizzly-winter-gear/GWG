@@ -252,6 +252,106 @@ const syncAndSeed = async () => {
       rating: 4.2,
       category: 'Accessories',
     },
+    {
+      name: 'Sports Watch',
+      description:
+        'The 9 Baro is the top model for snow lovers. It covers all the key functions you could imagine, like those of a fitness band, including activity tracking (steps, calories), heart rate and sleep tracking, paired with an extremely full-featured GPS with navigation and route tracking, pre-trip mapping and, for safety, a digital “bread crumb trail.',
+      imageURL: '/images/sports_watch.jpg',
+      price: 100,
+      stock: 10,
+      rating: 4.5,
+      category: 'Accessories',
+    },
+    {
+      name: 'Snow Folding Water Bottle',
+      description:
+        'The best solution is the foldable, leakproof and brilliant Stow bottles from sports hydration leader Hydrapak. Available in half and full liter sizes, they stow flat empty, have leakproof nozzles, are BPA- and PVC-free, and have a “beyond lifetime” guarantee, in four colors.',
+      imageURL: '/images/snow_folding_bottle.jpg',
+      price: 15,
+      stock: 10,
+      rating: 4.5,
+      category: 'Accessories',
+    },
+    {
+      name: 'Toolbelt',
+      description:
+        '686 founder Michael Akira West firmly believes that “the best tool is the one you have on you,” and if you’ve ever needed to adjust a binding or such while skiing or riding, you get the picture',
+      imageURL: '/images/toolbelt.jpg',
+      price: 50,
+      stock: 15,
+      rating: 4.0,
+      category: 'Accessories',
+    },
+    {
+      name: 'Skully Candy Sesh Earbuds',
+      description:
+        'Today they offer the Sesh, their smallest wireless earbuds, which fits comfortably under just about any and every make of helmet. ',
+      imageURL: '/images/earbuds.png',
+      price: 20,
+      stock: 10,
+      rating: 4.5,
+      category: 'Accessories',
+    },
+    {
+      name: 'Headsweats Reversible Thermal Beanie',
+      description:
+        'ow Headsweats has a thermal, reversible winter version, and unlike most hats, it fits slickly under a ski helmet for the coldest days, and its small size in the pocket makes it a great accessory for when you take your helmet off. ',
+      imageURL: '/images/thermal_beanie.jpg',
+      price: 25,
+      stock: 10,
+      rating: 4.8,
+      category: 'Accessories',
+    },
+    {
+      name: 'Phoozy Thermal Phone Case',
+      description:
+        'It can extend battery life significantly, is made of insulating material used by NASA in space, also protects your phone against overheating in hot weather and even floats if you drop it in the water. ',
+      imageURL: '/images/phone_case.jpg',
+      price: 20,
+      stock: 10,
+      rating: 4.9,
+      category: 'Accessories',
+    },
+    {
+      name: 'Nikwax Duo Fabric Care For Ski & Snowboard Clothing',
+      description:
+        'The folks at Nikwax have been making the best cleansers, waterproofers and treatments for outdoor gear, from canvas to tents to boots, for decades, and are the favorite of the active sports industry. ',
+      imageURL: '/images/fabric_care.jpg',
+      price: 10,
+      stock: 15,
+      rating: 4.8,
+      category: 'Accessories',
+    },
+    {
+      name: 'Wantdo’s Mountain Ski Jacket',
+      description:
+        "It’s got all the specs of more expensive jackets at more than half the price: it's waterproof, windproof, and warm, yet breathable.",
+      imageURL: '/images/wantdo_ski_jacket.jpg',
+      price: 60,
+      stock: 15,
+      rating: 4.8,
+      category: 'Clothes',
+    },
+    {
+      name: "The North Face Women's Ohmega Fur Pom Beanie",
+      description:
+        "This The North Face Women's Ohmega Fur Pom Beanie Is Cable Knit And Classically Designed To Keep You Warm And Stylish To Complete Your Winter Outfit.",
+      imageURL: '/images/womens_snow_hat.jpg',
+      price: 10,
+      stock: 15,
+      rating: 4.1,
+      category: 'Clothes',
+    },
+    {
+      name: 'Ski Gloves',
+      description:
+        'These Burton Gortex ski mitts are vegan-friendly, warm, completely waterproof, and have a grippy palm in case you need to pull your phone out on the lift.',
+      imageURL: '/images/womens_ski_gloves.jpg',
+      price: 20,
+      stock: 15,
+      rating: 4.8,
+      category: 'Clothes',
+    }
   ];
 
   //create some items here
