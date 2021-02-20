@@ -86,6 +86,24 @@ router.get('/success', async (req, res, next) => {
       await Promise.all(items.map((item) => item.save()));
     }
 
+    const user = await User.findOne({
+      where: {
+        id: cart.userId,
+      },
+    });
+
+    if (user.email && user.email !== '') {
+      const send = require('gmail-send')({
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD,
+        to: user.email,
+        subject: 'GWG Order Confirmation',
+        html: `<p>Your order has been confirmed</p><br/><p>Sign into <a href='https://grizzly-winter-gear.herokuapp.com/home'>Grizzly Winter Gear</a> to view your order</p>`,
+      });
+
+      await send();
+    }
+
     // console.log(session);
     // console.log(customer);
     res.redirect('/success');
