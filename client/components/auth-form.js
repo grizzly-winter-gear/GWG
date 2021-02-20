@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { authenticate } from '../store';
-import FormControl from "@material-ui/core/FormControl";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from '@material-ui/core/FormControl';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 /**
  * COMPONENT
  */
@@ -16,36 +17,52 @@ const AuthForm = (props) => {
   } = props;
 
   return (
-    <FormControl color="primary">
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" autoComplete="email" />
-          {/* <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText> */}
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input
-            name="password"
-            type="password"
-            autoComplete={autocomplete_attribute}
-          />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <div className="login-link">
-      {window.githubURL && (
-        <a href={window.githubURL}>Login / Register Via Github </a>
-      )}
-      </div>
-    </FormControl>
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ minHeight: '30vh' }}
+    >
+      <Paper
+        variant="elevation"
+        elevation={24}
+        style={{ margin: '3rem', padding: '3rem' }}
+      >
+        <FormControl color="primary">
+          <form onSubmit={handleSubmit} name={name}>
+            <div>
+              <label htmlFor="email">
+                <small>Email</small>
+              </label>
+              <input name="email" type="text" autoComplete="email" />
+            </div>
+            <br />
+            <div>
+              <label htmlFor="password">
+                <small>Password</small>
+              </label>
+              <input
+                name="password"
+                type="password"
+                autoComplete={autocomplete_attribute}
+              />
+            </div>
+            <br />
+            <center>
+              <button type="submit">{displayName}</button>
+            </center>
+            {error && error.response && <div> {error.response.data} </div>}
+          </form>
+          <div className="login-link">
+            {window.githubURL && (
+              <a href={window.githubURL}>Login / Register Via Github </a>
+            )}
+          </div>
+        </FormControl>
+      </Paper>
+    </Grid>
   );
 };
 
