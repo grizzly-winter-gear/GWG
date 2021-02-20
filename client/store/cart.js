@@ -24,7 +24,6 @@ export const fetchCart = (id) => async (dispatch) => {
           },
         })
       ).data;
-      console.log(cart);
       if (cart) {
         return dispatch(setCart(cart));
       }
