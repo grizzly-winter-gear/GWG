@@ -18,12 +18,13 @@ const SelectCategory = () => {
   return (
     <div>
       <Button
+        size="small"
         startIcon={<StorefrontIcon fontSize="small" />}
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={menuHandleClick}
       >
-        Select a Category
+        Catalog
       </Button>
       <Menu
         id="simple-menu"

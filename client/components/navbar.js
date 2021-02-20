@@ -24,18 +24,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
               Home
             </Link>
             <SelectCategory />
-            <div className="dropdown">
-              <button className="dropbtn">
-                <StorefrontIcon fontSize="small" />
-                Select a category
-              </button>
-              <div className="dropdown-content">
-                <a href="/singlecategory/All/0">All</a>
-                <a href="/singlecategory/Accessories/0">Accessories</a>
-                <a href="/singlecategory/Clothes/0">Clothes</a>
-                <a href="/singlecategory/Gear/0">Gear</a>
-              </div>
-            </div>
 
             <Link to="/account">
               <AccountBoxIcon fontSize="small" />
@@ -56,18 +44,6 @@ const Navbar = ({ handleClick, isLoggedIn }) => {
             <Link to="/login">Login</Link>
             <Link to="/signup">Sign Up</Link>
             <SelectCategory />
-            <div className="dropdown">
-              <button className="dropbtn">
-                <StorefrontIcon fontSize="small" />
-                Select a category
-              </button>
-              <div className="dropdown-content">
-                <a href="/singlecategory/All/0">All</a>
-                <a href="/singlecategory/Accessories/0">Accessories</a>
-                <a href="/singlecategory/Clothes/0">Clothes</a>
-                <a href="/singlecategory/Gear/0">Gear</a>
-              </div>
-            </div>
             <Link to="/viewcart">
               <ShoppingCartIcon fontSize="small" />
               View Cart

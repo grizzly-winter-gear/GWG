@@ -37,6 +37,7 @@ nav {
   display: flex !important;
   padding: 1rem !important;
   justify-content: space-between !important;
+  align-items: center;
 }
 .navBar a {
   color: black !important;
