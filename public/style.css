@@ -144,22 +144,6 @@ form div {
 }
 
 /*styling on the home page */
-.container {
-  position: relative !important;
-  text-align: center !important;
-  color: white !important;
-}
-
-.centered {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  background-color: #28536b !important;
-  font-size: 42px !important;
-  font-style: italic !important;
-  border: solid black 2px !important;
-}
 
 img {
   border: solid black 3px !important;
@@ -226,6 +210,16 @@ i {
     display: flex;
     flex-direction: column;
   }
+
+  body {
+    font-size: 2em;
+  }
+
+  img {
+    width: 60%;
+    height: 70%;
+  }
+
   #pagination {
     width: 100%;
     justify-content: space-around;
