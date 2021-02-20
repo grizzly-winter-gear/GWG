@@ -41,10 +41,11 @@ class Routes extends Component {
               component={SingleCategory}
             />
             <Route path="/success" component={Success} />
-            <Redirect to="/home" />
+            <Redirect to="/home" component={Home} />
           </Switch>
         ) : (
           <Switch>
+            <Route path="/home" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path={`/singleItem/:id`} component={SingleItem} />
@@ -53,6 +54,7 @@ class Routes extends Component {
               component={SingleCategory}
             />
             <Route path="/viewcart" component={ViewCart} />
+            <Redirect to="/home" component={Home} />
           </Switch>
         )}
       </div>

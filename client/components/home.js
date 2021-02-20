@@ -7,16 +7,16 @@ export const Home = (props) => {
   // const { email } = props;
 
   return (
-
-        <center>
-            <h2>
-              <i>Welcome to Grizzly Winter Gear!  </i>
-            </h2>
-            <br/>
-            <h3><i>Your premier destination for all winter sports gear! </i></h3>
-            <img className="carousel-image" src="./images/skimountain.jpg" />
-        </center>
-
+    <center>
+      <h2>
+        <i>Welcome to Grizzly Winter Gear! </i>
+      </h2>
+      <br />
+      <h3>
+        <i>Your premier destination for all winter sports gear! </i>
+      </h3>
+      <img className="carousel-image" src="/images/skimountain.jpg" />
+    </center>
   );
 };
 
