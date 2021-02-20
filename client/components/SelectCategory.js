@@ -22,6 +22,7 @@ const SelectCategory = () => {
         startIcon={<StorefrontIcon fontSize="small" />}
         aria-controls="simple-menu"
         aria-haspopup="true"
+        style={{ textTransform: 'none' }}
         onClick={menuHandleClick}
       >
         Catalog
